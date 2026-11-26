@@ -38,10 +38,12 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(46% 32% at 76% 24%, rgba(216, 90, 48, 0.11) 0%, rgba(243, 183, 156, 0.16) 44%, rgba(253, 249, 244, 0) 76%),
-    radial-gradient(44% 30% at 74% 52%, rgba(235, 214, 190, 0.52) 0%, rgba(246, 239, 230, 0.24) 48%, rgba(253, 249, 244, 0) 78%),
-    radial-gradient(42% 28% at 26% 74%, rgba(216, 90, 48, 0.095) 0%, rgba(251, 230, 218, 0.34) 46%, rgba(253, 249, 244, 0) 78%),
-    radial-gradient(44% 30% at 74% 84%, rgba(243, 183, 156, 0.26) 0%, rgba(239, 229, 216, 0.36) 48%, rgba(253, 249, 244, 0) 80%);
+    radial-gradient(44% 30% at 74% 24%, rgba(216, 90, 48, 0.105) 0%, rgba(243, 183, 156, 0.16) 34%, rgba(243, 183, 156, 0.06) 56%, rgba(253, 249, 244, 0) 80%),
+    radial-gradient(42% 28% at 72% 52%, rgba(235, 214, 190, 0.50) 0%, rgba(246, 239, 230, 0.24) 36%, rgba(246, 239, 230, 0.08) 58%, rgba(253, 249, 244, 0) 82%),
+    radial-gradient(40% 26% at 28% 74%, rgba(216, 90, 48, 0.09) 0%, rgba(251, 230, 218, 0.30) 34%, rgba(251, 230, 218, 0.10) 56%, rgba(253, 249, 244, 0) 80%),
+    radial-gradient(42% 28% at 72% 84%, rgba(243, 183, 156, 0.24) 0%, rgba(239, 229, 216, 0.32) 36%, rgba(239, 229, 216, 0.10) 58%, rgba(253, 249, 244, 0) 82%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.35) 36px, #000 110px, #000 calc(100% - 110px), rgba(0, 0, 0, 0.35) calc(100% - 36px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.35) 36px, #000 110px, #000 calc(100% - 110px), rgba(0, 0, 0, 0.35) calc(100% - 36px), transparent 100%);
 }
 
 .dn-kontener {

@@ -34,10 +34,11 @@ import '@/components/narzedzia/ruch-c.css';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
+import { WeitereToolsDe } from '@/components/de/narzedzia/WeitereToolsDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
 import * as s from '@/components/narzedzia/styl';
 import { BylineDe, faqFuerAppleFaq } from '@/components/de/GeoBausteineDe';
-import { KOPF, ODER_NACH_EMAIL, SCHRITTE, METHODE, LESEN, WEITER, WEITER_LINKS, QUELLEN, WEITERE_TOOLS, FAQ, SCHEMA, STAND, SCHLUESSEL, listeEngines } from '@/lib/de/kiSichtbarkeit';
+import { KOPF, ODER_NACH_EMAIL, SCHRITTE, METHODE, LESEN, WEITER, WEITER_LINKS, QUELLEN, FAQ, SCHEMA, STAND, SCHLUESSEL, listeEngines } from '@/lib/de/kiSichtbarkeit';
 import { SIEDZIBA } from '@/lib/firma';
 
 const W = WIDOCZNOSC;
@@ -821,15 +822,7 @@ export default function KiSichtbarkeitPruefenDe() {
               </ul>
             </Sekcja>
 
-            {WEITERE_TOOLS.tools.some(([k]) => maWersjeDe(k)) && (
-              <Sekcja id="ac-weitere-tools" tytul={WEITERE_TOOLS.titel}>
-                <ul lang="de" style={s.lista}>
-                  {WEITERE_TOOLS.tools.filter(([k]) => maWersjeDe(k)).map(([k, name, beschr]) => (
-                    <li key={k}><Link href={k} style={s.podkreslenie}>{name}</Link>: {beschr}</li>
-                  ))}
-                </ul>
-              </Sekcja>
-            )}
+            <WeitereToolsDe bez={SCHLUESSEL} />
           </div></div>
         </div>
       </section>

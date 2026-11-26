@@ -170,17 +170,33 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 .sz-pobierz__form .btn { width: 100%; justify-content: center; min-height: 52px; }
 
 /* Powiązane: lista linków jako siatka kart Warm Liquid Glass */
-.sz-powiazane { position: relative; isolation: isolate; list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); font-size: 0.95rem; line-height: 1.5; color: var(--w-tusz-2); }
+.sz-powiazane { position: relative; isolation: isolate; list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); font-size: 0.95rem; line-height: 1.5; color: var(--w-tusz-2); }
 .sz-powiazane::before {
-  content: ''; position: absolute; inset: -3rem -3rem; z-index: -1; pointer-events: none;
+  content: ''; position: absolute; inset: -3.25rem -2.25rem; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(38% 36% at 30% 32%, rgba(216, 90, 48, 0.085) 0%, rgba(251, 230, 218, 0.30) 44%, rgba(253, 249, 244, 0) 76%),
-    radial-gradient(40% 38% at 70% 66%, rgba(235, 214, 190, 0.44) 0%, rgba(243, 183, 156, 0.20) 46%, rgba(253, 249, 244, 0) 76%);
-  -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 36%, rgba(0, 0, 0, 0.54) 66%, rgba(0, 0, 0, 0.14) 84%, transparent 98%);
-  mask-image: radial-gradient(50% 50% at 50% 50%, #000 36%, rgba(0, 0, 0, 0.54) 66%, rgba(0, 0, 0, 0.14) 84%, transparent 98%);
+    radial-gradient(40% 38% at 30% 32%, rgba(216, 90, 48, 0.085) 0%, rgba(251, 230, 218, 0.28) 32%, rgba(251, 230, 218, 0.11) 54%, rgba(253, 249, 244, 0.03) 70%, rgba(253, 249, 244, 0) 84%),
+    radial-gradient(42% 40% at 70% 66%, rgba(235, 214, 190, 0.44) 0%, rgba(243, 183, 156, 0.22) 34%, rgba(243, 183, 156, 0.09) 56%, rgba(253, 249, 244, 0.025) 72%, rgba(253, 249, 244, 0) 84%);
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.22) 20px, rgba(0, 0, 0, 0.68) 46px, #000 84px, #000 calc(100% - 84px), rgba(0, 0, 0, 0.68) calc(100% - 46px), rgba(0, 0, 0, 0.22) calc(100% - 20px), transparent 100%),
+    linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.22) 24px, rgba(0, 0, 0, 0.68) 54px, #000 96px, #000 calc(100% - 96px), rgba(0, 0, 0, 0.68) calc(100% - 54px), rgba(0, 0, 0, 0.22) calc(100% - 24px), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.22) 20px, rgba(0, 0, 0, 0.68) 46px, #000 84px, #000 calc(100% - 84px), rgba(0, 0, 0, 0.68) calc(100% - 46px), rgba(0, 0, 0, 0.22) calc(100% - 20px), transparent 100%),
+    linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.22) 24px, rgba(0, 0, 0, 0.68) 54px, #000 96px, #000 calc(100% - 96px), rgba(0, 0, 0, 0.68) calc(100% - 54px), rgba(0, 0, 0, 0.22) calc(100% - 24px), transparent 100%);
+  mask-composite: intersect;
 }
 @media (max-width: 767px) {
-  .sz-powiazane::before { inset: -2rem -0.75rem; }
+  .sz-powiazane::before {
+    inset: -2.25rem -0.75rem;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.28) 12px, rgba(0, 0, 0, 0.72) 28px, #000 50px, #000 calc(100% - 50px), rgba(0, 0, 0, 0.72) calc(100% - 28px), rgba(0, 0, 0, 0.28) calc(100% - 12px), transparent 100%),
+      linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.24) 20px, rgba(0, 0, 0, 0.70) 48px, #000 84px, #000 calc(100% - 84px), rgba(0, 0, 0, 0.70) calc(100% - 48px), rgba(0, 0, 0, 0.24) calc(100% - 20px), transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.28) 12px, rgba(0, 0, 0, 0.72) 28px, #000 50px, #000 calc(100% - 50px), rgba(0, 0, 0, 0.72) calc(100% - 28px), rgba(0, 0, 0, 0.28) calc(100% - 12px), transparent 100%),
+      linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.24) 20px, rgba(0, 0, 0, 0.70) 48px, #000 84px, #000 calc(100% - 84px), rgba(0, 0, 0, 0.70) calc(100% - 48px), rgba(0, 0, 0, 0.24) calc(100% - 20px), transparent 100%);
+    mask-composite: intersect;
+  }
 }
 .sz-powiazane > li {
   position: relative; isolation: isolate; padding: 1.1rem 3rem 1.1rem 1.25rem; border: 1px solid var(--w-szklo-krawedz); border-radius: 20px;

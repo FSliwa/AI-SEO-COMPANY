@@ -89,18 +89,32 @@
 .procesSiatka::before {
   content: '';
   position: absolute;
-  inset: -40px -32px;
+  inset: -44px -32px;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(38% 42% at 28% 36%, rgba(216, 90, 48, 0.10) 0%, rgba(251, 230, 218, 0.32) 44%, rgba(253, 249, 244, 0) 76%),
-    radial-gradient(40% 44% at 72% 64%, rgba(235, 214, 190, 0.46) 0%, rgba(243, 183, 156, 0.20) 46%, rgba(253, 249, 244, 0) 76%);
-  -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 38%, rgba(0, 0, 0, 0.54) 68%, rgba(0, 0, 0, 0.14) 85%, transparent 98%);
-  mask-image: radial-gradient(50% 50% at 50% 50%, #000 38%, rgba(0, 0, 0, 0.54) 68%, rgba(0, 0, 0, 0.14) 85%, transparent 98%);
+    radial-gradient(40% 42% at 28% 36%, rgba(216, 90, 48, 0.10) 0%, rgba(251, 230, 218, 0.30) 32%, rgba(251, 230, 218, 0.12) 54%, rgba(253, 249, 244, 0.03) 70%, rgba(253, 249, 244, 0) 84%),
+    radial-gradient(42% 44% at 72% 64%, rgba(235, 214, 190, 0.46) 0%, rgba(243, 183, 156, 0.22) 34%, rgba(243, 183, 156, 0.09) 56%, rgba(253, 249, 244, 0.025) 72%, rgba(253, 249, 244, 0) 84%);
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.22) 20px, rgba(0, 0, 0, 0.68) 48px, #000 88px, #000 calc(100% - 88px), rgba(0, 0, 0, 0.68) calc(100% - 48px), rgba(0, 0, 0, 0.22) calc(100% - 20px), transparent 100%),
+    linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.22) 22px, rgba(0, 0, 0, 0.68) 52px, #000 92px, #000 calc(100% - 92px), rgba(0, 0, 0, 0.68) calc(100% - 52px), rgba(0, 0, 0, 0.22) calc(100% - 22px), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.22) 20px, rgba(0, 0, 0, 0.68) 48px, #000 88px, #000 calc(100% - 88px), rgba(0, 0, 0, 0.68) calc(100% - 48px), rgba(0, 0, 0, 0.22) calc(100% - 20px), transparent 100%),
+    linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.22) 22px, rgba(0, 0, 0, 0.68) 52px, #000 92px, #000 calc(100% - 92px), rgba(0, 0, 0, 0.68) calc(100% - 52px), rgba(0, 0, 0, 0.22) calc(100% - 22px), transparent 100%);
+  mask-composite: intersect;
 }
 @media (max-width: 767px) {
   .procesSiatka::before {
-    inset: -24px -8px;
+    inset: -28px -10px;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.28) 12px, rgba(0, 0, 0, 0.72) 28px, #000 50px, #000 calc(100% - 50px), rgba(0, 0, 0, 0.72) calc(100% - 28px), rgba(0, 0, 0, 0.28) calc(100% - 12px), transparent 100%),
+      linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.24) 20px, rgba(0, 0, 0, 0.70) 48px, #000 84px, #000 calc(100% - 84px), rgba(0, 0, 0, 0.70) calc(100% - 48px), rgba(0, 0, 0, 0.24) calc(100% - 20px), transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.28) 12px, rgba(0, 0, 0, 0.72) 28px, #000 50px, #000 calc(100% - 50px), rgba(0, 0, 0, 0.72) calc(100% - 28px), rgba(0, 0, 0, 0.28) calc(100% - 12px), transparent 100%),
+      linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.24) 20px, rgba(0, 0, 0, 0.70) 48px, #000 84px, #000 calc(100% - 84px), rgba(0, 0, 0, 0.70) calc(100% - 48px), rgba(0, 0, 0, 0.24) calc(100% - 20px), transparent 100%);
+    mask-composite: intersect;
   }
 }
 

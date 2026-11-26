@@ -22,6 +22,8 @@ Po zrealizowaniu każdego zadania lub odpowiedzi dla użytkownika MUSISZ wykona�
    - Jeśli napotkałeś nowy błąd, regresję UI/CLS, pułapkę Next.js / `next-intl` / `wydanie.mjs`, false-positive w narzędziach SEO lub korektę od użytkownika — **natychmiast dopisz regułę i krok walidacyjny do odpowiedniego pliku `SKILL.md`** w `.agents/skills/` (lub utwórz nowy wyspecjalizowany skill). Nie powtarzaj tego samego błędu w kolejnych wiadomościach.
 3. **Aktualizuj graf wiedzy `graphify` przy zmianach architektury i plików:**
    - Przed złożonymi pytaniami o architekturę, linkowanie wewnętrzne lub zależności odpytuj graf (`$(cat graphify-out/.graphify_python) -m graphify query "..."`), a po dodaniu/usunięciu plików odśwież `graphify-out/graph.json` i eksport `graphify export obsidian` (skrypt zachowuje ręczne notatki w `00-Wnioski-i-Bledy/`).
+4. **Synchronizuj projekt i odhaczaj ukończone zadania w Notion (`notion_notion` MCP):**
+   - Po każdym wdrożeniu produkcyjnym, zamknięciu podpunktu z checklisty lub ukończeniu audytu zaktualizuj projekt `AI SEO COMPANY -> SEO` (`3d3977c55d918007bf6bdba07a2403f3`) oraz bazę `Tasks` (`collection://23f977c5-5d91-8198-a3ee-000be04aa4e4`): ustaw `Status: "Completed"` na wykonanych zadaniach, odhacz `- [x]` zrealizowane podpunkty wewnątrz zadań wieloetapowych (`P2`, `P3`) i usuń ukończone pozycje z sekcji aktywnego backlogu na stronie projektu.
 
 ## 2. Twarde niezmienniki techniczne projektu (Zero Regresji)
 

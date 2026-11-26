@@ -11,14 +11,14 @@ import AnswerBox from '@/components/AnswerBox';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
-import Ikona, { ikonaNarzedzia } from '@/components/narzedzia/Ikony';
-import { Link as IntlLink } from '@/i18n/routing';
-import { maWersjeDe, urlDe } from '@/lib/stronyDe';
-import { AUDYT, AUTORYTET, GENERATOR } from '@/lib/narzedziaLiczby';
-import { KARTY_DE } from '@/lib/narzedzia.de';
+import { ikonaNarzedzia } from '@/components/narzedzia/Ikony';
+import { urlDe } from '@/lib/stronyDe';
 import { NawBok } from './WspolneDe';
+import { WeitereToolsDe } from './WeitereToolsDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
 import * as s from '@/components/narzedzia/styl';
+
+export { WeitereToolsDe };
 
 const MIESIACE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 
@@ -50,29 +50,6 @@ export function ZrodlaDe({ zrodla, id = 'zrodla' }) {
           </li>
         ))}
       </ol>
-    </section>
-  );
-}
-
-/** „Weitere kostenlose Tools”: tylko narzędzia i szablony z wersją DE (bez huba i bez bieżącej strony). */
-export function WeitereToolsDe({ bez }) {
-  const L = { audytStron: AUDYT.stron, botow: GENERATOR.botow, botowAi: GENERATOR.botowAi, konkurentow: AUTORYTET.konkurentow, silniki: 'ChatGPT, Gemini, Perplexity, Claude und AI Overviews' };
-  const karty = Object.entries(KARTY_DE).filter(([href]) => href !== bez && maWersjeDe(href));
-  if (!karty.length) return null;
-  return (
-    <section aria-labelledby="weitere-tools" className={st.sekcja} style={s.sekcja}>
-      <h2 id="weitere-tools" className={st.h2} style={{ ...s.h2, marginBottom: '1.25rem' }}>Weitere kostenlose Tools</h2>
-      <ul className={st.siatka}>
-        {karty.map(([href, k]) => (
-          <li key={href}>
-            <IntlLink href={href} className={st.kafel}>
-              <span className={st.kafelIkona}><Ikona nazwa={ikonaNarzedzia(href)} /></span>
-              <span className={st.kafelNazwa}>{k.nazwa}</span>
-              <span className={st.kafelOpis}>{k.opis(L)}</span>
-            </IntlLink>
-          </li>
-        ))}
-      </ul>
     </section>
   );
 }

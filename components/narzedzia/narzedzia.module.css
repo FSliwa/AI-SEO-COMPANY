@@ -407,7 +407,7 @@
   background: var(--w-pomarancz);
   vertical-align: baseline;
 }
-.sekcja > p, .sekcja > ul, .sekcja > ol { max-width: var(--w-miara, 54ch); }
+.sekcja > p, .sekcja > ul:not(.siatka), .sekcja > ol { max-width: var(--w-miara, 54ch); }
 .sekcja :global(.narz-tabela-wrap), .sekcja table { max-width: 100%; }
 
 /* --- Układ treści: kolumna czytania + spis sekcji (NawBok) ---
@@ -569,26 +569,41 @@
 .siatka {
   position: relative;
   isolation: isolate;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  max-width: none;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 1rem;
 }
 .siatka::before {
   content: '';
   position: absolute;
-  inset: -3.25rem -3.25rem;
+  inset: -3.5rem -1.75rem;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(38% 32% at 30% 26%, rgba(216, 90, 48, 0.085) 0%, rgba(251, 230, 218, 0.30) 44%, rgba(253, 249, 244, 0) 76%),
-    radial-gradient(40% 34% at 70% 52%, rgba(235, 214, 190, 0.44) 0%, rgba(243, 183, 156, 0.20) 46%, rgba(253, 249, 244, 0) 76%),
-    radial-gradient(36% 30% at 34% 80%, rgba(243, 183, 156, 0.22) 0%, rgba(239, 229, 216, 0.28) 46%, rgba(253, 249, 244, 0) 76%);
-  -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 36%, rgba(0, 0, 0, 0.54) 66%, rgba(0, 0, 0, 0.14) 84%, transparent 98%);
-  mask-image: radial-gradient(50% 50% at 50% 50%, #000 36%, rgba(0, 0, 0, 0.54) 66%, rgba(0, 0, 0, 0.14) 84%, transparent 98%);
+    radial-gradient(40% 34% at 28% 24%, rgba(216, 90, 48, 0.085) 0%, rgba(251, 230, 218, 0.28) 32%, rgba(251, 230, 218, 0.11) 54%, rgba(253, 249, 244, 0.03) 70%, rgba(253, 249, 244, 0) 84%),
+    radial-gradient(42% 36% at 72% 52%, rgba(235, 214, 190, 0.44) 0%, rgba(243, 183, 156, 0.22) 34%, rgba(243, 183, 156, 0.09) 56%, rgba(253, 249, 244, 0.025) 72%, rgba(253, 249, 244, 0) 84%),
+    radial-gradient(38% 32% at 34% 80%, rgba(243, 183, 156, 0.22) 0%, rgba(239, 229, 216, 0.24) 34%, rgba(239, 229, 216, 0.09) 56%, rgba(253, 249, 244, 0.025) 72%, rgba(253, 249, 244, 0) 84%);
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.22) 20px, rgba(0, 0, 0, 0.68) 46px, #000 84px, #000 calc(100% - 84px), rgba(0, 0, 0, 0.68) calc(100% - 46px), rgba(0, 0, 0, 0.22) calc(100% - 20px), transparent 100%),
+    linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.22) 26px, rgba(0, 0, 0, 0.68) 60px, #000 108px, #000 calc(100% - 108px), rgba(0, 0, 0, 0.68) calc(100% - 60px), rgba(0, 0, 0, 0.22) calc(100% - 26px), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.22) 20px, rgba(0, 0, 0, 0.68) 46px, #000 84px, #000 calc(100% - 84px), rgba(0, 0, 0, 0.68) calc(100% - 46px), rgba(0, 0, 0, 0.22) calc(100% - 20px), transparent 100%),
+    linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.22) 26px, rgba(0, 0, 0, 0.68) 60px, #000 108px, #000 calc(100% - 108px), rgba(0, 0, 0, 0.68) calc(100% - 60px), rgba(0, 0, 0, 0.22) calc(100% - 26px), transparent 100%);
+  mask-composite: intersect;
 }
 @media (max-width: 767px) {
   .siatka::before,
   .sekcjaKatalogu::before {
-    inset: -2rem -0.75rem;
+    inset: -2.25rem -0.75rem;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.28) 12px, rgba(0, 0, 0, 0.72) 28px, #000 50px, #000 calc(100% - 50px), rgba(0, 0, 0, 0.72) calc(100% - 28px), rgba(0, 0, 0, 0.28) calc(100% - 12px), transparent 100%),
+      linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.24) 22px, rgba(0, 0, 0, 0.70) 52px, #000 92px, #000 calc(100% - 92px), rgba(0, 0, 0, 0.70) calc(100% - 52px), rgba(0, 0, 0, 0.24) calc(100% - 22px), transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.28) 12px, rgba(0, 0, 0, 0.72) 28px, #000 50px, #000 calc(100% - 50px), rgba(0, 0, 0, 0.72) calc(100% - 28px), rgba(0, 0, 0, 0.28) calc(100% - 12px), transparent 100%),
+      linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.24) 22px, rgba(0, 0, 0, 0.70) 52px, #000 92px, #000 calc(100% - 92px), rgba(0, 0, 0, 0.70) calc(100% - 52px), rgba(0, 0, 0, 0.24) calc(100% - 22px), transparent 100%);
+    mask-composite: intersect;
   }
 }
 .kafel {
@@ -673,15 +688,21 @@
 .sekcjaKatalogu::before {
   content: '';
   position: absolute;
-  inset: 0.5rem -4rem -3.5rem;
+  inset: 0.25rem -3.5rem -3.75rem;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(38% 32% at 28% 26%, rgba(216, 90, 48, 0.09) 0%, rgba(251, 230, 218, 0.32) 44%, rgba(253, 249, 244, 0) 76%),
-    radial-gradient(40% 34% at 72% 52%, rgba(235, 214, 190, 0.46) 0%, rgba(246, 239, 230, 0.22) 46%, rgba(253, 249, 244, 0) 76%),
-    radial-gradient(38% 30% at 32% 80%, rgba(243, 183, 156, 0.24) 0%, rgba(239, 229, 216, 0.30) 46%, rgba(253, 249, 244, 0) 76%);
-  -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 38%, rgba(0, 0, 0, 0.54) 68%, rgba(0, 0, 0, 0.14) 85%, transparent 98%);
-  mask-image: radial-gradient(50% 50% at 50% 50%, #000 38%, rgba(0, 0, 0, 0.54) 68%, rgba(0, 0, 0, 0.14) 85%, transparent 98%);
+    radial-gradient(40% 34% at 28% 26%, rgba(216, 90, 48, 0.09) 0%, rgba(251, 230, 218, 0.30) 32%, rgba(251, 230, 218, 0.12) 54%, rgba(253, 249, 244, 0.03) 70%, rgba(253, 249, 244, 0) 84%),
+    radial-gradient(42% 36% at 72% 52%, rgba(235, 214, 190, 0.46) 0%, rgba(246, 239, 230, 0.24) 34%, rgba(246, 239, 230, 0.10) 56%, rgba(253, 249, 244, 0.03) 72%, rgba(253, 249, 244, 0) 84%),
+    radial-gradient(40% 32% at 32% 80%, rgba(243, 183, 156, 0.24) 0%, rgba(239, 229, 216, 0.26) 34%, rgba(239, 229, 216, 0.10) 56%, rgba(253, 249, 244, 0.03) 72%, rgba(253, 249, 244, 0) 84%);
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.22) 24px, rgba(0, 0, 0, 0.68) 56px, #000 100px, #000 calc(100% - 100px), rgba(0, 0, 0, 0.68) calc(100% - 56px), rgba(0, 0, 0, 0.22) calc(100% - 24px), transparent 100%),
+    linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.22) 28px, rgba(0, 0, 0, 0.68) 64px, #000 116px, #000 calc(100% - 116px), rgba(0, 0, 0, 0.68) calc(100% - 64px), rgba(0, 0, 0, 0.22) calc(100% - 28px), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0.22) 24px, rgba(0, 0, 0, 0.68) 56px, #000 100px, #000 calc(100% - 100px), rgba(0, 0, 0, 0.68) calc(100% - 56px), rgba(0, 0, 0, 0.22) calc(100% - 24px), transparent 100%),
+    linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.22) 28px, rgba(0, 0, 0, 0.68) 64px, #000 116px, #000 calc(100% - 116px), rgba(0, 0, 0, 0.68) calc(100% - 64px), rgba(0, 0, 0, 0.22) calc(100% - 28px), transparent 100%);
+  mask-composite: intersect;
 }
 
 .pigulkaHuba {
