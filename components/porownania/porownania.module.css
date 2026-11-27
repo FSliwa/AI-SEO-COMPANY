@@ -43,6 +43,8 @@
   padding: clamp(1.25rem, 4vw, 2.5rem);
   box-shadow: none;
   scroll-margin-top: 110px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .h2 {
@@ -176,4 +178,14 @@
   margin: auto 0 0;
   font-size: 0.88rem;
   color: var(--w-tusz-2);
+}
+
+@media (max-width: 600px) {
+  .karta {
+    padding: 1.1rem 1rem;
+    border-radius: 20px;
+  }
+  .karta :global(.tabela-przewijana) {
+    margin-inline: -0.25rem;
+  }
 }

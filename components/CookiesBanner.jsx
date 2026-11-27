@@ -381,7 +381,7 @@ export default function CookiesBanner() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '1.5rem'
+            padding: 'clamp(0.75rem, 3vw, 1.5rem)'
           }}>
             {/* role="dialog" na bialym panelu, nie na pelnoekranowej nakladce -
                 granice dialogu = widoczne okno (05.10.2026). Wczesniej w drzewie
@@ -398,11 +398,11 @@ export default function CookiesBanner() {
               style={{
                 background: '#FFFFFF',
                 color: 'var(--w-tusz)',
-                padding: '2rem',
+                padding: 'clamp(1.15rem, 4vw, 2rem)',
                 borderRadius: '24px',
                 maxWidth: '560px',
                 width: '100%',
-                maxHeight: '90vh',
+                maxHeight: 'min(90dvh, 90vh)',
                 overflowY: 'auto',
                 boxShadow: '0 25px 60px rgba(0,0,0,0.3)',
                 position: 'relative',
@@ -487,7 +487,7 @@ export default function CookiesBanner() {
               </div>
 
               {/* Category 3: Marketing */}
-              <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1.75rem', border: '1px solid #E2E8F0' }}>
+              <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem 0.75rem', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
                   <label htmlFor="cookie-consent-marketing" style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--w-tusz)', flex: '1 1 8rem', overflowWrap: 'normal', cursor: 'pointer' }}>{t('marketingTitle')}</label>
                   <input
@@ -505,7 +505,19 @@ export default function CookiesBanner() {
               </div>
 
               {/* Save & Action Controls */}
-              <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
+              <div style={{
+                display: 'flex',
+                gap: '0.75rem',
+                justifyContent: 'flex-end',
+                position: 'sticky',
+                bottom: 'calc(-1 * clamp(1.15rem, 4vw, 2rem))',
+                marginInline: 'calc(-1 * clamp(1.15rem, 4vw, 2rem))',
+                marginBottom: 'calc(-1 * clamp(1.15rem, 4vw, 2rem))',
+                padding: '0.75rem clamp(1.15rem, 4vw, 2rem) clamp(0.85rem, 3vw, 1.25rem)',
+                background: '#FFFFFF',
+                borderTop: '1px solid #E2E8F0',
+                borderRadius: '0 0 24px 24px'
+              }}>
                 <button
                   onClick={() => saveConsent(consentState.analytics, consentState.marketing)}
                   style={{

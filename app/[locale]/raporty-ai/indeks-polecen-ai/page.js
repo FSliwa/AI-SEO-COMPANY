@@ -245,7 +245,12 @@ export default async function IndeksPolecenAiPage({ params }) {
     <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <Breadcrumbs
-        parent={{ label: de ? 'KI-SEO Studien' : en ? 'AI & SEO Research Reports' : 'Raporty i dane własne', href: '/raporty-ai' }}
+        parent={{
+          href: '/raporty-ai',
+          pl: 'Raporty i dane własne',
+          en: 'AI & SEO Research Reports',
+          de: 'KI-SEO Studien',
+        }}
         pl="Indeks poleceń AI"
         en="AI Recommendations Index"
         de="KI-Empfehlungs-Index"
@@ -296,7 +301,7 @@ export default async function IndeksPolecenAiPage({ params }) {
           </div>
         </div>
 
-        <div className="container" style={{ maxWidth: '880px', margin: '0 auto', display: 'grid', gap: '1.5rem', paddingBottom: '2rem' }}>
+        <div className="container" style={{ maxWidth: '880px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1.5rem', paddingBottom: '2rem' }}>
           <div id="pomiary-silnikow" className={styles.karta}>
             <h2 className={styles.h2}>
               {de ? '1. Gemessene Quellenauswahl der KI-Antwortsysteme' : en ? '1. Measured source selection across AI answer engines' : '1. Zmierzony dobór źródeł w silnikach odpowiedzi AI'}

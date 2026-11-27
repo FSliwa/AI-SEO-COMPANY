@@ -244,7 +244,7 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span>{' '}
             {de ? 'Live-Primärdaten · Lizenz CC BY 4.0' : en ? 'Live First-Party Benchmark · CC BY 4.0' : 'Żywe dane własne · Licencja CC BY 4.0'}
           </div>
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.12, fontWeight: 800, letterSpacing: '-0.02em', margin: '0.5rem 0 1rem', color: 'var(--color-text-dark)' }}>
+          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.02em', margin: '0.5rem 0 1rem', color: 'var(--color-text-dark)' }}>
             {de
               ? 'Häufigste technische SEO-Fehler und KI-Bot-Sperren: Live-Benchmark geprüfter Websites'
               : en
@@ -273,7 +273,7 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
             </p>
           </AnswerBox>
 
-          <div className="w-szklo-otoczenie" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.85rem', marginTop: '1.5rem' }}>
+          <div className="w-szklo-otoczenie" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 145px), 1fr))', gap: '0.85rem', marginTop: '1.5rem' }}>
             {[
               { k: de ? 'Geprüfte Domains (N)' : en ? 'Unique domains (N)' : 'Unikalne domeny (N)', v: String(d.domen) },
               { k: de ? 'Median SEO-Wert' : en ? 'Median SEO score' : 'Mediana oceny SEO', v: `${d.medianaOceny}/100` },
@@ -296,7 +296,7 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
           />
         </div>
 
-        <div className="container" style={{ maxWidth: '860px', margin: '0 auto', display: 'grid', gap: '1.5rem' }}>
+        <div className="container" style={{ maxWidth: '860px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1.5rem' }}>
           <div id="top-bledy" className={styles.karta}>
             <h2 className={styles.h2}>
               {de ? 'Die 15 häufigsten technischen SEO- und KI-Mängel' : en ? 'Top 15 most frequent SEO and AI readiness issues' : '15 najczęstszych błędów technicznych, treściowych i wydajnościowych'}

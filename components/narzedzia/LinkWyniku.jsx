@@ -130,8 +130,11 @@ export function PrzykladAdresu({ onWybierz, adresy = ['ai-seo-company.pl'] }) {
       {en ? 'Example: ' : 'Przykład: '}
       {adresy.map((a, i) => (
         <span key={a}>
-          {i > 0 ? ', ' : null}
-          <button type="button" className={st.przyciskTekstowy} onClick={() => onWybierz?.(a)} aria-label={en ? `Fill in ${a}` : `Wpisz ${a}`}>{a}</button>
+          <span style={{ whiteSpace: 'nowrap' }}>
+            <button type="button" className={st.przyciskTekstowy} onClick={() => onWybierz?.(a)} aria-label={en ? `Fill in ${a}` : `Wpisz ${a}`}>{a}</button>
+            {i < adresy.length - 1 ? ',' : null}
+          </span>
+          {i < adresy.length - 1 ? ' ' : null}
         </span>
       ))}
     </p>

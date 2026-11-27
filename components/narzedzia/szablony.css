@@ -49,6 +49,9 @@
 @media (min-width: 1100px) { .sz-hero .answer-box { font-size: 1rem !important; margin-bottom: 1.25rem !important; } }
 .sz-cta { margin: 0.25rem 0 0; }
 .sz-cta .btn { min-height: 52px; }
+@media (max-width: 560px) {
+  .sz-cta .btn { width: 100%; justify-content: center; }
+}
 
 /* Makieta dokumentu: stos kartek z 1. strony PDF */
 .sz-podglad { position: relative; width: min(62vw, 300px); aspect-ratio: 600 / 850; margin-inline: auto; justify-self: center; }

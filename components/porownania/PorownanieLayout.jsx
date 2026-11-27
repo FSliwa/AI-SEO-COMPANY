@@ -101,7 +101,7 @@ export default function PorownanieLayout({ porownanie: p, locale = 'pl' }) {
       <ComparisonSchema porownanie={p} locale={locale} />
 
       <article>
-        <div className="container" style={{ maxWidth: '860px', margin: '0 auto', paddingTop: 'clamp(1.5rem, 4vw, 2.5rem)', paddingBottom: '1.5rem' }}>
+        <div className="container" style={{ maxWidth: '860px', margin: '0 auto', paddingTop: 'clamp(0.75rem, 2.5vw, 1.75rem)', paddingBottom: '1.5rem' }}>
           <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
             <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {p.tag}
           </div>

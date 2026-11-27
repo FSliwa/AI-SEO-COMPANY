@@ -114,7 +114,7 @@ export default function SubpagePortfolio({ title = "Scenariusze modelu", subtitl
         </Reveal>
       </div>
 
-      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', width: '100%', marginInline: 0, overflow: 'hidden' }}>
         <RevealStagger 
           id="subpage-portfolio-carousel"
           style={{ 
@@ -126,9 +126,9 @@ export default function SubpagePortfolio({ title = "Scenariusze modelu", subtitl
             gap: '2rem',
             paddingTop: '0',
             paddingBottom: '3.5rem',
-            paddingLeft: 'calc(50vw - min(42.5vw, 600px))',
-            paddingRight: 'calc(50vw - min(42.5vw, 600px))',
-            scrollPaddingLeft: 'calc(50vw - min(42.5vw, 600px))'
+            paddingLeft: 'max(1.25rem, calc(50% - min(42.5%, 600px)))',
+            paddingRight: 'max(1.25rem, calc(50% - min(42.5%, 600px)))',
+            scrollPaddingLeft: 'max(1.25rem, calc(50% - min(42.5%, 600px)))'
           }}
         >
           <style jsx>{`

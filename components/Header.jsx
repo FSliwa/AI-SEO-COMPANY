@@ -537,7 +537,7 @@ export default function Header() {
               background: naJasnym ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255,255,255,0.1)',
               borderColor: naJasnym ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
               color: naJasnym ? 'var(--color-text-dark)' : '#FFFFFF',
-              transition: 'all 0.7s ease'
+              transition: 'color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease'
             }}>
               <NextLink
                 href={hrefJezyka('pl')}
@@ -548,7 +548,7 @@ export default function Header() {
                 aria-current={lang === 'pl' ? 'true' : undefined}
                 style={{ 
                   color: lang === 'pl' ? (naJasnym ? 'var(--color-text-dark)' : '#FFFFFF') : (naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
-                  transition: 'color 0.7s ease' 
+                  transition: 'color 0.35s ease' 
                 }}
                 onClick={() => onLangClick('pl')}
                 title="Polski"
@@ -565,7 +565,7 @@ export default function Header() {
                 aria-current={lang === 'en' ? 'true' : undefined}
                 style={{ 
                   color: lang === 'en' ? (naJasnym ? 'var(--color-text-dark)' : '#FFFFFF') : (naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
-                  transition: 'color 0.7s ease' 
+                  transition: 'color 0.35s ease' 
                 }}
                 onClick={() => onLangClick('en')}
                 title="English"
@@ -585,7 +585,7 @@ export default function Header() {
                     aria-current={lang === 'de' ? 'true' : undefined}
                     style={{
                       color: lang === 'de' ? (naJasnym ? 'var(--color-text-dark)' : '#FFFFFF') : (naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'),
-                      transition: 'color 0.7s ease'
+                      transition: 'color 0.35s ease'
                     }}
                     onClick={() => onLangClick('de')}
                     title="Deutsch"
@@ -609,7 +609,7 @@ export default function Header() {
                 color: naJasnym ? 'var(--color-text-dark)' : '#FFFFFF',
                 borderColor: naJasnym ? 'var(--color-border)' : 'rgba(255,255,255,0.35)',
                 background: naJasnym ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
-                transition: 'all 0.7s ease'
+                transition: 'color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease'
               }}
             >
               <UserIcon />
@@ -625,7 +625,7 @@ export default function Header() {
             <a href={bezFormularza(sciezka, lang) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
               background: 'var(--w-pomarancz-przycisk)',
               color: 'var(--w-na-pomaranczu)',
-              transition: 'all 0.7s ease'
+              transition: 'color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease'
             }}>
               {t('cta')}
             </a>
@@ -640,7 +640,7 @@ export default function Header() {
               style={{
                 background: naJasnym ? '#000000' : '#FFFFFF',
                 color: naJasnym ? '#FFFFFF' : '#000000',
-                transition: 'all 0.7s ease'
+                transition: 'color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease'
               }}
               onClick={toggleMenu}
               aria-expanded={menuOpen}

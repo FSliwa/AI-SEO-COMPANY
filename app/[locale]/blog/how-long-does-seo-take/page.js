@@ -11,6 +11,7 @@ import { metadataDe } from '@/lib/stronyDe';
 import BlogArtikelDe from '@/components/de/BlogArtikelDe';
 import { BLOG_WIE_LANGE_DE } from '@/lib/de/blogWieLangeDauertSeo';
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import ArticleSchema from '@/components/ArticleSchema';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
@@ -118,7 +119,8 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema
+      <Breadcrumbs parent={{ href: '/blog', pl: 'Blog', en: 'Blog', de: 'Blog' }} pl="How long does SEO take? Real client timelines, 2026" en="How long does SEO take? Real client timelines, 2026" />
+      <ArticleSchema breadcrumb={null}
         slug={SLUG}
         locale="en"
         url={`/en${SLUG}`}
@@ -129,7 +131,7 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
-      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
+      <article style={{ paddingTop: 'clamp(20px, 3vw, 36px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>

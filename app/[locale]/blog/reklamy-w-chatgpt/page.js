@@ -5,6 +5,7 @@ import { BLOG_CHATGPT_WERBUNG_DE } from '@/lib/de/blogChatgptWerbungDe';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import ArticleSchema from '@/components/ArticleSchema';
@@ -276,7 +277,8 @@ export default async function ArticleChatGptAdsPage({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema
+      <Breadcrumbs parent={{ href: '/blog', pl: 'Blog', en: 'Blog', de: 'Blog' }} pl="Reklamy w ChatGPT (ChatGPT Ads): co wiemy i dla kogo są" en="ChatGPT Ads vs Organic GEO: What OpenAI Announced (2026)" />
+      <ArticleSchema breadcrumb={null}
         type="Article"
         slug={SCIEZKA}
         locale={locale}
@@ -287,7 +289,7 @@ export default async function ArticleChatGptAdsPage({ params }) {
         dateModified={dataZmiany}
       />
 
-      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
+      <article style={{ paddingTop: 'clamp(20px, 3vw, 36px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         {en ? (
           <>
             <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>

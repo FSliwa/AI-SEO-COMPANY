@@ -551,9 +551,7 @@
   }
 
   .pasekSkrotowBlog {
-    flex-wrap: wrap !important;
-    overflow-x: visible !important;
-    gap: 6px !important;
+    gap: 6px;
   }
 }
 

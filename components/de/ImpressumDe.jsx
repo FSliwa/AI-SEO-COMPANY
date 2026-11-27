@@ -5,7 +5,7 @@ const zelle = { padding: '0.6rem 1rem 0.6rem 0', verticalAlign: 'top', borderBot
 
 function Tabelle({ zeilen }) {
   return (
-    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '1.05rem' }}>
+    <table className="impressum-tabela" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '1.05rem' }}>
       <tbody>
         {zeilen.map(([k, v, href]) => (
           <tr key={k}>

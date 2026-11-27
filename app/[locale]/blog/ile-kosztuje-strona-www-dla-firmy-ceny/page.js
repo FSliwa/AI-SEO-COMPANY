@@ -14,6 +14,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
@@ -62,13 +63,14 @@ export default async function ArticleWebsitePricingPage({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema
+      <Breadcrumbs parent={{ href: '/blog', pl: 'Blog', en: 'Blog', de: 'Blog' }} pl="Ile kosztuje strona internetowa dla firmy? Ceny 2026" en="How much does a business website cost? Pricing" />
+      <ArticleSchema breadcrumb={null}
         slug="/blog/ile-kosztuje-strona-www-dla-firmy-ceny"
         locale={locale}
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/how-much-does-a-business-website-cost-pricing` : `${BASE}/blog/ile-kosztuje-strona-www-dla-firmy-ceny`]}
       />
       
-      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
+      <article style={{ paddingTop: 'clamp(20px, 3vw, 36px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>

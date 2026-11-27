@@ -26,6 +26,7 @@
 /* --- pasek: jezyk (lewo), X (prawo); X stoi nad przyciskiem ≡ strony --- */
 .menu-pasek {
   flex: none;
+  border-bottom: 1px solid var(--w-noc-linia);
 }
 
 .menu-pasek-wew {

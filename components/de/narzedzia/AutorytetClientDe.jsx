@@ -221,7 +221,7 @@ export default function AutorytetClientDe() {
           </div>
 
           {kafle.length > 0 && (
-            <div className="narz-rozbicie" style={{ marginTop: '1.25rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))' }}>
+            <div className={`narz-rozbicie${kafle.length === 3 ? ' narz-rozbicie--trzy' : ''}`} style={{ marginTop: '1.25rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))' }}>
               {kafle.map((k) => (
                 <div key={k.id} style={{ padding: '0.75rem 1rem' }}>
                   <p className="narz-rozbicie-etykieta">{k.etykieta}</p>

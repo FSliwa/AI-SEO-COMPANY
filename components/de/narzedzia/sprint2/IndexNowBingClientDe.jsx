@@ -555,7 +555,7 @@ export function IndexNowBingClientDe() {
                     {kluczBazowy}
                   </p>
                   <p className="narz-mikro" style={{ margin: '0.3rem 0 0', overflowWrap: 'anywhere' }}>
-                    Datei: <code style={{ fontSize: '0.78rem', overflowWrap: 'anywhere' }}>{nazwaPlikuKlucza}</code>
+                    Datei: <code style={{ fontSize: '0.78rem', display: 'inline-block', maxWidth: '100%', overflowX: 'auto', whiteSpace: 'nowrap', verticalAlign: 'bottom' }}>{nazwaPlikuKlucza}</code>
                   </p>
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', minWidth: 0, maxWidth: '100%' }}>

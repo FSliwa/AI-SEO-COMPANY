@@ -16,6 +16,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
@@ -115,15 +116,16 @@ export default async function ArticleCennikPage({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
+      <Breadcrumbs parent={{ href: '/blog', pl: 'Blog', en: 'Blog', de: 'Blog' }} pl="Ile kosztuje SEO w 2026? Ceny agencji i od czego zależą" en="How much does SEO cost in Poland? Pricing and packages 2026" />
       {/* 5.11.2026: dateModified = LASTMOD danej wersji (tresc PL i link w EN realnie zmienione). */}
-      <ArticleSchema
+      <ArticleSchema breadcrumb={null}
         slug="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026"
         locale={locale}
         datePublished={dataPubl.iso}
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/how-much-does-seo-cost-pricing-packages-2026` : `${BASE}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`]}
       />
       
-      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
+      <article style={{ paddingTop: 'clamp(20px, 3vw, 36px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>

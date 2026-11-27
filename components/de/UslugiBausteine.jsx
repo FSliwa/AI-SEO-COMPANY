@@ -14,7 +14,7 @@ import { faqFuerAppleFaq } from '@/lib/de/uslugiGemeinsam';
 import ReferenzenLiveDe from './ReferenzenLiveDe';
 
 const TEXT = { fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.25rem', hyphens: 'auto', overflowWrap: 'break-word' };
-const KARTE = { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 5vw, 3.25rem)' };
+const KARTE = { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1rem, 4.5vw, 3.25rem)', minWidth: 0, maxWidth: '100%' };
 export const LINK = { textDecoration: 'underline', fontWeight: 600 };
 
 /** Seitenrahmen: Header, Brotkrumen, main, Kontaktformular, Footer. */
@@ -71,7 +71,7 @@ export function Abschnitt({ titel, children, id, breite = 880, tag, szklo = fals
     <section id={id} className={szklo ? 'de-abschnitt w-szklo-otoczenie' : 'de-abschnitt'} style={{ padding: '0 0 48px 0', scrollMarginTop: '110px' }}>
       <div className="container" style={{ maxWidth: `${breite}px`, margin: '0 auto' }}>
         <Reveal>
-          <div className={szklo ? 'w-tafla-szklo' : undefined} style={szklo ? { borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 5vw, 3.25rem)' } : KARTE}>
+          <div className={szklo ? 'w-tafla-szklo' : undefined} style={szklo ? { borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1rem, 4.5vw, 3.25rem)', minWidth: 0, maxWidth: '100%' } : KARTE}>
             {tag && <div style={{ fontSize: '0.78rem', fontFamily: 'var(--w-mono)', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem' }}>{tag}</div>}
             <h2 lang="de" style={{ fontSize: 'clamp(1.5rem, 3.2vw, 2rem)', fontWeight: 500, marginBottom: '1.25rem', color: 'var(--color-text-dark)', lineHeight: 1.2, letterSpacing: '-0.02em', hyphens: 'manual', overflowWrap: 'break-word' }}>{titel}</h2>
             {children}
@@ -242,8 +242,8 @@ export function Referenzen({ titel = 'Referenzen mit Messwerten', untertitel = '
 /** Zeile mit Button zwischen Abschnitten. */
 export function CtaZeile({ text = 'Angebot anfragen - Antwort innerhalb von 24 Stunden' }) {
   return (
-    <div style={{ textAlign: 'center', margin: '0 0 70px' }}>
-      <a href="#kontakt" className="btn btn-primary" data-cta="de_mid">{text}</a>
+    <div className="container" style={{ textAlign: 'center', margin: '0 auto clamp(2rem, 5vw, 3.25rem)' }}>
+      <a href="#kontakt" className="btn btn-primary" style={{ maxWidth: '100%', whiteSpace: 'normal' }} data-cta="de_mid">{text}</a>
     </div>
   );
 }

@@ -906,6 +906,12 @@
   .strona :global(.narz-ocena--duza) { width: 120px; height: 120px; }
   .kafel::after { top: 1rem; }
 }
+@media (max-width: 560px) {
+  .strona :global(.narz-formularz button[type='submit']) {
+    width: 100%;
+    justify-content: center;
+  }
+}
 
 /* ==========================================================================
    RUCH (tylko prefers-reduced-motion: no-preference)

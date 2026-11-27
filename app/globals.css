@@ -2554,6 +2554,19 @@ body.has-cookie-banner .kota-floating-cta {
 .article-content pre {
   overflow-x: auto;
   max-width: 100%;
+  margin: 0 0 1.75rem;
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  background: var(--w-papier-2, #F5EFE6);
+  border: 1px solid var(--w-linia, rgba(10, 19, 55, 0.1));
+  line-height: 1.55;
+}
+
+.article-content pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.88rem;
 }
 
 .article-content table {
@@ -2607,6 +2620,27 @@ body.has-cookie-banner .kota-floating-cta {
   .tabela-wskazowka { display: block; }
   .tabela-wskazowka::after { content: 'Przewiń tabelę w bok'; }
   html[lang='en'] .tabela-wskazowka::after { content: 'Scroll the table sideways'; }
+  html[lang='de'] .tabela-wskazowka::after { content: 'Tabelle seitlich verschieben'; }
+}
+
+@media (max-width: 560px) {
+  .impressum-tabela tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .impressum-tabela th,
+  .impressum-tabela td {
+    width: 100% !important;
+    padding: 0.15rem 0 !important;
+    border-bottom: 0 !important;
+    overflow-wrap: break-word !important;
+  }
+  .impressum-tabela th {
+    font-size: 0.85rem;
+    color: var(--w-tusz-2);
+  }
 }
 
 /* Scroll margin for anchor links */

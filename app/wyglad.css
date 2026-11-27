@@ -2549,6 +2549,12 @@ section#contact.contact {
   }
 }
 
+@media (max-width: 600px) {
+  .contact {
+    padding-bottom: calc(2.5rem + min(34vw, 150px)) !important;
+  }
+}
+
 @media (max-width: 560px) {
   .panel-akcje {
     flex-direction: column;
@@ -2565,6 +2571,21 @@ section#contact.contact {
   .panel-dymki-2d {
     grid-template-columns: minmax(0, 1fr);
     gap: 8px;
+  }
+  .contact-tel-btn {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .narz-formularz button[type='submit'] {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .narz-rozbicie--trzy > :last-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -3837,9 +3858,9 @@ main:has(.article-content) {
   outline-offset: 4px;
 }
 
-/* (81) /o-nas: sekcja wartosci z pelnym odstepem przed kontaktem */
+/* (81) /o-nas: sekcja wartosci ze zbalansowanym odstepem przed kontaktem */
 #about-values {
-  padding-bottom: var(--w-sekcja) !important;
+  padding-bottom: clamp(2.5rem, 6vw, var(--w-sekcja)) !important;
 }
 
 /* (105) /o-nas: poziomice jako dwa pasma SVG w polach paddingu sekcji (gora i

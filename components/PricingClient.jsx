@@ -238,7 +238,9 @@ export default function PricingClient() {
     border: '1px solid var(--w-linia)',
     borderRadius: '24px',
     boxShadow: 'none',
-    padding: 'clamp(1.05rem, 4.5vw, 3rem)',
+    padding: 'clamp(1rem, 4.5vw, 3rem)',
+    minWidth: 0,
+    maxWidth: '100%',
   };
 
   const h2Styl = {

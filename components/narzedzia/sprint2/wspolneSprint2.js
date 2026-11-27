@@ -106,7 +106,7 @@ export const CSS_SPRINT2 = `
 .sp2-qr-podglad { width: 208px; max-width: 100%; box-sizing: border-box; padding: 0.75rem; border-radius: 18px; background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.12); box-shadow: 0 12px 28px -18px rgba(10, 19, 55, 0.25); }
 .sp2-suwaki-siatka { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 0.95rem; padding: 1rem 1.15rem; border-radius: 18px; background: var(--w-papier, #f6f4ef); border: 1px solid var(--w-linia, rgba(30,30,30,0.1)); margin-top: 0.85rem; min-width: 0; max-width: 100%; box-sizing: border-box; }
 .sp2-suwak-gora { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.3rem; }
-.sp2-suwak-liczba { font-weight: 700; font-size: 1.05rem; color: var(--w-tusz); font-variant-numeric: tabular-nums; }
+.sp2-suwak-liczba { font-weight: 700; font-size: 1.05rem; color: var(--w-tusz); font-variant-numeric: tabular-nums; white-space: nowrap; flex-shrink: 0; }
 .sp2-bofu { padding: clamp(1.25rem, 3vw, 1.75rem); border-radius: 22px; background: linear-gradient(135deg, #101935 0%, #1d2b53 100%); color: #ffffff; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.85rem; min-width: 0; max-width: 100%; box-sizing: border-box; }
 .sp2-bofu h2 { margin: 0; font-size: clamp(1.2rem, 2.4vw, 1.5rem); font-weight: 500; letter-spacing: -0.025em; color: #ffffff; line-height: 1.25; }
 .sp2-bofu p { margin: 0; color: rgba(255, 255, 255, 0.86); line-height: 1.6; font-size: 0.96rem; }

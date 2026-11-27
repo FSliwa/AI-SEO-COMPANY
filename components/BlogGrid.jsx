@@ -117,10 +117,10 @@ export default function BlogGrid() {
   const heroData = getPostData(heroPost);
 
   return (
-    <section className="blog-grid" style={{ padding: '4rem 0', backgroundColor: 'transparent' }}>
+    <section className="blog-grid sekcja-po-okruszkach" style={{ padding: '4rem 0', backgroundColor: 'transparent' }}>
       <div className="container w-szklo-otoczenie" style={{ margin: '0 auto' }}>
         <Reveal>
-          <div style={{ textAlign: 'left', padding: '1rem 0 2rem 0' }}>
+          <div style={{ textAlign: 'left', padding: '0.25rem 0 1.25rem 0' }}>
             <h1 style={{ 
               fontSize: 'clamp(2.6rem, 5vw, 4.25rem)', 
               fontWeight: 500, 

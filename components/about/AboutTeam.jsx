@@ -169,8 +169,8 @@ export default function AboutTeam() {
         </Reveal>
       </div>
 
-      {/* Full 100vw Viewport Bleeding Carousel Container */}
-      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
+      {/* Full-Width Carousel Container (100% avoids 15px scrollbar offset of 100vw) */}
+      <div style={{ position: 'relative', width: '100%', marginInline: 0, overflow: 'hidden' }}>
         <RevealStagger 
           id="about-team-carousel"
           onScroll={handleScroll}
@@ -182,9 +182,9 @@ export default function AboutTeam() {
             scrollSnapType: 'x mandatory',
             scrollBehavior: 'smooth',
             paddingBottom: '2.5rem',
-            paddingLeft: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)',
-            paddingRight: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)',
-            scrollPaddingLeft: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)'
+            paddingLeft: 'max(1.25rem, calc((100% - min(1240px, 100% - 3rem)) / 2))',
+            paddingRight: 'max(1.25rem, calc((100% - min(1240px, 100% - 3rem)) / 2))',
+            scrollPaddingLeft: 'max(1.25rem, calc((100% - min(1240px, 100% - 3rem)) / 2))'
           }}
         >
             {teamData.map((item, idx) => (
@@ -231,11 +231,12 @@ export default function AboutTeam() {
                     position: 'absolute',
                     top: '1rem',
                     left: '1rem',
+                    maxWidth: 'calc(100% - 2rem)',
                     background: 'rgba(255, 255, 255, 0.92)',
                     backdropFilter: 'blur(12px)',
                     WebkitBackdropFilter: 'blur(12px)',
                     color: 'var(--w-tusz)',
-                    fontSize: '0.8rem',
+                    fontSize: 'clamp(0.72rem, 2.4vw, 0.8rem)',
                     fontWeight: 700,
                     padding: '0.4rem 0.9rem',
                     borderRadius: '9999px',

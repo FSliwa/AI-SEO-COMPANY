@@ -30,6 +30,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import ArticleSchema from '@/components/ArticleSchema';
 import { Link } from '@/i18n/routing';
 import Footer from '@/components/Footer';
@@ -141,13 +142,14 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema
+      <Breadcrumbs parent={{ href: '/blog', pl: 'Blog', en: 'Blog', de: 'Blog' }} pl="Linkowanie B2B: strategie link buildingu i checklista" en="B2B Link Building for Marketers: Strategies and Checklist" />
+      <ArticleSchema breadcrumb={null}
         slug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista"
         locale={locale}
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/b2b-link-building-strategies-checklist` : `${BASE}/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`]}
       />
       
-      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
+      <article style={{ paddingTop: 'clamp(20px, 3vw, 36px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>

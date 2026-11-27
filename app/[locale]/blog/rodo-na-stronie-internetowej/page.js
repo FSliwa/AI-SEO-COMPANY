@@ -19,6 +19,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
@@ -51,14 +52,15 @@ export default async function ArticleRodoNaStronieInternetowej({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema
+      <Breadcrumbs parent={{ href: '/blog', pl: 'Blog', en: 'Blog', de: 'Blog' }} pl="RODO na stronie internetowej: co musisz mieć i jak to wdrożyć" en="RODO na stronie internetowej: co musisz mieć i jak to wdrożyć" />
+      <ArticleSchema breadcrumb={null}
         slug="/blog/rodo-na-stronie-internetowej"
         locale={locale}
         url="/blog/rodo-na-stronie-internetowej"
         datePublished="2026-08-16"
       />
 
-      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
+      <article style={{ paddingTop: 'clamp(20px, 3vw, 36px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>

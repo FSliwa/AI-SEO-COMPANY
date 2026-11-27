@@ -29,6 +29,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
@@ -67,13 +68,14 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema
+      <Breadcrumbs parent={{ href: '/blog', pl: 'Blog', en: 'Blog', de: 'Blog' }} pl="Analiza konkurencji SEO: przewodnik z przykładem 17 agencji" en="SEO Competitor Analysis: A Step-by-Step Guide" />
+      <ArticleSchema breadcrumb={null}
         slug="/blog/analiza-konkurencji-seo-przewodnik"
         locale={locale}
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/seo-competitor-analysis-step-by-step-guide` : `${BASE}/blog/analiza-konkurencji-seo-przewodnik`]}
       />
 
-      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
+      <article style={{ paddingTop: 'clamp(20px, 3vw, 36px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>

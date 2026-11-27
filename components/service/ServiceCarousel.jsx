@@ -112,7 +112,7 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
       </div>
 
       {/* Full Screen Width Edge-to-Edge Carousel Wrapper (Like Homepage WhyUs) */}
-      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', width: '100%', marginInline: 0, overflow: 'hidden' }}>
         <div 
           ref={containerRef}
           onScroll={handleScroll}
@@ -125,9 +125,9 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
             scrollbarWidth: 'none', 
             msOverflowStyle: 'none', 
             paddingBottom: '2rem',
-            paddingLeft: 'max(1.25rem, calc((100vw - var(--container-width)) / 2 + 1.5rem))',
-            paddingRight: 'max(1.25rem, calc((100vw - var(--container-width)) / 2 + 1.5rem))',
-            scrollPaddingLeft: 'max(1.25rem, calc((100vw - var(--container-width)) / 2 + 1.5rem))'
+            paddingLeft: 'max(1.25rem, calc((100% - var(--container-width)) / 2 + 1.5rem))',
+            paddingRight: 'max(1.25rem, calc((100% - var(--container-width)) / 2 + 1.5rem))',
+            scrollPaddingLeft: 'max(1.25rem, calc((100% - var(--container-width)) / 2 + 1.5rem))'
           }}
         >
           <style jsx>{`
