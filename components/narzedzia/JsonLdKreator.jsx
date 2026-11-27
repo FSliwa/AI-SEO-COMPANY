@@ -25,8 +25,8 @@ const CSS_JSONLD = `
 
 const TEKSTY = {
   pl: {
-    tytul: 'Szybki kreator JSON-LD (5 typów schema.org)',
-    opis: 'Wybierz typ danych strukturalnych i wpisz dane firmy lub podstrony, a gotowy blok <script type="application/ld+json"> zaktualizuje się na żywo.',
+    tytul: 'Szybki kreator JSON-LD (7 typów schema.org)',
+    opis: 'Wybierz jeden z 7 typów danych strukturalnych i wpisz dane firmy lub podstrony, a gotowy blok <script type="application/ld+json"> zaktualizuje się na żywo.',
     typAria: 'Typ danych strukturalnych',
     nazwa: 'Nazwa firmy',
     nazwaPh: 'np. Stal-Tech Sp. z o.o.',
@@ -44,8 +44,12 @@ const TEKSTY = {
     nipPh: 'np. PL5250001122',
     tytulArtykulu: 'Tytuł artykułu (headline)',
     tytulArtykuluPh: 'np. Jak zoptymalizować Core Web Vitals',
-    autor: 'Autor artykułu',
+    autor: 'Imię i nazwisko eksperta / autora',
     autorPh: 'np. Jan Kowalski',
+    stanowisko: 'Stanowisko (jobTitle)',
+    stanowiskoPh: 'np. Główny Specjalista SEO',
+    linkedin: 'Profil eksperta LinkedIn (sameAs)',
+    linkedinPh: 'https://www.linkedin.com/in/...',
     produktNazwa: 'Nazwa produktu lub pakietu',
     produktNazwaPh: 'np. Audyt techniczny SEO',
     cena: 'Cena brutto/netto',
@@ -67,8 +71,8 @@ const TEKSTY = {
     walidujGraf: 'Sprawdź cały graf @id domeny',
   },
   en: {
-    tytul: 'Quick JSON-LD Builder (5 Schema.org Types)',
-    opis: 'Pick a schema type and enter your details below to generate a clean JSON-LD block live, ready to paste into your <head>.',
+    tytul: 'Quick JSON-LD Builder (7 Schema.org Types)',
+    opis: 'Pick any of the 7 schema types and enter your details below to generate a clean JSON-LD block live, ready to paste into your <head>.',
     typAria: 'Schema.org type',
     nazwa: 'Company name',
     nazwaPh: 'e.g. Acme Industrial LLC',
@@ -86,8 +90,12 @@ const TEKSTY = {
     nipPh: 'e.g. 12-3456789',
     tytulArtykulu: 'Article headline',
     tytulArtykuluPh: 'e.g. Core Web Vitals Optimization Guide',
-    autor: 'Author name',
+    autor: 'Author / expert name',
     autorPh: 'e.g. Jane Doe',
+    stanowisko: 'Job title',
+    stanowiskoPh: 'e.g. Head of Technical SEO',
+    linkedin: 'Expert LinkedIn URL (sameAs)',
+    linkedinPh: 'https://www.linkedin.com/in/...',
     produktNazwa: 'Product or package name',
     produktNazwaPh: 'e.g. Technical SEO Audit',
     cena: 'Price',
@@ -109,8 +117,8 @@ const TEKSTY = {
     walidujGraf: 'Validate full @id entity graph',
   },
   de: {
-    tytul: 'Schnell-Generator: Eigenes JSON-LD erstellen (5 Typen)',
-    opis: 'Wählen Sie den Schema-Typ und tragen Sie Ihre Daten ein: Der JSON-LD-Block passt sich sofort fehlerfrei zum Kopieren an.',
+    tytul: 'Schnell-Generator: Eigenes JSON-LD erstellen (7 Typen)',
+    opis: 'Wählen Sie einen der 7 Schema-Typen und tragen Sie Ihre Daten ein: Der JSON-LD-Block passt sich sofort fehlerfrei zum Kopieren an.',
     typAria: 'Schema.org-Typ wählen',
     nazwa: 'Firmenname',
     nazwaPh: 'z. B. Muster GmbH',
@@ -128,8 +136,12 @@ const TEKSTY = {
     nipPh: 'z. B. DE123456789',
     tytulArtykulu: 'Artikel-Überschrift (headline)',
     tytulArtykuluPh: 'z. B. Core Web Vitals optimieren',
-    autor: 'Autorin / Autor',
+    autor: 'Name der Person / Autorin',
     autorPh: 'z. B. Max Mustermann',
+    stanowisko: 'Position / Rolle (jobTitle)',
+    stanowiskoPh: 'z. B. Geschäftsführer',
+    linkedin: 'LinkedIn-Profil (sameAs)',
+    linkedinPh: 'https://www.linkedin.com/in/...',
     produktNazwa: 'Produkt- oder Paketname',
     produktNazwaPh: 'z. B. Technisches SEO-Audit',
     cena: 'Preis (EUR)',
@@ -213,6 +225,8 @@ export default function JsonLdKreator({ locale = 'pl' }) {
   const [nip, setNip] = useState('');
   const [tytulArtykulu, setTytulArtykulu] = useState('');
   const [autor, setAutor] = useState('');
+  const [stanowisko, setStanowisko] = useState('');
+  const [linkedin, setLinkedin] = useState('');
   const [produktNazwa, setProduktNazwa] = useState('');
   const [cena, setCena] = useState('');
   const [okruszekSekcja, setOkruszekSekcja] = useState('');
@@ -230,7 +244,27 @@ export default function JsonLdKreator({ locale = 'pl' }) {
     const kraj = krajZUrl(bazaUrl, T.kraj);
 
     let obiekt;
-    if (typ === 'Article') {
+    if (typ === 'WebSite') {
+      obiekt = {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        '@id': `${bazaUrl}/#website`,
+        name: czystaNazwa,
+        url: `${bazaUrl}/`,
+        inLanguage: jezyk === 'de' ? 'de-DE' : jezyk === 'en' ? 'en-US' : 'pl-PL',
+        publisher: { '@type': 'Organization', '@id': `${bazaUrl}/#organization`, name: czystaNazwa },
+      };
+    } else if (typ === 'Person') {
+      obiekt = {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        '@id': `${bazaUrl}/#person`,
+        name: autor.trim() || T.autorPh.replace(/^(np\.|e\.g\.|z\.\s*B\.)\s*/i, ''),
+        jobTitle: stanowisko.trim() || T.stanowiskoPh.replace(/^(np\.|e\.g\.|z\.\s*B\.)\s*/i, ''),
+        worksFor: { '@type': 'Organization', '@id': `${bazaUrl}/#organization`, name: czystaNazwa },
+        ...(linkedin.trim() ? { sameAs: [linkedin.trim()] } : {}),
+      };
+    } else if (typ === 'Article') {
       obiekt = {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -290,7 +324,7 @@ export default function JsonLdKreator({ locale = 'pl' }) {
     }
 
     return `<script type="application/ld+json">\n${JSON.stringify(obiekt, null, 2)}\n</script>`;
-  }, [typ, nazwa, url, telefon, ulica, kodPocztowy, miasto, nip, tytulArtykulu, autor, produktNazwa, cena, okruszekSekcja, okruszekStrona, jezyk, T]);
+  }, [typ, nazwa, url, telefon, ulica, kodPocztowy, miasto, nip, tytulArtykulu, autor, stanowisko, linkedin, produktNazwa, cena, okruszekSekcja, okruszekStrona, jezyk, T]);
 
   async function obsluzKopiuj() {
     const ok = await skopiujDoSchowka(gotowySkrypt);
@@ -310,7 +344,7 @@ export default function JsonLdKreator({ locale = 'pl' }) {
           <p className="sz-przypis" style={{ margin: '0.25rem 0 0' }}>{T.opis}</p>
         </div>
         <div className="jlk-typy" role="group" aria-label={T.typAria}>
-          {['Organization', 'LocalBusiness', 'Article', 'Product', 'BreadcrumbList'].map((wariant) => (
+          {['Organization', 'WebSite', 'LocalBusiness', 'Person', 'Article', 'Product', 'BreadcrumbList'].map((wariant) => (
             <button
               key={wariant}
               type="button"
@@ -418,6 +452,50 @@ export default function JsonLdKreator({ locale = 'pl' }) {
                 value={nip}
                 onChange={(e) => { setNip(e.target.value); setSkopiowano(false); }}
                 placeholder={T.nipPh}
+                className="jlk-pole"
+              />
+            </div>
+          </>
+        )}
+        {typ === 'Person' && (
+          <>
+            <div>
+              <label htmlFor="jlk-osoba" className="jlk-etykieta">{T.autor}</label>
+              <input
+                id="jlk-osoba"
+                type="text"
+                maxLength={80}
+                {...walid}
+                value={autor}
+                onChange={(e) => { setAutor(e.target.value); setSkopiowano(false); }}
+                placeholder={T.autorPh}
+                className="jlk-pole"
+              />
+            </div>
+            <div>
+              <label htmlFor="jlk-rola" className="jlk-etykieta">{T.stanowisko}</label>
+              <input
+                id="jlk-rola"
+                type="text"
+                maxLength={80}
+                {...walid}
+                value={stanowisko}
+                onChange={(e) => { setStanowisko(e.target.value); setSkopiowano(false); }}
+                placeholder={T.stanowiskoPh}
+                className="jlk-pole"
+              />
+            </div>
+            <div>
+              <label htmlFor="jlk-li" className="jlk-etykieta">{T.linkedin}</label>
+              <input
+                id="jlk-li"
+                type="url"
+                inputMode="url"
+                maxLength={200}
+                {...walid}
+                value={linkedin}
+                onChange={(e) => { setLinkedin(e.target.value); setSkopiowano(false); }}
+                placeholder={T.linkedinPh}
                 className="jlk-pole"
               />
             </div>
