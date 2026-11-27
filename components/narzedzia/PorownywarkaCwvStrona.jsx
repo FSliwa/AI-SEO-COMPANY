@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
@@ -15,10 +16,12 @@ import AppleFaq from '@/components/service/AppleFaq';
 import { Link } from '@/i18n/routing';
 import { BASE, RODZIC_OKRUSZKOW, stronaNarzedzia } from '@/lib/narzedzia';
 import { stronaNarzedziaL } from '@/lib/narzedzia.en';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY, cena } from '@/lib/narzedziaLiczby';
 import Ozdoba from './Ozdoba';
 import NawBok from './NawBok';
 import CoDostajesz from './CoDostajesz';
+import ZrzutWyniku from './ZrzutWyniku';
 import Sekcja from './Sekcja';
 import Poradniki from './Poradniki';
 import PozostaleNarzedzia from './PozostaleNarzedzia';
@@ -111,18 +114,20 @@ export function PorownywarkaCwvStrona({ locale = 'pl' } = {}) {
     : 'Test i porównywarka Core Web Vitals: Twoja strona vs konkurent vs Next.js');
   const okruszek = wpisRejestru?.okruszek || (en ? 'Core Web Vitals Comparison' : 'Porównywarka Core Web Vitals');
   const zrodla = wpisRejestru?.sources?.length ? wpisRejestru.sources : (en ? ZRODLA_EN : ZRODLA_PL);
+  const ilustracja = obrazKarty(SLUG, locale);
 
   return (
     <main className={st.strona} style={s.main}>
       <Header />
       <Breadcrumbs pl={okruszek} en={okruszek} parent={RODZIC_OKRUSZKOW} />
       <WebAppSchema
-        name={en ? 'Core Web Vitals Competitor Comparison & Mobile Conversion Calculator' : 'Porównywarka Core Web Vitals z konkurencją i kalkulator wycieku konwersji'}
+        name={en ? 'Core Web Vitals Competitor Comparison & Website Speed Test' : 'Test szybkości strony i porównywarka Core Web Vitals z konkurencją'}
         description={en
-          ? 'Free live Core Web Vitals comparison tool: benchmarks your mobile LCP, INP, CLS and TTFB (28-day Chrome CrUX data) against any competitor and Next.js SSR, inspects CMS plugin bloat, and calculates lost mobile leads.'
-          : 'Bezpłatna porównywarka Core Web Vitals na żywo: zestawia mobilne LCP, INP, CLS i TTFB (28-dniowe dane CrUX z Chrome) Twojej strony z konkurentem oraz architekturą Next.js, prześwietla wtyczki CMS i liczy utracone zapytania.'}
+          ? 'Free live Core Web Vitals comparison & website speed test: benchmarks your mobile LCP, INP, CLS and TTFB (28-day Chrome CrUX data) against any competitor and Next.js SSR, inspects CMS plugin bloat, and calculates lost mobile leads.'
+          : 'Bezpłatny test szybkości strony i porównywarka Core Web Vitals na żywo: zestawia mobilne LCP, INP, CLS i TTFB (28-dniowe dane CrUX z Chrome) Twojej strony z konkurentem oraz architekturą Next.js, prześwietla wtyczki CMS i liczy utracone zapytania.'}
         url={en ? URL_EN : URL_PL}
         category="BusinessApplication"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={en
           ? [
               '3-column side-by-side Core Web Vitals comparison: Your Site vs Competitor vs Next.js Benchmark',
@@ -163,9 +168,10 @@ export function PorownywarkaCwvStrona({ locale = 'pl' } = {}) {
           <div style={s.poNarzedziu}>
             <AnswerBox {...(en ? { etykieta: 'Short answer' } : {})}>
               {en
-                ? 'Core Web Vitals are Google’s three official user-experience metrics measured at the 75th percentile of real Chrome mobile visits: Largest Contentful Paint (LCP <= 2.50 s), Interaction to Next Paint (INP <= 200 ms) and Cumulative Layout Shift (CLS <= 0.10). Our tool compares your live CrUX field metrics and CMS script weight directly against your competitor and a modern Next.js Server Components stack, translating millisecond delays into estimated monthly mobile revenue leak.'
-                : 'Core Web Vitals to trzy oficjalne wskaźniki wygody użytkownika mierzone przez Google w 75. percentylu prawdziwych wizyt mobilnych w przeglądarce Chrome: ładowanie głównego elementu (LCP <= 2,50 s), czas reakcji na dotyk (INP <= 200 ms) oraz stabilność wizualna (CLS <= 0,10). Nasze narzędzie zestawia Twoje dane terenowe CrUX i narzut skryptów CMS z konkurentem oraz czystą architekturą Next.js, przeliczając sekundy opóźnienia na utracone zapytania ofertowe.'}
+                ? 'Core Web Vitals are Google’s three official user-experience metrics measured at the 75th percentile of real Chrome mobile visits: Largest Contentful Paint (LCP <= 2.50 s), Interaction to Next Paint (INP <= 200 ms) and Cumulative Layout Shift (CLS <= 0.10). Unlike a generic synthetic website speed test, our tool compares your live CrUX field metrics and CMS script weight directly against your competitor and a modern Next.js Server Components stack.'
+                : 'Core Web Vitals to trzy oficjalne wskaźniki wygody użytkownika mierzone przez Google w 75. percentylu prawdziwych wizyt mobilnych w przeglądarce Chrome: ładowanie głównego elementu (LCP <= 2,50 s), czas reakcji na dotyk (INP <= 200 ms) oraz stabilność wizualna (CLS <= 0,10). W odróżnieniu od syntetycznego pomiaru nasz test szybkości strony zestawia dane terenowe CrUX i narzut skryptów CMS z konkurentem oraz czystą architekturą Next.js.'}
             </AnswerBox>
+            <Byline sciezka="/narzedzia/test-core-web-vitals-porownanie" takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
@@ -191,7 +197,9 @@ export function PorownywarkaCwvStrona({ locale = 'pl' } = {}) {
                 przypis={en
                   ? 'All measurements and financial estimates appear immediately with zero registration.'
                   : 'Całe porównanie i kalkulację TCO widzisz od razu bez zakładania konta i bez bramki e-mail.'}
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               {en ? (
                 <>

@@ -211,7 +211,7 @@ const VORLAGEN_DE = [
   {
     id: 'google-unternehmensprofil-checkliste',
     href: '/de/tools/google-unternehmensprofil-checkliste',
-    nazwa: 'Google Unternehmensprofil Checkliste (43 Punkte)',
+    nazwa: 'Google Unternehmensprofil Checkliste (40 Punkte)',
     opis: 'Schritt-für-Schritt-Prüfliste zum Anlegen, Video-Verifizieren und Pflegen Ihres Unternehmensprofils inklusive NAP-Stammdatenblatt und Monatsprotokoll als PDF.',
   },
   {

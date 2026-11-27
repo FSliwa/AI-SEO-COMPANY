@@ -444,16 +444,32 @@ function dekodujTekst(bufor, contentType) {
   }
 }
 
-/** Tytuł, opis, meta robots i nazwa serwisu z początku dokumentu HTML. */
+function wyciagTresciZHtml(czystyHtml) {
+  if (!czystyHtml) return '';
+  const mMain = /<(main|article)\b[^>]*>([\s\S]*?)<\/\1>/i.exec(czystyHtml);
+  const bazowy = mMain ? mMain[2] : czystyHtml;
+  const bezSzumu = bazowy
+    .replace(/<(script|style|noscript|svg|header|nav|footer|aside|dialog|form)\b[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ');
+  const tekst = czysc(bezSzumu);
+  if (tekst.length < 40) return '';
+  if (tekst.length <= 360) return tekst;
+  const uciety = tekst.slice(0, 360);
+  const spacja = uciety.lastIndexOf(' ');
+  return `${(spacja > 220 ? uciety.slice(0, spacja) : uciety).trim()}...`;
+}
+
+/** Tytuł, opis, meta robots i nazwa serwisu z początku dokumentu HTML (z wycięciem komentarzy HTML). */
 export function metaZHtml(html) {
-  const wynik = { tytul: '', opis: '', robots: '', nazwaSerwisu: '', ogTytul: '', ogOpis: '', jezyk: '' };
-  const t = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(html);
+  const bezKomentarzy = String(html || '').replace(/<!--[\s\S]*?-->/g, '');
+  const wynik = { tytul: '', opis: '', robots: '', nazwaSerwisu: '', ogTytul: '', ogOpis: '', jezyk: '', wyciag: '' };
+  const t = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(bezKomentarzy);
   if (t) wynik.tytul = czysc(t[1]);
   // [^<>]{0,2000}: próba dopasowania kończy się na najbliższym < albo >, więc wiele „<html” bez „>”
   // nie daje czasu kwadratowego (weryfikacja 11.11.2026).
-  const j = /<html\b[^<>]{0,2000}?\slang\s*=\s*["']?([a-zA-Z]{2,3}(?:[-_][a-zA-Z0-9]{2,8})?)/i.exec(html);
+  const j = /<html\b[^<>]{0,2000}?\slang\s*=\s*["']?([a-zA-Z]{2,3}(?:[-_][a-zA-Z0-9]{2,8})?)/i.exec(bezKomentarzy);
   if (j) wynik.jezyk = j[1].toLowerCase().replace('_', '-');
-  for (const [tag] of html.matchAll(/<meta\b[^>]*>/gi)) {
+  for (const [tag] of bezKomentarzy.matchAll(/<meta\b[^>]*>/gi)) {
     const atr = {};
     for (const m of tag.matchAll(/([a-zA-Z:-]+)\s*=\s*("([^"]*)"|'([^']*)'|([^\s"'>]+))/g)) {
       atr[m[1].toLowerCase()] = m[3] ?? m[4] ?? m[5] ?? '';
@@ -466,6 +482,7 @@ export function metaZHtml(html) {
     else if (klucz === 'og:title' && !wynik.ogTytul) wynik.ogTytul = tresc;
     else if (klucz === 'og:description' && !wynik.ogOpis) wynik.ogOpis = tresc;
   }
+  wynik.wyciag = wyciagTresciZHtml(bezKomentarzy);
   return wynik;
 }
 
@@ -1275,7 +1292,7 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       if (typ && !/html/i.test(typ)) return { url, powod: de ? `keine HTML-Seite (${typ.split(';')[0]})` : en ? `not an HTML page (${typ.split(';')[0]})` : `nie jest stroną HTML (${typ.split(';')[0]})` };
       const meta = metaZHtml(dekodujTekst(odpGet.cialo, typ));
       if (/noindex|\bnone\b/.test(meta.robots)) return { url, powod: de ? 'noindex (meta robots)' : en ? 'noindex (meta robots)' : 'noindex (meta robots)' };
-      return { url, wpis: { url, tytul: meta.tytul || meta.ogTytul, opis: meta.opis || meta.ogOpis } };
+      return { url, wpis: { url, tytul: meta.tytul || meta.ogTytul, opis: meta.opis || meta.ogOpis, tresc: meta.wyciag || '' } };
     };
     // Faza 1: wszystkie wybrane adresy. Zastępcy dopiero w fazie 2, żeby łańcuch zastępców jednego
     // adresu nie zajmował miejsca w puli, kiedy inne wybrane adresy czekają (weryfikacja 11.11.2026).
@@ -1383,6 +1400,7 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       obecnyPlik,
       boty: tabelaBotow,
       llmsTxt,
+      pelneTresci: Object.fromEntries(wpisy.filter((x) => x.tresc).map((x) => [x.url, x.tresc])),
       wPliku: wpisy.length,
       pominiete: pominiete.slice(0, LIMITY.maxPominietychNaLiscie),
       pominietychRazem: pominiete.length,

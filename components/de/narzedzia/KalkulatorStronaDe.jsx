@@ -30,8 +30,9 @@ const nDe = (n) => liczba(n, 'de', 0);
 const dziesDe = (n) => new Intl.NumberFormat('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(Number(n));
 const zZnakiem = (n) => (n > 0 ? `+${e(n)}` : n < 0 ? `−${e(-n)}` : e(0));
 
-const AI_MIN = proc(ZALOZENIA.ai.ctr.ostrozny);
+const AI_MIN = ctrDe(ZALOZENIA.ai.ctr.ostrozny);
 const AI_MAX = proc(ZALOZENIA.ai.ctr.optymistyczny);
+const AI_KONW_DE = String(ZALOZENIA.ai.mnoznikKonwersji).replace('.', ',');
 
 const HW = BEISPIELE_DE.handwerk;
 const handwerk = policzStraty(HW);
@@ -125,7 +126,7 @@ function faqDe() {
     {
       id: 'daten-ki-sichtbarkeit',
       question: 'Woher stammen die Annahmen zu AI Overviews, ChatGPT und Perplexity?',
-      answer: `Den Effekt von Google AI Overviews berechnen wir nach der Studie des Pew Research Center (März 2025): Mit KI-Zusammenfassung klickten Nutzer in 8 % der Besuche auf ein organisches Ergebnis, ohne Zusammenfassung in 15 %, und eine Übersicht erschien bei 18 % der Suchen. Für direkte Klicks aus KI-Antworten setzt das Modell ${AI_MIN} % (Pew: Klick im KI-Text) bis ${AI_MAX} % (Similarweb via iPullRank: Google AI Mode) an. Da die Studien von Pew, First Page Sage, SOCi und Conductor aus den USA stammen, können die genauen Quoten im DACH-Raum abweichen.`,
+      answer: `Den Effekt von Google AI Overviews berechnen wir nach der Studie des Pew Research Center (März 2025): Mit KI-Zusammenfassung klickten Nutzer in 8 % der Besuche auf ein organisches Ergebnis, ohne Zusammenfassung in 15 %, und eine Übersicht erschien bei 18 % der Suchen (diesen Abzug von 8,4 % wenden wir nur auf die optimistische Variante an, da der vorsichtige Schnitt von 3,9 % KI-Antworten bereits enthält). Direkte Klicks in KI-Antworten liegen bei 1 % (Pew) bzw. unter rund 3 % im Google AI Mode (Similarweb). Da KI-Empfehlungen zusätzlich direkte Markensuchen auslösen, modelliert der Rechner im KI-Kanal ${AI_MIN} % bis ${AI_MAX} % Übergangsquote samt ${AI_KONW_DE}x höherer Conversion-Rate (maximal 80 %).`,
     },
     {
       id: 'wann-amortisiert-sich-seo',
@@ -215,19 +216,19 @@ export default function KalkulatorStronaDe() {
             <strong>Potenzial in den Google Top 3:</strong> Vom monatlichen Suchvolumen ziehen wir zunächst den Anteil ab, der direkt an KI-Assistenten geht. Den verbleibenden Google-Anteil multiplizieren wir mit der durchschnittlichen Klickrate der Plätze 1 bis 3 laut First Page Sage (Bericht vom 22.09.2026, US-Daten): <strong>{ctrDe(ZALOZENIA.ctrTop3.ostrozny)} %</strong> in der vorsichtigen Variante (Durchschnitt über alle Suchanfragen inklusive KI-Antworten) und <strong>{ctrDe(ZALOZENIA.ctrTop3.optymistyczny)} %</strong> in der optimistischen Variante (Suchanfragen ohne KI-Antwort). Zum Vergleich: In der bekannten deutschen SISTRIX-Studie vor Einführung der AI Overviews lagen die Plätze 1 bis 3 mobil noch bei 28,5 %, 15,7 % und 11,0 % (Schnitt 18,4 %), und GrowthSRC maß zwischen 2024 und 2025 über 200.000 Keywords einen Rückgang auf Platz 1 von 28 % auf 19 %.
           </li>
           <li>
-            <strong>Dämpfung durch Google AI Overviews:</strong> Laut Pew Research Center (März 2025) erschien bei {proc(ZALOZENIA.aio.udzialWyszukiwan)} % der Google-Suchen eine KI-Zusammenfassung; die Klickrate auf organische Ergebnisse sank dort von {proc(ZALOZENIA.aio.ctrBez)} % auf {proc(ZALOZENIA.aio.ctrZ)} %. Wir senken die effektive CTR im selben Verhältnis ab. Da die vorsichtige First-Page-Sage-Zahl KI-Antworten bereits einpreist, ist unsere Untergrenze bewusst konservativ.
+            <strong>Dämpfung durch Google AI Overviews:</strong> Laut Pew Research Center (März 2025) erschien bei {proc(ZALOZENIA.aio.udzialWyszukiwan)} % der Google-Suchen eine KI-Zusammenfassung; die Klickrate auf organische Ergebnisse sank dort von {proc(ZALOZENIA.aio.ctrBez)} % auf {proc(ZALOZENIA.aio.ctrZ)} %. Wir senken daher die optimistische CTR (12,9 % ohne KI-Antwort) anteilig um 8,4 % ab. Da der vorsichtige First-Page-Sage-Schnitt ({ctrDe(ZALOZENIA.ctrTop3.ostrozny)} %) KI-Antworten bereits einpreist, ziehen wir dort nichts doppelt ab.
           </li>
           <li>
             <strong>Netto-Verlust bei Google:</strong> Vom berechneten Top-3-Potenzial ziehen wir Ihre heutigen organischen Google-Besuche ab (mindestens null). Wer bereits gut rankt, sieht entsprechend einen kleineren Fehlbetrag.
           </li>
           <li>
-            <strong>Verlust in KI-Antworten (ChatGPT, Gemini, Perplexity):</strong> KI-Antworten erzeugen weit weniger Klicks als klassische Suchergebnisse. Wir rechnen mit <strong>{AI_MIN} %</strong> Klickrate in der vorsichtigen Variante (Pew Research Center: Klick auf einen Link innerhalb der KI-Zusammenfassung) und <strong>{AI_MAX} %</strong> in der optimistischen Variante (Similarweb via iPullRank: weniger als rund 3 % der Suchen im Google AI Mode enden mit einem externen Klick). Dieser Block zählt nur, wenn KI-Modelle Ihr Unternehmen heute noch nicht empfehlen.
+            <strong>Verlust in KI-Antworten (ChatGPT, Gemini, Perplexity):</strong> Direkte Link-Klicks in KI-Antworten sind selten (1 % in AI Overviews laut Pew Research Center, unter rund 3 % im Google AI Mode laut Similarweb), lösen aber anschließende Markensuchen nach empfohlenen Anbietern aus. Unser Modell kombiniert direkte Quellenklicks und Zero-Click-Markensuchen zu <strong>{AI_MIN} %</strong> (vorsichtig) bis <strong>{AI_MAX} %</strong> (optimistisch). Dieser Block zählt nur, wenn KI-Modelle Ihr Unternehmen heute noch nicht empfehlen.
           </li>
           <li>
             <strong>Antwort „Weiß nicht“ bei KI-Empfehlungen:</strong> Wählen Sie „Weiß nicht“, setzt der Rechner {proc(ZALOZENIA.ai.nieWiem.ostrozny)} % des KI-Verlusts in der vorsichtigen und 100 % in der optimistischen Variante an. Hintergrund: Laut SOCi Local Visibility Index (2026) empfiehlt ChatGPT im Schnitt nur 1,2 % der Unternehmensstandorte, während Google 35,9 % im Local Pack anzeigt.
           </li>
           <li>
-            <strong>Vom Klick zum entgangenen Gewinn in Euro:</strong> Entgangene Besuche mal Ihre Conversion-Rate ergeben die verlorenen Neukunden (im Shop-Modus zusätzlich multipliziert mit dem Faktor wiederkehrender Käufer), multipliziert mit Auftragswert und Marge.
+            <strong>Vom Klick zum entgangenen Gewinn in Euro:</strong> Entgangene Google-Besuche multiplizieren wir mit Ihrer Conversion-Rate; für vorqualifizierte Besuche nach KI-Empfehlung setzt das Modell eine {AI_KONW_DE}x höhere Conversion-Rate an (gedeckelt auf 80 %), im Shop-Modus zusätzlich multipliziert mit dem Faktor wiederkehrender Käufer sowie mit Auftragswert und Marge.
           </li>
         </ol>
         <p style={s.akapit}>
@@ -254,16 +255,16 @@ export default function KalkulatorStronaDe() {
             {
               id: 'aio-abzug',
               parametr: 'Korrektur für Google AI Overviews',
-              ostrozny: `−8,4 % auf CTR (${proc(ZALOZENIA.aio.udzialWyszukiwan)} % Suchen mit AIO)`,
+              ostrozny: 'Kein doppelter Abzug (bereits in 3,9 % enthalten)',
               optymistyczny: `−8,4 % auf CTR (${proc(ZALOZENIA.aio.udzialWyszukiwan)} % Suchen mit AIO)`,
               zrodlo: `Pew Research Center (03/2025): Klickrate sinkt bei KI-Übersicht von ${proc(ZALOZENIA.aio.ctrBez)} % auf ${proc(ZALOZENIA.aio.ctrZ)} %`,
             },
             {
               id: 'ctr-ai',
-              parametr: 'Klickrate aus KI-Antworten auf die Website',
-              ostrozny: `${AI_MIN} %`,
-              optymistyczny: `${AI_MAX} %`,
-              zrodlo: 'Pew Research Center (1 % Klick in AIO) und Similarweb / iPullRank (< 3 % Klicks im Google AI Mode, 2025)',
+              parametr: 'Übergangsquote & Conversion im KI-Kanal',
+              ostrozny: `${AI_MIN} % Besuche (${AI_KONW_DE}x Conversion)`,
+              optymistyczny: `${AI_MAX} % Besuche (${AI_KONW_DE}x Conversion)`,
+              zrodlo: 'Direktklicks (1 % Pew AIO, < 3 % Similarweb AI Mode) plus Zero-Click-Markensuchen nach KI-Empfehlung',
             },
             {
               id: 'ai-weiss-nicht',

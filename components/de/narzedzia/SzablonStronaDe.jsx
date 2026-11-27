@@ -11,6 +11,7 @@ import AnswerBox from '@/components/AnswerBox';
 import CompareTable from '@/components/CompareTable';
 import ArticleSchema from '@/components/ArticleSchema';
 import AppleFaq from '@/components/service/AppleFaq';
+import WebAppSchema from '@/components/WebAppSchema';
 import SzHero from '@/components/narzedzia/SzHero';
 import SzNawigacja from '@/components/narzedzia/SzNawigacja';
 import SzablonInterakcje from '@/components/narzedzia/SzablonInterakcje';
@@ -80,6 +81,7 @@ export default function SzablonStronaDe({ dane }) {
         description={d.lead}
         datePublished={dataPubl}
         dateModified={data}
+        imageUrl={`/images/narzedzia/szablony/${dane.slug}-de.webp`}
         extra={{
           hasPart: {
             '@type': 'DigitalDocument',
@@ -89,6 +91,15 @@ export default function SzablonStronaDe({ dane }) {
           },
         }}
       />
+      {pozycjaInteraktywna.length > 0 && (
+        <WebAppSchema
+          url={url || `${BASE}${sciezka}`}
+          name={pozycjaInteraktywna[0].label}
+          description={d.lead}
+          language="de"
+          screenshot={{ url: `/images/narzedzia/szablony/${dane.slug}-de.webp` }}
+        />
+      )}
 
       <SzHero tag={d.tag} h1={wpis?.h1 ?? d.h1} slug={dane.slug} locale="de">
         <p className="byline" style={{ margin: '0 0 1.5rem', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' }}>

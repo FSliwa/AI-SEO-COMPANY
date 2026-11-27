@@ -6,15 +6,18 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import { Link } from '@/i18n/routing';
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
 import { STRONY_NARZEDZI_DE } from '@/lib/narzedzia.de';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY } from '@/lib/narzedziaLiczby';
 import { eur } from '@/lib/formatDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
@@ -69,9 +72,12 @@ export function IndexNowBingStronaDe() {
   const h1 = wpis?.h1 || 'IndexNow Generator, Sitemap-lastmod & Bing / ChatGPT Prüfer';
   const okruszek = nazwy?.okruszek || 'IndexNow & Bing Prüfer';
   const url = urlDe(KLUCZ) || ZAPAS_URL;
-  const zrodla = nazwy?.zrodla
+  const zrodla = nazwy?.sources?.length
+    ? nazwy.sources
+    : nazwy?.zrodla
     ? ZRODLA_DE.map((z, i) => ({ ...z, nazwa: nazwy.zrodla[i] ?? z.nazwa }))
     : ZRODLA_DE;
+  const ilustracja = obrazKarty(SLUG, 'de');
 
   const protokolVergleich = jesli('/porownania/llms-txt-vs-robots-txt-vs-sitemap-xml');
   const kiCrawler = jesli('/narzedzia/tester-robotow-ai-robots-txt');
@@ -93,6 +99,7 @@ export function IndexNowBingStronaDe() {
         url={url}
         category="DeveloperApplication"
         language="de"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={[
           'Live-Erreichbarkeitsprüfung für Bingbot und OAI-SearchBot (ChatGPT Search)',
           'Entropie-Analyse der <lastmod>-Zeitstempel in der sitemap.xml gegen Build-Spam',
@@ -119,15 +126,16 @@ export function IndexNowBingStronaDe() {
 
           <div style={s.poNarzedziu}>
             <AnswerBox etykieta="Kurzantwort">
-              Damit neue Unterseiten rasch in ChatGPT Search und Microsoft Copilot auftauchen, müssen sowohl Bingbot als auch OAI-SearchBot Statuscode 200 erhalten, Ihre sitemap.xml muss echte seitenbezogene &lt;lastmod&gt;-Daten führen und Änderungen sollten per IndexNow aktiv gemeldet werden. Unser Tool prüft diese Punkte und erstellt Ihre Schlüsseldatei, den curl-Aufruf und die passende GitHub Action kostenlos.
+              Wenn Sie Ihre Bing Indexierung beschleunigen und rasch in ChatGPT Search sowie Microsoft Copilot auftauchen möchten, müssen Bingbot und OAI-SearchBot Statuscode 200 erhalten, Ihre sitemap.xml muss echte &lt;lastmod&gt;-Daten führen und Änderungen sollten per Push gemeldet werden. Hier können Sie sofort Ihren IndexNow Schlüssel erstellen, als .txt-Datei herunterladen und samt curl-Befehl oder GitHub Action einbinden.
             </AnswerBox>
+            <Byline sciezka={KLUCZ} takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
             <div className={st.trescGlowna}>
               <CoDostajesz
                 id="was-sie-erhalten"
-                tytul="Das bietet der IndexNow- & Bing-Prüfer kostenlos"
+                tytul="IndexNow Schlüssel erstellen & Bing Indexierung beschleunigen"
                 tytulOdRazu="Sofort im Browser, ohne E-Mail"
                 odRazu={[
                   'Erreichbarkeitskarten für Bingbot und OAI-SearchBot (robots.txt + echter HTTP-Status)',
@@ -136,7 +144,9 @@ export function IndexNowBingStronaDe() {
                   'Einsatzbereiter curl-Befehl und .github/workflows/indexnow.yml für CI/CD',
                 ]}
                 przypis="Keine Registrierung notwendig: Schlüsseldatei herunterladen, ablegen und in 2 Minuten live schalten."
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               <Sekcja id="indexnow-sitemap-und-llms-txt-im-zusammenspiel" tytul="IndexNow vs. sitemap.xml vs. llms.txt: Welches Protokoll wofür zuständig ist">
                 <CompareTable

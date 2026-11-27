@@ -26,6 +26,7 @@ import ChecklistForm from '@/components/ChecklistForm';
 import ArticleSchema from '@/components/ArticleSchema';
 import Zrodla from '@/components/Zrodla';
 import AppleFaq from '@/components/service/AppleFaq';
+import WebAppSchema from '@/components/WebAppSchema';
 import SzHero from './SzHero';
 import SzNawigacja from './SzNawigacja';
 import SzablonInterakcje from './SzablonInterakcje';
@@ -96,7 +97,7 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
         description={d.lead}
         datePublished={dataPubl}
         dateModified={dataZmiany}
-        imageUrl={dane.obraz || undefined}
+        imageUrl={dane.obraz || `/images/narzedzia/szablony/${dane.slug}-${en ? 'en' : 'pl'}.webp`}
         extra={{
           hasPart: {
             '@type': 'DigitalDocument',
@@ -106,6 +107,15 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
           },
         }}
       />
+      {pozycjaInteraktywna.length > 0 && (
+        <WebAppSchema
+          url={adresPelny}
+          name={pozycjaInteraktywna[0].label}
+          description={d.lead}
+          language={en ? 'en' : 'pl'}
+          screenshot={{ url: `/images/narzedzia/szablony/${dane.slug}-${en ? 'en' : 'pl'}.webp` }}
+        />
+      )}
 
       <SzHero tag={d.tag} h1={d.h1} slug={dane.slug} locale={locale}>
         <Byline sciezka={sciezkaPl} takzeEn data={en ? dataZmiany : undefined} />

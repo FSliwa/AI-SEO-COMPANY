@@ -7,6 +7,7 @@ import { maWersjeDe, wpisDe } from '@/lib/stronyDe';
 import { CENY, MAKIETA } from '@/lib/narzedziaLiczby';
 import { eur } from '@/lib/formatDe';
 import { STRONY_NARZEDZI_DE } from '@/lib/narzedzia.de';
+import Byline from '@/components/Byline';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import stPrzyklady from '@/components/narzedzia/makieta-przyklady.module.css';
@@ -211,7 +212,7 @@ export default function MakietaStronaDe() {
       tag="Kostenloses Tool"
       h1={h1}
       okruszek={okruszek}
-      zrodla={ZRODLA_DE}
+      zrodla={nazwy?.sources?.length ? nazwy.sources : ZRODLA_DE}
       schema={{
         name: 'Website Relaunch Mockup Generator mit KI',
         description: 'Kostenloser Relaunch-Mockup-Generator: entwirft aus der Adresse Ihrer bestehenden Website einen neuen Startseiten-Vorschlag für Computer und Smartphone auf Basis Ihrer echten Inhalte.',
@@ -233,9 +234,10 @@ export default function MakietaStronaDe() {
       faq={FAQ_DE}
       tytulFaq="Häufige Fragen zum Website Relaunch Mockup"
     >
+      <Byline sciezka={KLUCZ} takzeEn style={{ margin: '0 0 1.25rem' }} />
       <CoDostajesz
         id="was-sie-erhalten"
-        tytul="Das erhalten Sie im kostenlosen Relaunch-Tool"
+        tytul="Website Mockup erstellen: Das erhalten Sie im kostenlosen Relaunch-Tool"
         tytulOdRazu="Sofort, ohne Anmeldung"
         tytulPoEmailu="Nach Angabe Ihrer E-Mail-Adresse"
         odRazu={[

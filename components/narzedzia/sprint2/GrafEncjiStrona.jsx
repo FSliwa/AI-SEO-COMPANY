@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
@@ -14,10 +15,12 @@ import AppleFaq from '@/components/service/AppleFaq';
 import { Link } from '@/i18n/routing';
 import { BASE, RODZIC_OKRUSZKOW, stronaNarzedzia } from '@/lib/narzedzia';
 import { stronaNarzedziaL } from '@/lib/narzedzia.en';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { cena } from '@/lib/narzedziaLiczby';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import NawBok from '@/components/narzedzia/NawBok';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import Sekcja from '@/components/narzedzia/Sekcja';
 import Poradniki from '@/components/narzedzia/Poradniki';
 import PozostaleNarzedzia from '@/components/narzedzia/PozostaleNarzedzia';
@@ -108,18 +111,20 @@ export function GrafEncjiStrona({ locale = 'pl' } = {}) {
     : 'Walidator i kreator grafu encji marki JSON-LD (@graph + sameAs)');
   const okruszek = wpisRejestru?.okruszek || (en ? 'Entity Graph JSON-LD Validator' : 'Walidator grafu encji JSON-LD');
   const zrodla = wpisRejestru?.sources?.length ? wpisRejestru.sources : (en ? ZRODLA_EN : ZRODLA_PL);
+  const ilustracja = obrazKarty(SLUG, locale);
 
   return (
     <main className={st.strona} style={s.main}>
       <Header />
       <Breadcrumbs pl={okruszek} en={okruszek} parent={RODZIC_OKRUSZKOW} />
       <WebAppSchema
-        name={en ? 'JSON-LD Brand Entity Graph Validator & @graph Builder' : 'Walidator i kreator grafu encji marki JSON-LD (@graph + sameAs)'}
+        name={en ? 'Schema Markup Validator, JSON-LD Validator & Entity @graph Builder' : 'Walidator schema, test danych strukturalnych i kreator grafu encji JSON-LD'}
         description={en
-          ? 'Free Entity SEO & Knowledge Graph validator: crawls your key pages, renders an interactive SVG diagram of your JSON-LD @graph nodes, checks sameAs profiles and registry IDs (VAT, Tax ID, LEI), and generates a connected schema.org @graph.'
-          : 'Darmowy walidator Entity SEO i Knowledge Graph: skanuje kluczowe podstrony, rysuje interaktywny graf SVG węzłów JSON-LD @graph, sprawdza profile sameAs oraz numery NIP/KRS/VAT-UE i generuje gotowy szablon schema.org.'}
+          ? 'Free schema markup validator and JSON-LD validator (URL or raw code): crawls your key pages or pasted JSON-LD, renders an interactive SVG diagram of your @graph nodes, checks sameAs and VAT/Tax IDs, and builds a connected schema.org @graph.'
+          : 'Darmowy walidator schema i test danych strukturalnych JSON-LD (z adresu URL lub wklejonego kodu): rysuje interaktywny graf SVG węzłów @graph, sprawdza profile sameAs oraz NIP/KRS/VAT-UE i generuje szablon schema.org.'}
         url={en ? URL_EN : URL_PL}
         category="DeveloperApplication"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={en
           ? [
               'Interactive SVG visualization of Organization, WebSite, Person, LocalBusiness & Service nodes',
@@ -158,9 +163,10 @@ export function GrafEncjiStrona({ locale = 'pl' } = {}) {
           <div style={s.poNarzedziu}>
             <AnswerBox {...(en ? { etykieta: 'Short answer' } : {})}>
               {en
-                ? 'Modern Entity SEO connects isolated schema snippets into a single JSON-LD @graph anchored by permanent @id URIs (such as #organization, #website and #founder), official company registry IDs (vatID, taxID) and authoritative sameAs profiles (Clutch, LinkedIn, Google Maps, GitHub). This removes ambiguity for both Google’s Knowledge Graph and generative AI engines.'
-                : 'Nowoczesne Entity SEO zastępuje rozproszone wycinki Schema jednym połączonym grafem JSON-LD (@graph) spiętym stałymi identyfikatorami @id (#organization, #website, #person), numerami rejestrowymi spółki (NIP, KRS, VAT-UE) oraz zewnętrznymi profilami zaufania sameAs (Wizytówka Google, LinkedIn, Clutch, GitHub). Dzięki temu Google i modele AI bezbłędnie rozpoznają podmiot stojący za stroną.'}
+                ? 'Modern Entity SEO connects isolated schema snippets into a single JSON-LD @graph anchored by permanent @id URIs (#organization, #website, #founder), official company registry IDs (vatID, taxID) and authoritative sameAs profiles (Clutch, LinkedIn, Google Maps, GitHub). Our free schema markup validator and JSON-LD validator inspects either a live URL or pasted code and removes ambiguity for Google and AI engines.'
+                : 'Nowoczesne Entity SEO zastępuje rozproszone wycinki jednym połączonym grafem JSON-LD (@graph) spiętym stałymi identyfikatorami @id (#organization, #website, #person), numerami rejestrowymi spółki (NIP, KRS, VAT-UE) oraz profilami sameAs. Nasz darmowy walidator schema i test danych strukturalnych weryfikuje zarówno żywy adres URL, jak i surowy wklejony kod JSON-LD.'}
             </AnswerBox>
+            <Byline sciezka="/narzedzia/walidator-grafu-encji-json-ld" takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
@@ -170,21 +176,23 @@ export function GrafEncjiStrona({ locale = 'pl' } = {}) {
                 tytulOdRazu={en ? 'Right away in the browser, no email needed' : 'Od razu na ekranie, bez podawania e-maila'}
                 odRazu={en
                   ? [
-                      '0-100 Entity Graph Coherence score across your homepage, About and Contact pages',
+                      '0-100 Entity Graph Coherence score for any live URL (homepage, About, Contact) or pasted JSON-LD snippet',
                       'Interactive SVG node-and-edge diagram showing @id links between Organization, Person, WebSite and Service',
                       'Registry & sameAs matrix checking VAT-ID, Tax ID, Company No. and external profiles',
-                      'Complete copy-paste @graph JSON-LD template tailored to your domain',
+                      'Complete copy-paste @graph JSON-LD template tailored to your domain and industry',
                     ]
                   : [
-                      'Ocena spójności grafu encji 0-100 na podstawie strony głównej, O nas i Kontaktu',
+                      'Ocena spójności grafu encji 0-100 dla żywej domeny (strona główna, O nas, Kontakt) lub wklejonego kodu JSON-LD',
                       'Interaktywny diagram SVG pokazujący połączenia @id między Organization, Person, WebSite i Service',
-                      ' Zestawienie identyfikatorów rejestrowych (NIP, KRS, VAT-UE) oraz wykrytych linków sameAs',
-                      'Gotowy do wklejenia, połączony szablon @graph JSON-LD wygenerowany dla Twojej domeny',
+                      'Zestawienie identyfikatorów rejestrowych (NIP, KRS, VAT-UE) oraz wykrytych linków sameAs',
+                      'Gotowy do wklejenia, połączony szablon @graph JSON-LD wygenerowany dla Twojej domeny i branży',
                     ]}
                 przypis={en
                   ? 'Pair with our static JSON-LD reference library for Article, Product and BreadcrumbList schemas.'
                   : 'Wszystkie wyniki i wygenerowany kod JSON-LD są dostępne natychmiast, bez bramki e-mail.'}
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               {en ? (
                 <>

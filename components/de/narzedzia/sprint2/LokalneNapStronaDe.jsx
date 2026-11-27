@@ -6,15 +6,18 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import { Link } from '@/i18n/routing';
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
 import { STRONY_NARZEDZI_DE } from '@/lib/narzedzia.de';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY } from '@/lib/narzedziaLiczby';
 import { eur } from '@/lib/formatDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
@@ -69,9 +72,12 @@ export function LokalneNapStronaDe() {
   const h1 = wpis?.h1 || 'Lokales SEO: NAP-Prüfer, Bewertungsrechner & Google-QR-Generator';
   const okruszek = nazwy?.okruszek || 'Lokales SEO NAP & QR';
   const url = urlDe(KLUCZ) || ZAPAS_URL;
-  const zrodla = nazwy?.zrodla
+  const zrodla = nazwy?.sources?.length
+    ? nazwy.sources
+    : nazwy?.zrodla
     ? ZRODLA_DE.map((z, i) => ({ ...z, nazwa: nazwy.zrodla[i] ?? z.nazwa }))
     : ZRODLA_DE;
+  const ilustracja = obrazKarty(SLUG, 'de');
 
   const gbpService = jesli('/pozycjonowanie-wizytowki-google');
   const localSeo = jesli('/seo-lokalne-warszawa');
@@ -93,6 +99,7 @@ export function LokalneNapStronaDe() {
         url={url}
         category="BusinessApplication"
         language="de"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={[
           'Abgleich von Firmenname, Telefon, Anschrift, USt-IdNr., Öffnungszeiten und Geo zwischen HTML und JSON-LD',
           'Interaktiver 5-Sterne-Bewertungsrechner mit Wettbewerbsvergleich in Echtzeit',
@@ -118,23 +125,26 @@ export function LokalneNapStronaDe() {
 
           <div style={s.poNarzedziu}>
             <AnswerBox etykieta="Kurzantwort">
-              Top-Platzierungen im Google Maps Local Pack und in lokalen KI-Empfehlungen beruhen auf drei Säulen: präzisen Haupt- und Nebenkategorien im Google Unternehmensprofil, 100 % identischen NAP-Daten zwischen Profil, Website-Text und LocalBusiness-JSON-LD sowie einem stetigen Zufluss echter Kundenbewertungen.
+              Top-Platzierungen im Google Maps Local Pack und in lokalen KI-Empfehlungen beruhen auf drei Säulen: präzisen Haupt- und Nebenkategorien im Google Unternehmensprofil, 100 % identischen NAP-Daten zwischen Profil, Website-Text und LocalBusiness-JSON-LD sowie echten Kundenstimmen. Hier prüfen Sie Ihre NAP-Daten live und erstellen sofort einen dauerhaft gültigen QR-Code für Google Bewertungen als Druck-SVG oder PNG.
             </AnswerBox>
+            <Byline sciezka={KLUCZ} takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
             <div className={st.trescGlowna}>
               <CoDostajesz
                 id="was-sie-erhalten"
-                tytul="Das bietet das Local-SEO- & QR-Tool kostenlos"
+                tytul="NAP-Check & QR-Code für Google Bewertungen: Das erhalten Sie kostenlos"
                 tytulOdRazu="Sofort im Browser, ohne E-Mail"
                 odRazu={[
                   '6-Punkte-Vergleich (Name, Telefon, Adresse, USt-IdNr., Öffnungszeiten, Geo) zwischen HTML und JSON-LD',
                   'Echtzeit-Rechner für fehlende 5★-Rezensionen bis zum Wunsch-Schnitt und zum lokalen Marktführer',
-                  'Unbegrenzt gültiger QR-Code nach ISO/IEC 18004 als druckfertiges Vektor-SVG und 1024px-PNG',
+                  'Unbegrenzt gültiger QR-Code für Google Bewertungen nach ISO/IEC 18004 als Vektor-SVG und 1024px-PNG',
                 ]}
                 przypis="Ohne Abo-Falle und ohne Weiterleitungsserver: Einmal gedruckte Aufsteller funktionieren dauerhaft."
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               <Sekcja id="drei-faktoren-fuer-google-maps-top-3" tytul="Was über Top-3-Plätze in Google Maps und lokalen KI-Antworten entscheidet">
                 <CompareTable

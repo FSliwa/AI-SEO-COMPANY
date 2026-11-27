@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
@@ -14,10 +15,12 @@ import AppleFaq from '@/components/service/AppleFaq';
 import { Link } from '@/i18n/routing';
 import { BASE, RODZIC_OKRUSZKOW, stronaNarzedzia } from '@/lib/narzedzia';
 import { stronaNarzedziaL } from '@/lib/narzedzia.en';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { cena } from '@/lib/narzedziaLiczby';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import NawBok from '@/components/narzedzia/NawBok';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import Sekcja from '@/components/narzedzia/Sekcja';
 import Poradniki from '@/components/narzedzia/Poradniki';
 import PozostaleNarzedzia from '@/components/narzedzia/PozostaleNarzedzia';
@@ -108,18 +111,20 @@ export function IndexNowBingStrona({ locale = 'pl' } = {}) {
     : 'Generator IndexNow, audytor lastmod i tester Bing oraz ChatGPT');
   const okruszek = wpisRejestru?.okruszek || (en ? 'IndexNow & Bing Checker' : 'Generator IndexNow i Bing');
   const zrodla = wpisRejestru?.sources?.length ? wpisRejestru.sources : (en ? ZRODLA_EN : ZRODLA_PL);
+  const ilustracja = obrazKarty(SLUG, locale);
 
   return (
     <main className={st.strona} style={s.main}>
       <Header />
       <Breadcrumbs pl={okruszek} en={okruszek} parent={RODZIC_OKRUSZKOW} />
       <WebAppSchema
-        name={en ? 'IndexNow Generator, Sitemap lastmod Entropy & Bing / ChatGPT Tester' : 'Generator IndexNow, audytor entropii lastmod i tester Bing / ChatGPT Search'}
+        name={en ? 'IndexNow API Key Generator, Sitemap lastmod Entropy & Bing / ChatGPT Tester' : 'Generator klucza IndexNow, audytor entropii lastmod i tester Bing / ChatGPT Search'}
         description={en
-          ? 'Free instant indexing & GEO diagnostic tool: checks Bingbot and OAI-SearchBot access, detects fake uniform <lastmod> dates in sitemap.xml, and generates a ready-to-download IndexNow .txt key, curl command and GitHub Actions workflow.'
-          : 'Darmowe narzędzie indeksacji pod Bing i AI: sprawdza dostęp Bingbot oraz OAI-SearchBot, wykrywa sztuczne daty <lastmod> w sitemap.xml i generuje plik klucza IndexNow .txt do pobrania razem z komendą curl i plikiem GitHub Actions.'}
+          ? 'Free IndexNow API key generator & GEO diagnostic tool: checks Bingbot and OAI-SearchBot access, detects fake uniform <lastmod> dates in sitemap.xml, and generates a ready-to-download IndexNow .txt key, curl command and GitHub Actions workflow.'
+          : 'Darmowy generator klucza IndexNow i narzędzie indeksacji pod Bing oraz AI: sprawdza dostęp Bingbot i OAI-SearchBot, wykrywa sztuczne daty <lastmod> w sitemap.xml i generuje plik .txt razem z komendą curl i GitHub Actions.'}
         url={en ? URL_EN : URL_PL}
         category="DeveloperApplication"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={en
           ? [
               'Live HTTP & robots.txt verification for Bingbot and OAI-SearchBot',
@@ -158,9 +163,10 @@ export function IndexNowBingStrona({ locale = 'pl' } = {}) {
           <div style={s.poNarzedziu}>
             <AnswerBox {...(en ? { etykieta: 'Short answer' } : {})}>
               {en
-                ? 'Fast visibility in ChatGPT Search and Microsoft Copilot depends on clean HTTP 200 access for both Bingbot and OAI-SearchBot, honest per-page <lastmod> dates in sitemap.xml (not uniform build timestamps), and instant push pings via the IndexNow protocol. Our tool checks all three and generates your <key>.txt verification file, curl command and GitHub Action for free.'
-                : 'Szybka obecność nowych podstron w ChatGPT Search oraz Microsoft Copilot wymaga trzech elementów: otwartego dostępu HTTP 200 dla robotów Bingbot i OAI-SearchBot, prawdziwych dat modyfikacji <lastmod> w pliku sitemap.xml (zamiast jednej daty buildu dla całej witryny) oraz natychmiastowych powiadomień push przez protokół IndexNow. Nasze narzędzie weryfikuje te punkty i generuje gotowy plik klucza .txt.'}
+                ? 'Fast visibility in ChatGPT Search and Microsoft Copilot depends on clean HTTP 200 access for both Bingbot and OAI-SearchBot, honest per-page <lastmod> dates in sitemap.xml (not uniform build timestamps), and instant push pings via the IndexNow protocol. Our free IndexNow API key generator checks all three and builds your <key>.txt verification file, curl command and GitHub Action.'
+                : 'Szybka obecność nowych podstron w ChatGPT Search oraz Microsoft Copilot wymaga trzech elementów: otwartego dostępu HTTP 200 dla robotów Bingbot i OAI-SearchBot, prawdziwych dat modyfikacji <lastmod> w pliku sitemap.xml oraz natychmiastowych powiadomień push przez protokół IndexNow. Nasz darmowy generator klucza IndexNow weryfikuje te punkty i tworzy gotowy plik klucza .txt.'}
             </AnswerBox>
+            <Byline sciezka="/narzedzia/generator-indexnow-test-bing-chatgpt" takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
@@ -184,7 +190,9 @@ export function IndexNowBingStrona({ locale = 'pl' } = {}) {
                 przypis={en
                   ? '100% free, zero sign-up: download your verification key file and deploy in 2 minutes.'
                   : 'Zero rejestracji i zero opłat: pobierasz plik klucza i wdrażasz IndexNow w 2 minuty.'}
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               {en ? (
                 <>

@@ -142,7 +142,7 @@ export default function AutorytetStronaDe() {
         <p style={s.akapit}>Common Crawl berechnet diesen Wert nicht und ist nicht für ihn verantwortlich; wir nutzen die Daten, die es für alle veröffentlicht. Die Domain suchen wir in unserer eigenen Kopie der berechneten Daten, die eingegebene Adresse geht also an keine externe Firma.</p>
       </Sekcja>
 
-      <Sekcja id="unterschied-zu-dr-und-da" tytul="Worin sich das von Ahrefs Domain Rating und Moz Domain Authority unterscheidet">
+      <Sekcja id="unterschied-zu-dr-und-da" tytul="Domain Rating prüfen vs. Moz Domain Authority: Worin sich unser Wert unterscheidet">
         <CompareTable
           id="tabelle-autoritaet-dr-da"
           caption="Unser Autoritätswert, Ahrefs Domain Rating und Moz Domain Authority"

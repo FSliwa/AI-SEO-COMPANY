@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
@@ -15,10 +16,12 @@ import AppleFaq from '@/components/service/AppleFaq';
 import { Link } from '@/i18n/routing';
 import { BASE, RODZIC_OKRUSZKOW, stronaNarzedzia } from '@/lib/narzedzia';
 import { stronaNarzedziaL } from '@/lib/narzedzia.en';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY, cena } from '@/lib/narzedziaLiczby';
 import Ozdoba from './Ozdoba';
 import NawBok from './NawBok';
 import CoDostajesz from './CoDostajesz';
+import ZrzutWyniku from './ZrzutWyniku';
 import Sekcja from './Sekcja';
 import Poradniki from './Poradniki';
 import PozostaleNarzedzia from './PozostaleNarzedzia';
@@ -113,18 +116,20 @@ export function TesterRobotowAiStrona({ locale = 'pl' } = {}) {
     : 'Tester robotów AI, parzystości SSR i zapory robots.txt');
   const okruszek = wpisRejestru?.okruszek || (en ? 'AI Crawler & robots.txt Checker' : 'Tester robotów AI i robots.txt');
   const zrodla = wpisRejestru?.sources?.length ? wpisRejestru.sources : (en ? ZRODLA_EN : ZRODLA_PL);
+  const ilustracja = obrazKarty(SLUG, locale);
 
   return (
     <main className={st.strona} style={s.main}>
       <Header />
       <Breadcrumbs pl={okruszek} en={okruszek} parent={RODZIC_OKRUSZKOW} />
       <WebAppSchema
-        name={en ? 'AI Crawler, SSR Content Parity & robots.txt Firewall Checker' : 'Tester robotów AI, parzystości SSR i kreator zapory robots.txt'}
+        name={en ? 'AI Crawler, SSR Content Parity & robots.txt Tester / Validator' : 'Tester robotów AI, parzystości SSR i walidator robots.txt'}
         description={en
-          ? 'Free online diagnostic tool: checks robots.txt rules vs real HTTP firewall status across 15 AI & search crawlers (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), measures SSR vs JS HTML visibility, and generates a 1-click robots.txt policy.'
-          : 'Bezpłatne narzędzie online: porównuje reguły robots.txt z realnym kodem HTTP zapory serwerowej dla 15 botów AI i wyszukiwarek (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), mierzy widoczność treści bez JavaScriptu (SSR) i generuje gotowy plik robots.txt.'}
+          ? 'Free online robots.txt tester and AI crawler validator: checks robots.txt rules vs real HTTP firewall status across 15 AI & search crawlers (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), measures SSR vs JS HTML visibility, and generates a 1-click robots.txt policy.'
+          : 'Bezpłatny tester robots.txt i walidator robotów AI online: porównuje reguły robots.txt z realnym kodem HTTP zapory serwerowej dla 15 botów AI i wyszukiwarek (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), mierzy widoczność treści bez JavaScriptu (SSR) i generuje gotowy plik robots.txt.'}
         url={en ? URL_EN : URL_PL}
         category="DeveloperApplication"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={en
           ? [
               '15-bot split matrix comparing robots.txt rules against live HTTP firewall responses and TTFB',
@@ -165,9 +170,10 @@ export function TesterRobotowAiStrona({ locale = 'pl' } = {}) {
           <div style={s.poNarzedziu}>
             <AnswerBox {...(en ? { etykieta: 'Short answer' } : {})}>
               {en
-                ? 'Being cited in ChatGPT, Perplexity and Claude requires three technical layers to align: your robots.txt must allow AI search bots (such as OAI-SearchBot and PerplexityBot), your server firewall (WAF/CDN) must return HTTP 200 instead of 403, and your HTML must deliver headings, facts and schema via Server-Side Rendering (SSR) without relying on client-side JavaScript. Our checker tests all three layers at once and builds your robots.txt file for free.'
-                : 'Żeby ChatGPT, Perplexity i Claude mogły zacytować Twoją firmę, muszą zadziałać naraz trzy warstwy techniczne: plik robots.txt musi wpuszczać boty wyszukiwania AI (OAI-SearchBot, PerplexityBot, Claude-SearchBot), zapora serwerowa WAF/CDN musi zwracać kod HTTP 200 zamiast blokady 403, a serwer musi podawać treść i JSON-LD w czystym HTML (SSR) bez czekania na wykonanie JavaScriptu. Nasz tester weryfikuje wszystkie trzy punkty jednocześnie.'}
+                ? 'Being cited in ChatGPT, Perplexity and Claude requires three technical layers to align: your robots.txt must allow AI search bots (such as OAI-SearchBot and PerplexityBot), your server firewall (WAF/CDN) must return HTTP 200 instead of 403, and your HTML must deliver headings, facts and schema via Server-Side Rendering (SSR) without relying on client-side JavaScript. Our free robots.txt tester and validator checks all three layers at once and builds your robots.txt file.'
+                : 'Żeby ChatGPT, Perplexity i Claude mogły zacytować Twoją firmę, muszą zadziałać naraz trzy warstwy techniczne: plik robots.txt musi wpuszczać boty wyszukiwania AI (OAI-SearchBot, PerplexityBot, Claude-SearchBot), zapora serwerowa WAF/CDN musi zwracać kod HTTP 200 zamiast blokady 403, a serwer musi podawać treść i JSON-LD w czystym HTML (SSR) bez czekania na wykonanie JavaScriptu. Nasz darmowy tester robots.txt i walidator robots.txt weryfikuje wszystkie trzy punkty jednocześnie.'}
             </AnswerBox>
+            <Byline sciezka="/narzedzia/tester-robotow-ai-robots-txt" takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
@@ -193,7 +199,9 @@ export function TesterRobotowAiStrona({ locale = 'pl' } = {}) {
                 przypis={en
                   ? 'Zero email gate: every metric, diagnostic table and generated configuration file is unlocked immediately.'
                   : 'Zero bramki e-mail: pełną macierz 15 botów, diagnozę SSR i wygenerowany plik robots.txt pobierasz od razu.'}
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               {en ? (
                 <>

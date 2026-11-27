@@ -43,10 +43,32 @@ const EN = {
   polityka: 'privacy policy',
 };
 
+const PLIKI_PDF = {
+  'wzor-raportu-seo': { pl: '/pliki/wzor-raportu-seo.pdf', en: '/pliki/seo-report-template.pdf' },
+  'raport-seo': { pl: '/pliki/wzor-raportu-seo.pdf', en: '/pliki/seo-report-template.pdf' },
+  'content-plan': { pl: '/pliki/content-plan-szablon.pdf', en: '/pliki/content-calendar-template.pdf' },
+  'analiza-konkurencji': { pl: '/pliki/szablon-analizy-konkurencji-seo.pdf', en: '/pliki/competitor-analysis-template.pdf' },
+  'checklista-seo': { pl: '/pliki/checklista-seo.pdf', en: '/pliki/seo-checklist.pdf' },
+  'brief-strony': { pl: '/pliki/brief-strony-internetowej.pdf', en: '/pliki/website-brief-template.pdf' },
+  'strategia-seo': { pl: '/pliki/szablon-strategii-seo.pdf', en: '/pliki/seo-strategy-template.pdf' },
+  'migracja-strony': { pl: '/pliki/checklista-migracji-strony.pdf', en: '/pliki/website-migration-checklist.pdf' },
+  'dobor-slow-kluczowych': { pl: '/pliki/szablon-doboru-slow-kluczowych.pdf', en: '/pliki/keyword-research-template.pdf' },
+  'brief-copywritera': { pl: '/pliki/brief-dla-copywritera.pdf', en: '/pliki/content-brief-template.pdf' },
+  'audyt-tresci': { pl: '/pliki/szablon-audytu-tresci.pdf', en: '/pliki/content-audit-template.pdf' },
+  'linkowanie-wewnetrzne': { pl: '/pliki/plan-linkowania-wewnetrznego.pdf', en: '/pliki/internal-linking-template.pdf' },
+  'checklista-eeat': { pl: '/pliki/checklista-e-e-a-t.pdf', en: '/pliki/e-e-a-t-checklist.pdf' },
+  'dane-strukturalne': { pl: '/pliki/wzory-danych-strukturalnych.pdf', en: '/pliki/schema-markup-examples.pdf' },
+  'wizytowka-google': { pl: '/pliki/checklista-wizytowki-google.pdf', en: '/pliki/local-seo-checklist.pdf' },
+  'zapytanie-ofertowe-seo': { pl: '/pliki/zapytanie-ofertowe-seo-wzor.pdf', en: '/pliki/seo-rfp-template.pdf' },
+  'wzor-umowy': { pl: '/pliki/wzor-umowy-pozycjonowanie.pdf', en: '/pliki/seo-contract-checklist.pdf' },
+  'umowa-na-pozycjonowanie': { pl: '/pliki/wzor-umowy-pozycjonowanie.pdf', en: '/pliki/seo-contract-checklist.pdf' },
+};
+
 export default function ChecklistForm({
   plan = 'checklista_zmiana_agencji',
   endpoint = API,
   plik,
+  plikPdf,
   etykieta: etykietaProp,
   przycisk: przyciskProp,
   idPrefiks = 'cl',
@@ -58,6 +80,7 @@ export default function ChecklistForm({
   cta = 'checklist_submit',
 }) {
   const en = useLocale() === 'en';
+  const bezposredniPdf = plikPdf ?? (plik && PLIKI_PDF[plik] ? PLIKI_PDF[plik][en ? 'en' : 'pl'] : null);
   const etykieta = etykietaProp ?? (en ? EN.etykieta : 'E-mail, na który wyślemy checklistę');
   const przycisk = przyciskProp ?? (en ? EN.przycisk : 'Wyślij checklistę PDF');
   const komunikatOk = komunikatOkProp ?? (en ? EN.komunikatOk : OK);
@@ -74,15 +97,35 @@ export default function ChecklistForm({
         body: JSON.stringify({ email: String(fd.get('email') || ''), consent: fd.get('consent') === 'on', nick: String(fd.get('nick') || ''), ...(plik ? { plik } : {}), ...(en ? { lang: 'en' } : {}) }),
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok) return setState({ status: 'error', error: data.error || (en ? EN.blad : 'Nie udało się wysłać. Spróbuj za chwilę.') });
+      if (!res.ok || !data.ok) {
+        if (bezposredniPdf && res.status >= 500) {
+          return setState({ status: 'direct', error: null });
+        }
+        return setState({ status: 'error', error: data.error || (en ? EN.blad : 'Nie udało się wysłać. Spróbuj za chwilę.') });
+      }
       track('generate_lead', { lead_source: 'template', event_category: kategoria, plan, currency: en ? 'EUR' : 'PLN', value: en ? 25 : 100 });
       setState({ status: 'done', error: null });
     } catch {
+      if (bezposredniPdf) return setState({ status: 'direct', error: null });
       setState({ status: 'error', error: en ? EN.brakPolaczenia : 'Brak połączenia. Sprawdź internet i spróbuj ponownie.' });
     }
   }
   if (state.status === 'done')
     return <p role="status" style={{ margin: 0, fontWeight: 600, color: '#047857' }}>{komunikatOk}</p>;
+  if (state.status === 'direct' && bezposredniPdf) {
+    return (
+      <div role="status" style={{ display: 'grid', gap: '0.75rem' }}>
+        <p style={{ margin: 0, fontWeight: 600, color: '#047857' }}>
+          {en ? 'Your PDF template is ready for direct download:' : 'Twój szablon PDF jest gotowy do bezpośredniego pobrania:'}
+        </p>
+        <div>
+          <a href={bezposredniPdf} download className="btn btn-primary" data-cta={`${cta}_pdf`}>
+            {en ? 'Download PDF now' : 'Pobierz PDF teraz'}
+          </a>
+        </div>
+      </div>
+    );
+  }
   return (
     <form onSubmit={onSubmit} style={{ display: 'grid', gap: '0.9rem' }}>
       <label htmlFor={`${idPrefiks}-email`} style={{ fontWeight: 600, color: 'var(--color-text-dark)' }}>{etykieta}</label>
@@ -98,6 +141,17 @@ export default function ChecklistForm({
         <button type="submit" className="btn btn-primary" disabled={state.status === 'loading'} data-cta={cta}>
           {state.status === 'loading' ? (en ? EN.loading : 'Wysyłam…') : przycisk}
         </button>
+        {bezposredniPdf && (
+          <a
+            href={bezposredniPdf}
+            download
+            onClick={() => track('file_download', { file_name: bezposredniPdf, event_category: kategoria })}
+            style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--color-text-dark)', textDecoration: 'underline' }}
+            data-cta={`${cta}_direkt`}
+          >
+            {en ? 'Or download PDF directly' : 'Lub pobierz PDF bezpośrednio'}
+          </a>
+        )}
         {state.status === 'error' && <p role="alert" style={{ margin: 0, color: '#b3261e' }}>{state.error}</p>}
       </div>
     </form>

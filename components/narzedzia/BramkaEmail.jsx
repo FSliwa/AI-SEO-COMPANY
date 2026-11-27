@@ -68,7 +68,7 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
       setStan({ status: 'error', blad: r.blad });
       return;
     }
-    track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: narzedzie, currency: 'PLN', value: 50 });
+    track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: narzedzie, currency: en ? 'EUR' : 'PLN', value: en ? 12 : 50 });
     if (newsletter) track('newsletter_zapis', { zrodlo: narzedzie });
     // mailOk (opcjonalne pole panelu): false = wynik pokazany, ale wiadomość nie wyszła; undefined = wysłano.
     setStan({ status: 'done', blad: null, newsletter: r.newsletter, mailOk: r.mailOk });

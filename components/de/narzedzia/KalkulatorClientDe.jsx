@@ -253,7 +253,7 @@ body:has(.kalk-akcja), main:has(.kalk-akcja) { overflow-x: clip !important; }
 @media (max-width: 600px) {
   .kalk-tryb-opcje { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; width: 100%; }
   .kalk-tryb-opcje span { padding: 0.55rem 0.45rem; border-radius: 12px; font-size: 0.86rem; }
-  .kalk-akcja { flex-direction: column; align-items: stretch; gap: 0.45rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
+  .kalk-akcja { position: static; margin: 0; padding: 0.6rem 0 0; background: transparent; border-top: 0; flex-direction: column; align-items: stretch; gap: 0.45rem; }
   .kalk-akcja .btn { width: 100%; justify-content: center; padding: 0.7rem 1rem; white-space: nowrap; font-size: 0.95rem; }
   .kalk-biezacy { flex: none; min-width: 0; text-align: center; font-size: 0.85rem; }
   .kalk-biezacy--pusty { display: none; }
@@ -928,12 +928,47 @@ export default function KalkulatorClientDe() {
                 : '.'}
             </p>
 
-            <LinkWyniku
-              narzedzie="kalkulator"
-              tryb="wynik"
-              parametry={parametryWyniku()}
-              podsumowanie={`Geschätzter Verlust ohne SEO und KI-Sichtbarkeit: ${fmt(W.min.zysk)} bis ${fmt(W.max.zysk)} pro Monat`}
-            />
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem 1.2rem', alignItems: 'center' }}>
+              <LinkWyniku
+                narzedzie="kalkulator"
+                tryb="wynik"
+                parametry={parametryWyniku()}
+                podsumowanie={`Geschätzter Verlust ohne SEO und KI-Sichtbarkeit: ${fmt(W.min.zysk)} bis ${fmt(W.max.zysk)} pro Monat`}
+              />
+              <button
+                type="button"
+                className="narz-link"
+                onClick={() => {
+                  const q = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+                  const wiersze = [
+                    ['Kennzahl', 'Vorsichtige Variante (EUR)', 'Optimistische Variante (EUR)'],
+                    ['Entgangener Gewinn pro Monat', Math.round(W.min.zysk), Math.round(W.max.zysk)],
+                    ['Entgangener Gewinn pro Jahr', Math.round(W.rocznieMin), Math.round(W.rocznieMax)],
+                    ['Verlust Google-Kanal / Monat', Math.round(W.min.zyskSeo), Math.round(W.max.zyskSeo)],
+                    ['Verlust KI-Kanal / Monat', Math.round(W.min.zyskAi), Math.round(W.max.zyskAi)],
+                    [sklep ? 'Entgangene Bestellungen / Monat' : 'Entgangene Kunden / Monat', (sklep ? W.min.zamowienia : W.min.klienci).toFixed(1).replace('.', ','), (sklep ? W.max.zamowienia : W.max.klienci).toFixed(1).replace('.', ',')],
+                    ...(zwrot ? [
+                      ['Monatliches SEO-Budget netto', Math.round(zwrot.koszt), Math.round(zwrot.koszt)],
+                      ['12-Monats-Bilanz', Math.round(zwrot.min.bilansRok), Math.round(zwrot.max.bilansRok)],
+                      ['Amortisationsmonat', zwrot.min.miesiacZwrotu ?? '-', zwrot.max.miesiacZwrotu ?? '-'],
+                    ] : []),
+                  ];
+                  const csv = `\uFEFF${wiersze.map((r) => r.map(q).join(';')).join('\n')}`;
+                  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = 'seo-roi-auswertung.csv';
+                  document.body.appendChild(a);
+                  a.click();
+                  a.remove();
+                  setTimeout(() => URL.revokeObjectURL(url), 1000);
+                  track('kalkulator_export_csv', { waluta: 'EUR', lang: 'de' });
+                }}
+              >
+                CSV-Zusammenfassung herunterladen
+              </button>
+            </div>
 
             <BramkaEmail
               narzedzie="kalkulator"

@@ -7,15 +7,18 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import { Link } from '@/i18n/routing';
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
 import { STRONY_NARZEDZI_DE } from '@/lib/narzedzia.de';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY } from '@/lib/narzedziaLiczby';
 import { eur } from '@/lib/formatDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
@@ -72,9 +75,12 @@ export function KiCrawlerStronaDe() {
   const h1 = wpis?.h1 || 'KI-Crawler, SSR-Parität & robots.txt online prüfen';
   const okruszek = nazwy?.okruszek || 'KI-Crawler & robots.txt Prüfer';
   const url = urlDe(KLUCZ) || ZAPAS_URL;
-  const zrodla = nazwy?.zrodla
+  const zrodla = nazwy?.sources?.length
+    ? nazwy.sources
+    : nazwy?.zrodla
     ? ZRODLA_DE.map((z, i) => ({ ...z, nazwa: nazwy.zrodla[i] ?? z.nazwa }))
     : ZRODLA_DE;
+  const ilustracja = obrazKarty(SLUG, 'de');
 
   const geoHub = jesli('/pozycjonowanie-w-ai');
   const nextVergleich = jesli('/porownania/nextjs-vs-wordpress-seo');
@@ -98,6 +104,7 @@ export function KiCrawlerStronaDe() {
         url={url}
         category="DeveloperApplication"
         language="de"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={[
           '15-Bot-Matrix: Vergleich zwischen robots.txt-Regel, HTTP-Statuscode und Server-TTFB',
           'Erkennung stiller 403-WAF-Konflikte sowie verifizierter Cloudflare-Bot-IP-Prüfungen',
@@ -125,15 +132,16 @@ export function KiCrawlerStronaDe() {
 
           <div style={s.poNarzedziu}>
             <AnswerBox etykieta="Kurzantwort">
-              Damit ChatGPT, Perplexity und Claude Ihr Unternehmen als Quelle zitieren können, müssen drei technische Ebenen zusammenspielen: Ihre robots.txt muss KI-Suchbots (OAI-SearchBot, PerplexityBot, Claude-SearchBot) zulassen, Ihre Server-Firewall (WAF/CDN) muss mit HTTP 200 statt einer 403-Sperre antworten und Ihr Server muss Texte, Tabellen sowie JSON-LD direkt im HTML (Server-Side Rendering) ohne Browser-JavaScript ausliefern. Unser Tool prüft alle drei Punkte in einem Durchlauf.
+              Damit ChatGPT, Perplexity und Claude Ihr Unternehmen als Quelle zitieren können, müssen drei technische Ebenen zusammenspielen: Ihre robots.txt muss KI-Suchbots (OAI-SearchBot, PerplexityBot, Claude-SearchBot) zulassen, während Sie reines Modelltraining wie GPTBot sperren können; Ihre Server-Firewall (WAF/CDN) muss mit HTTP 200 statt einer 403-Sperre antworten und Ihr Server muss Texte, Tabellen sowie JSON-LD direkt im HTML (Server-Side Rendering) ohne Browser-JavaScript ausliefern. Unser kostenloser robots.txt Tester prüft alle drei Punkte in einem Durchlauf.
             </AnswerBox>
+            <Byline sciezka={KLUCZ} takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
             <div className={st.trescGlowna}>
               <CoDostajesz
                 id="was-sie-erhalten"
-                tytul="Das prüft der KI-Crawler-Check kostenlos"
+                tytul="Das prüft der KI-Crawler- & robots.txt Tester kostenlos"
                 tytulOdRazu="Sofort im Browser, ohne E-Mail"
                 odRazu={[
                   'Gesamtwert von 0 bis 100 für KI-Erreichbarkeit, Antwortzeit (TTFB) und HTML-Vollständigkeit',
@@ -143,7 +151,9 @@ export function KiCrawlerStronaDe() {
                   'Kopierfertiger 1-Klick robots.txt-Generator sowie ein dynamisches SVG-Prüfsiegel ab 70 Punkten',
                 ]}
                 przypis="Kein E-Mail-Gate: Alle Messwerte, Tabellen und generierten Konfigurationsdateien stehen sofort bereit."
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               <Sekcja id="ki-suchbots-vs-trainings-scraper" tytul="KI-Suchbots, Nutzer-Agenten und Trainings-Scraper richtig trennen">
                 <p style={s.akapit}>

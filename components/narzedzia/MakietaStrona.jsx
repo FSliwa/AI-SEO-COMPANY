@@ -14,7 +14,7 @@
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { MAKIETA, cena } from '@/lib/narzedziaLiczby';
-import Zrodla from '@/components/Zrodla';
+import Byline from '@/components/Byline';
 import { Uklad, Sekcja, PozostaleNarzedzia, Poradniki, CoDostajesz } from './UkladAplikacji';
 import MakietaPrzyklady from './MakietaPrzyklady';
 import * as s from './styl';
@@ -179,10 +179,11 @@ export function MakietaStrona({ locale = 'pl' } = {}) {
       }}
       lead={`Wpisz adres strony, a w ${minuty} minut AI zaprojektuje z jej treści nową stronę główną na komputer i telefon. Pierwszy ekran zobaczysz od razu, bez konta.`}
       narzedzie={<MakietaClient />}
-      odpowiedz="Makieta redesignu to propozycja nowej strony głównej przygotowana przez model AI z treści, które już masz na stronie: nazwy, nagłówków, menu, opisów usług, danych kontaktowych i kolorów. Pokazuje układ sekcji, typografię, kolory i wersję na telefon. To kierunek do rozmowy z wykonawcą, a nie gotowa strona: pierwszy ekran widzisz od razu, całą makietę po podaniu e-maila."
+      odpowiedz="Makieta strony internetowej (makieta redesignu) to propozycja nowej strony głównej przygotowana przez model AI z treści, które już masz na stronie: nazwy, nagłówków, menu, opisów usług, danych kontaktowych i kolorów. Pokazuje układ sekcji, typografię, kolory i wersję na telefon. To kierunek do rozmowy z wykonawcą, a nie gotowa strona: pierwszy ekran widzisz od razu, całą makietę po podaniu e-maila."
       faq={FAQ_MAKIETY}
       tytulFaq="Pytania o makietę redesignu"
     >
+      <Byline sciezka={SCIEZKA} takzeEn style={{ margin: '0 0 1.25rem' }} />
       <CoDostajesz
         locale="pl"
         tytulOdRazu="Od razu, bez konta"
@@ -281,12 +282,12 @@ export function MakietaStrona({ locale = 'pl' } = {}) {
           <li>Nie tworzy zdjęć: używa logo i obrazu udostępniania z Twojej strony, a resztę zastępuje kolorem i prostymi ikonami.</li>
           <li>Model dostaje do 6 000 znaków tekstu ze strony głównej. Dłuższy tekst jest ucinany, więc treści z dolnej części strony mogą się nie zmieścić.</li>
           <li>To statyczny plik HTML: bez edytora i eksportu do WordPressa czy Figmy. Zmiany wprowadza się przy wdrożeniu.</li>
-          <li>Polska wersja narzędzia pisze makietę po polsku. Każde uruchomienie daje trochę inną propozycję; limit to {MAKIETA.limitIp} makiety dziennie z jednego adresu IP.</li>
+          <li>Narzędzie tworzy makietę w języku badanej strony (np. polską dla strony po polsku, angielską dla angielskiej i niemiecką dla niemieckiej). Każde uruchomienie daje trochę inną propozycję; limit to {MAKIETA.limitIp} makiety dziennie z jednego adresu IP.</li>
           <li>Zrzut obecnej strony robi zewnętrzna usługa. Gdy nie odpowie, model pracuje na samych treściach i nie zobaczysz porównania obok siebie.</li>
         </ul>
       </Sekcja>
 
-      <Sekcja id="makieta-a-projekt" tytul="Makieta z AI a projekt od projektanta">
+      <Sekcja id="makieta-a-projekt" tytul="Makieta strony internetowej z AI a projekt od projektanta">
         <ul style={s.lista}>
           <li><strong>Czas:</strong> makieta powstaje w {minuty} minut. Projekt od projektanta wymaga briefu, rozmowy i kilku rund poprawek.</li>
           <li><strong>Treść:</strong> makieta używa tylko tego, co już jest na Twojej stronie. Projektant może zaproponować nowe teksty, zdjęcia i strukturę podstron.</li>
@@ -306,7 +307,6 @@ export function MakietaStrona({ locale = 'pl' } = {}) {
         </div>
       </Sekcja>
 
-      <Zrodla zrodla={ZRODLA} id="zrodla-makiety" />
       <Poradniki narzedzie={SCIEZKA} />
       <PozostaleNarzedzia bez={SCIEZKA} />
     </Uklad>
@@ -342,10 +342,11 @@ function MakietaEn() {
       }}
       lead={`Free website redesign mockup: enter your website address and in ${minutyEn} minutes AI designs a new homepage for desktop and mobile from your content. No account needed. Building the new website with us costs from ${cena('strona', 'en')} net.`}
       narzedzie={<MakietaClient />}
-      odpowiedz="A redesign mockup is a proposal for a new homepage that an AI model builds from the content already on your website: your name, headings, menu, service descriptions, contact details and colors. It shows the section layout, typography, colors and a mobile version. It is a direction to discuss with a developer, not a finished website: you see the first screen right away and the whole mockup after you enter your email."
+      odpowiedz="A website design mockup (redesign mockup) is a proposal for a new homepage that an AI model builds from the content already on your website: your name, headings, menu, service descriptions, contact details and colors. It shows the section layout, typography, colors and a mobile version. It is a direction to discuss with a developer, not a finished website: you see the first screen right away and the whole mockup after you enter your email."
       faq={FAQ_MAKIETY_EN}
       tytulFaq="Questions about the redesign mockup"
     >
+      <Byline sciezka={SCIEZKA} takzeEn style={{ margin: '0 0 1.25rem' }} />
       <CoDostajesz
         locale="en"
         tytulOdRazu="Right away, with no account"
@@ -449,7 +450,7 @@ function MakietaEn() {
         </ul>
       </Sekcja>
 
-      <Sekcja id="mockup-vs-designer" tytul="AI mockup vs a designer’s project">
+      <Sekcja id="mockup-vs-designer" tytul="AI website design mockup vs a designer’s project">
         <ul style={s.lista}>
           <li><strong>Time:</strong> the mockup is ready in {minutyEn} minutes. A designer’s project needs a brief, a conversation and a few rounds of changes.</li>
           <li><strong>Content:</strong> the mockup uses only what is already on your website. A designer can propose new copy, photos and a new page structure.</li>
@@ -469,7 +470,6 @@ function MakietaEn() {
         </div>
       </Sekcja>
 
-      <Zrodla zrodla={ZRODLA.map((z) => ({ ...z, nazwa: z.nazwaEn }))} id="mockup-sources" en />
       <Poradniki narzedzie={SCIEZKA} locale="en" />
       <PozostaleNarzedzia bez={SCIEZKA} locale="en" />
     </Uklad>

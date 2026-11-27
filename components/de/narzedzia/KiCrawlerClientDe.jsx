@@ -499,8 +499,14 @@ export function KiCrawlerClientDe() {
           )}
         </td>
         <td style={{ fontVariantNumeric: 'tabular-nums' }}>
-          <strong>{b.httpKod || '-'}</strong>
-          {Number.isFinite(b.ttfbMs) ? <span className="narz-mikro" style={{ display: 'block', margin: 0 }}>{fmtDe(b.ttfbMs, 'de')} ms</span> : null}
+          {b.tylkoRobotsTxt ? (
+            <span className="narz-mikro" style={{ display: 'block', margin: 0 }}>Nur robots.txt</span>
+          ) : (
+            <>
+              <strong>{b.httpKod || '-'}</strong>
+              {Number.isFinite(b.ttfbMs) ? <span className="narz-mikro" style={{ display: 'block', margin: 0 }}>{fmtDe(b.ttfbMs, 'de')} ms</span> : null}
+            </>
+          )}
           {b.xRobotsTag && (
             <code style={{ display: 'inline-block', marginTop: '0.25rem', padding: '0.1rem 0.35rem', borderRadius: '5px', background: 'rgba(15,23,42,0.06)', fontSize: '0.7rem', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>
               X-Robots-Tag: {b.xRobotsTag}

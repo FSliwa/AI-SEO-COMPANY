@@ -553,6 +553,12 @@ export default function AudytSeoClientDe() {
               )}
             </p>
           )}
+          {Array.isArray(w.lancuchGlownej) && w.lancuchGlownej.length > 2 && (
+            <p className="narz-psi" style={{ overflowWrap: 'anywhere' }}>
+              <strong style={{ color: '#b45309' }}>Mehrstufige Startseiten-Weiterleitung: </strong>
+              {w.lancuchGlownej.map((s) => (typeof s === 'string' ? s : `${s.status ? `[${s.status}] ` : ''}${s.url || ''}`)).join(' -> ')}
+            </p>
+          )}
 
           <h2 className="narz-h2" ref={naglowekWyniku} tabIndex={-1}>{stan.pelny ? 'Alle Probleme' : 'Die wichtigsten Probleme'}</h2>
           {/* Nach dem Freischalten: die ersten drei Probleme bleiben an ihrer Stelle, Bestätigung und Monitoring ersetzen die Schranke,

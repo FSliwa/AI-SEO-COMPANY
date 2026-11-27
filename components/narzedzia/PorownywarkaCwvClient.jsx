@@ -592,6 +592,13 @@ export function PorownywarkaCwvClient() {
                     ? 'Thresholds at the 75th percentile on mobile: LCP <= 2.50 s, INP <= 200 ms, CLS <= 0.10, TTFB <= 800 ms.'
                     : 'Oficjalne progi Google na telefonie (75. percentyl): LCP <= 2,50 s, INP <= 200 ms, CLS <= 0,10, TTFB <= 800 ms.'}
                 </p>
+                {(stronaA?.zrodloKod === 'html-ttfb' || stronaB?.zrodloKod === 'html-ttfb') && (
+                  <p className="narz-psi" role="note" style={{ margin: '0.35rem 0 0' }}>
+                    {en
+                      ? 'Note: At least one domain did not yet have 28-day CrUX field data; missing metrics come from a live HTML & TTFB estimate.'
+                      : 'Uwaga: dla co najmniej jednej domeny brakowało 28-dniowych danych terenowych CrUX; brakujące metryki pochodzą z szacunku HTML i TTFB na żywo.'}
+                  </p>
+                )}
               </div>
               {!stronaB && (
                 <button
@@ -678,6 +685,11 @@ export function PorownywarkaCwvClient() {
                         <span className={`cwv-metr cwv-metr--${klasaInp(k.dane.metryki?.inpMs)}`}>
                           {Number.isFinite(k.dane.metryki?.inpMs) ? `${k.dane.metryki.inpMs.toLocaleString(jezyk)} ms` : (en ? 'no data' : 'brak')}
                         </span>
+                        {k.dane.metryki?.inpEstymowany && (
+                          <span className="narz-mikro" style={{ display: 'block', margin: '0.12rem 0 0', fontSize: '0.72rem' }}>
+                            {en ? 'Lab TBT estimate' : 'est. z TBT (Lab)'}
+                          </span>
+                        )}
                         <PasekRozkladuCrux trojka={wyciagnijTrojkeCrux(k.dane, 'inp')} en={en} zwiezly />
                       </td>
                     ))}

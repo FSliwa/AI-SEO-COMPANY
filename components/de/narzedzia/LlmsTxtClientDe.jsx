@@ -123,7 +123,7 @@ function kodWdrozeniaDe(zakladka, domena) {
     return `# 1. Per SFTP / Hosting-Dateimanager mit dem WordPress- / WooCommerce-Stammverzeichnis verbinden (neben wp-config.php)\n# 2. llms.txt (und optional llms-full.txt) direkt hochladen nach:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Direktaufruf ohne Weiterleitung prüfen:\nhttps://${hostCzysty}/llms.txt`;
   }
   if (zakladka === 'shopify') {
-    return `# Shopify erlaubt keine eigenen Dateien im Stammverzeichnis - Lösung über Content -> Files:\n# 1. Shopify Admin -> Content -> Files -> llms.txt hochladen und CDN-Link kopieren\n# 2. Online Store -> Navigation -> URL Redirects -> Weiterleitung anlegen:\n#    Von: /llms.txt  ->  Ziel: https://cdn.shopify.com/s/files/.../llms.txt\n# (Oder per Cloudflare Worker direkt mit Status 200 text/plain unter /llms.txt ausliefern)`;
+    return `# Seit Mai 2026 unterstützt Shopify eine native Theme-Vorlage (direkt HTTP 200 ohne 301-Weiterleitung):\n# 1. Shopify Admin -> Onlineshop -> Themes -> "..." -> Code bearbeiten\n# 2. Unter "Templates" eine neue Vorlage anlegen: templates/llms.txt.liquid\n# 3. Oben {% layout none %} setzen, darunter den erzeugten llms.txt-Inhalt einfügen und speichern\n# 4. Direktaufruf im Browser prüfen: https://${hostCzysty}/llms.txt`;
   }
   if (zakladka === 'webflow') {
     return `# Webflow: Bereitstellung über Assets + Weiterleitung (oder Cloudflare Worker):\n# 1. Webflow Designer -> Assets -> llms.txt hochladen und Asset-URL kopieren\n# 2. Site Settings -> Publishing -> 301 Redirects:\n#    Old Path: /llms.txt  ->  Redirect to Path: <Asset-URL>\n# 3. Website veröffentlichen und prüfen: https://${hostCzysty}/llms.txt`;

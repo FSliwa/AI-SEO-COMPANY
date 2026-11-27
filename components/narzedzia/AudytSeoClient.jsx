@@ -612,6 +612,12 @@ export default function AudytSeoClient() {
               )}
             </p>
           )}
+          {Array.isArray(w.lancuchGlownej) && w.lancuchGlownej.length > 2 && (
+            <p className="narz-psi" style={{ overflowWrap: 'anywhere' }}>
+              <strong style={{ color: '#b45309' }}>{en ? 'Multi-hop homepage redirect chain: ' : 'Wieloskokowy łańcuch przekierowań strony głównej: '}</strong>
+              {w.lancuchGlownej.map((s) => (typeof s === 'string' ? s : `${s.status ? `[${s.status}] ` : ''}${s.url || ''}`)).join(' -> ')}
+            </p>
+          )}
 
           <h2 className="narz-h2" ref={naglowekWyniku} tabIndex={-1}>{stan.pelny ? (en ? 'All issues' : 'Wszystkie problemy') : (en ? 'Top issues' : 'Najważniejsze problemy')}</h2>
           {/* Po odblokowaniu: pierwsze trzy problemy zostają na miejscu, potwierdzenie i monitoring wchodzą w miejsce bramki,

@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
@@ -14,10 +15,12 @@ import AppleFaq from '@/components/service/AppleFaq';
 import { Link } from '@/i18n/routing';
 import { BASE, RODZIC_OKRUSZKOW, stronaNarzedzia } from '@/lib/narzedzia';
 import { stronaNarzedziaL } from '@/lib/narzedzia.en';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY, cena } from '@/lib/narzedziaLiczby';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import NawBok from '@/components/narzedzia/NawBok';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import Sekcja from '@/components/narzedzia/Sekcja';
 import Poradniki from '@/components/narzedzia/Poradniki';
 import PozostaleNarzedzia from '@/components/narzedzia/PozostaleNarzedzia';
@@ -108,18 +111,20 @@ export function CytowalnoscGeoStrona({ locale = 'pl' } = {}) {
     : 'Audytor cytowalności GEO: sprawdź, czy AI zacytuje Twoją podstronę');
   const okruszek = wpisRejestru?.okruszek || (en ? 'GEO Citability Checker' : 'Cytowalność strony w AI');
   const zrodla = wpisRejestru?.sources?.length ? wpisRejestru.sources : (en ? ZRODLA_EN : ZRODLA_PL);
+  const ilustracja = obrazKarty(SLUG, locale);
 
   return (
     <main className={st.strona} style={s.main}>
       <Header />
       <Breadcrumbs pl={okruszek} en={okruszek} parent={RODZIC_OKRUSZKOW} />
       <WebAppSchema
-        name={en ? 'GEO Citability & Answer Block Checker' : 'Deterministyczny audytor cytowalności GEO i bloków odpowiedzi'}
+        name={en ? 'GEO Citability Checker, AEO Checker & GEO Audit Tool' : 'Darmowy audyt GEO strony i audytor cytowalności bloków odpowiedzi'}
         description={en
-          ? 'Free deterministic GEO checker: splits any web page by H2/H3 headings into RAG chunks, scores 6 AI citation factors (Answer-First, chunk length, fact density, question headings, tables, E-E-A-T schema) and compares 1:1 against a competitor.'
-          : 'Darmowy deterministyczny audytor GEO: dzieli podstronę po nagłówkach H2/H3 na bloki RAG, ocenia 6 kryteriów cytowalności w AI (Answer-First, długość bloków, gęstość liczb, nagłówki pytające, tabele, schema) i porównuje 1:1 z konkurentem.'}
+          ? 'Free deterministic GEO audit tool and AEO checker: splits any web page by H2/H3 headings into RAG chunks, scores 6 AI citation factors (Answer-First, chunk length, fact density, question headings, tables, E-E-A-T schema) and compares 1:1 against a competitor.'
+          : 'Darmowy audyt GEO strony: deterministycznie dzieli podstronę po nagłówkach H2/H3 na bloki RAG, ocenia 6 kryteriów cytowalności w AI (Answer-First, długość bloków, gęstość liczb, nagłówki pytające, tabele, schema) i porównuje 1:1 z konkurentem.'}
         url={en ? URL_EN : URL_PL}
         category="BusinessApplication"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={en
           ? [
               '0-100 deterministic GEO Citability Score across 6 RAG retrieval criteria',
@@ -160,9 +165,10 @@ export function CytowalnoscGeoStrona({ locale = 'pl' } = {}) {
           <div style={s.poNarzedziu}>
             <AnswerBox {...(en ? { etykieta: 'Short answer' } : {})}>
               {en
-                ? 'AI search engines (Google AI Overviews, ChatGPT Search, Perplexity and Claude) do not quote entire pages - they retrieve individual H2/H3 passages via RAG. Pages win citations when sections open with a self-contained 40-75 word Answer-First definition, pack verifiable numbers and units, present comparisons in semantic HTML tables, and back claims with author and schema metadata.'
-                : 'Wyszukiwarki AI (Google AI Overviews, ChatGPT Search, Perplexity i Claude) nie cytują całych podstron naraz, lecz wycinają z nich pojedyncze sekcje H2/H3 w procesie RAG. Najczęściej cytowane są strony, które otwierają każdą sekcję zwięzłą definicją Answer-First (40-75 słów), podają konkretne liczby i jednostki, używają semantycznych tabel HTML oraz oznaczają autora i datę w JSON-LD.'}
+                ? 'AI search engines (Google AI Overviews, ChatGPT Search, Perplexity and Claude) do not quote entire pages - they retrieve individual H2/H3 passages via RAG. Our free GEO audit tool and AEO checker verifies whether sections open with a direct 8-55 word Answer-First sentence inside a self-contained 40-180 word chunk, pack verifiable numbers, use HTML tables and declare E-E-A-T schema.'
+                : 'Wyszukiwarki AI (Google AI Overviews, ChatGPT Search, Perplexity i Claude) nie cytują całych podstron naraz, lecz wycinają pojedyncze sekcje H2/H3 w procesie RAG. Nasz darmowy audyt GEO strony sprawdza, czy sekcje zaczynają się bezpośrednim zdaniem Answer-First (8-55 słów) w samodzielnym bloku 40-180 słów, podają liczby i tabele HTML oraz oznaczają autora w JSON-LD.'}
             </AnswerBox>
+            <Byline sciezka="/narzedzia/sprawdz-cytowalnosc-strony-ai" takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
@@ -188,7 +194,9 @@ export function CytowalnoscGeoStrona({ locale = 'pl' } = {}) {
                 przypis={en
                   ? 'Zero email gate and zero LLM randomness: deterministic DOM & passage analysis.'
                   : 'Zero bramki e-mail i zero losowości modeli: powtarzalna analiza struktury DOM i bloków odpowiedzi.'}
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               {en ? (
                 <>
@@ -205,8 +213,8 @@ export function CytowalnoscGeoStrona({ locale = 'pl' } = {}) {
                         { key: 'strong', label: 'Citation-Ready RAG Block' },
                       ]}
                       rows={[
-                        { id: 'answer-first', signal: 'Answer-First Lead', weak: '180-word company history before answering the question', strong: '45-70 word direct answer with numbers in sentence one' },
-                        { id: 'chunk-size', signal: 'Passage Length', weak: 'Single 900-word unsplit wall of text or 12-word stub', strong: 'Self-contained 60-180 word section per H2/H3' },
+                        { id: 'answer-first', signal: 'Answer-First Lead', weak: '180-word company history before answering the question', strong: '8-55 word direct opening sentence with numbers right after H2/H3' },
+                        { id: 'chunk-size', signal: 'Passage Length', weak: 'Single 900-word unsplit wall of text or 12-word stub', strong: 'Self-contained 40-180 word section per H2/H3' },
                         { id: 'facts', signal: 'Fact & Unit Density', weak: '"Affordable, fast, tailored high-quality services"', strong: '"EUR 450/mo net, 14-day setup, LCP <= 2.5 s"' },
                         { id: 'headings', signal: 'H2/H3 Phrasing', weak: '"Offer", "Why us", "Solutions"', strong: '"How much does B2B SEO cost?", "Next.js vs WordPress"' },
                         { id: 'tables', signal: 'Lists & Tables', weak: 'Pricing locked inside PNG/WebP graphics', strong: 'Semantic <table> and <ul>/<li> with clear labels' },
@@ -255,8 +263,8 @@ export function CytowalnoscGeoStrona({ locale = 'pl' } = {}) {
                         { key: 'mocny', label: 'Blok gotowy do zacytowania (RAG)' },
                       ]}
                       rows={[
-                        { id: 'answer-first', sygnal: 'Otwarcie Answer-First', slaby: '180 słów wstępu o historii firmy przed podaniem konkretu', mocny: 'Zwięzła odpowiedź 45-70 słów z liczbami w pierwszym zdaniu' },
-                        { id: 'dlugosc', sygnal: 'Długość sekcji', slaby: 'Ściana tekstu na 900 słów bez H3 albo jednozdaniowy ogólnik', mocny: 'Samodzielny blok 60-180 słów pod każdym nagłówkiem H2/H3' },
+                        { id: 'answer-first', sygnal: 'Otwarcie Answer-First', slaby: '180 słów wstępu o historii firmy przed podaniem konkretu', mocny: 'Zwięzłe pierwsze zdanie 8-55 słów z liczbami zaraz pod H2/H3' },
+                        { id: 'dlugosc', sygnal: 'Długość sekcji', slaby: 'Ściana tekstu na 900 słów bez H3 albo jednozdaniowy ogólnik', mocny: 'Samodzielny blok 40-180 słów pod każdym nagłówkiem H2/H3' },
                         { id: 'fakty', sygnal: 'Gęstość faktów', slaby: '„Elastyczna oferta, najwyższa jakość i szybkie terminy”', mocny: '„Od 1 900 zł netto/mies., wdrożenie w 14 dni, LCP <= 2,5 s”' },
                         { id: 'naglowki', sygnal: 'Nagłówki H2/H3', slaby: '„Oferta”, „Dlaczego my”, „Nasze atuty”', mocny: '„Ile kosztuje pozycjonowanie B2B?”, „Next.js czy WordPress”' },
                         { id: 'tabele', sygnal: 'Listy i tabele', slaby: 'Cennik zamknięty na obrazku PNG bez tekstu w DOM', mocny: 'Semantyczna tabela <table> oraz wypunktowania <ul>/<li>' },

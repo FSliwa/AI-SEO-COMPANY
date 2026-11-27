@@ -291,13 +291,13 @@ export function CytowalnoscGeoClient() {
   const definicjeKryteriow = [
     {
       klucz: 'answerFirst',
-      nazwa: en ? 'Answer-First Openings (40-75 words)' : 'Otwarcia Answer-First (40-75 słów)',
-      opis: en ? 'Direct definition right after H2 before marketing fluff' : 'Bezpośrednia odpowiedź zaraz pod H2 zamiast wstępu ogólnego',
+      nazwa: en ? 'Answer-First Openings (8-55 words)' : 'Otwarcia Answer-First (8-55 słów)',
+      opis: en ? 'Direct factual sentence right after H2/H3 before marketing fluff' : 'Bezpośrednie zdanie z konkretem zaraz pod H2/H3 zamiast wstępu ogólnego',
     },
     {
       klucz: 'dlugoscBlokow',
-      nazwa: en ? 'RAG Chunk Length Hygiene' : 'Długość bloków pod chunking RAG',
-      opis: en ? 'Self-contained 60-180 word passages easy to quote verbatim' : 'Samodzielne sekcje 60-180 słów łatwe do wycięcia przez LLM',
+      nazwa: en ? 'RAG Chunk Length Hygiene (40-180 words)' : 'Długość bloków pod chunking RAG (40-180 słów)',
+      opis: en ? 'Self-contained 40-180 word passages easy to quote verbatim' : 'Samodzielne sekcje 40-180 słów łatwe do wycięcia przez LLM',
     },
     {
       klucz: 'gestoscFaktow',
@@ -485,12 +485,12 @@ export function CytowalnoscGeoClient() {
                     </p>
                   )}
                   <blockquote className="sp2-ai-cytat">
-                    {sym.najlepszyBlok || (en ? 'No self-contained factual paragraph (40-120 words) found on this page.' : 'Nie znaleziono na stronie samodzielnego akapitu faktograficznego (40-120 słów).')}
+                    {sym.najlepszyBlok || (en ? 'No self-contained factual passage (40-180 words) found on this page.' : 'Nie znaleziono na stronie samodzielnego bloku faktograficznego (40-180 słów).')}
                   </blockquote>
                   <p className="narz-mikro" style={{ margin: 0 }}>
                     {en
-                      ? 'Retrieval-Augmented Generation (RAG) pipelines rank self-contained 40-75 word paragraphs containing explicit numbers, entities and units highest.'
-                      : 'Systemy RAG w Google AI Overviews, ChatGPT i Perplexity najwyżej oceniają samodzielne akapity 40-75 słów zawierające konkretne liczby, nazwy własne i jednostki.'}
+                      ? 'Retrieval-Augmented Generation (RAG) pipelines rank self-contained 40-180 word sections opening with an 8-55 word factual sentence highest.'
+                      : 'Systemy RAG w Google AI Overviews, ChatGPT i Perplexity najwyżej oceniają samodzielne sekcje 40-180 słów otwierane zdaniem Answer-First (8-55 słów) z liczbami i jednostkami.'}
                   </p>
                 </div>
               </div>
@@ -548,8 +548,8 @@ export function CytowalnoscGeoClient() {
                 </h2>
                 <p className="narz-mikro" style={{ marginBottom: '0.65rem' }}>
                   {en
-                    ? 'Optimal Answer-First lead: 40-75 words; full section chunk: 60-180 words.'
-                    : 'Optymalny otwierający blok definicyjny: 40-75 słów; pełna sekcja pod RAG: 60-180 słów.'}
+                    ? 'Optimal Answer-First opening sentence: 8-55 words; full self-contained section chunk: 40-180 words.'
+                    : 'Optymalne zdanie otwierające Answer-First: 8-55 słów; pełna samodzielna sekcja pod RAG: 40-180 słów.'}
                 </p>
                 <div className="narz-tabela-wrap">
                   <table className="narz-tabela">

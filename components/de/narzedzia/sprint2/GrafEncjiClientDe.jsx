@@ -250,13 +250,16 @@ function SvgGrafWezlowDe({ wezly, krawedzie, aktywnyIndeks, onWybierz }) {
 }
 
 export function GrafEncjiClientDe() {
+  const [trybWejscia, setTrybWejscia] = useState('url');
   const [adres, setAdres] = useState('');
+  const [kodJson, setKodJson] = useState('');
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null, id: null, trybDemo: false });
   const [aktywnyWezel, setAktywnyWezel] = useState(0);
   const [aktywnaBranza, setAktywnaBranza] = useState('auto');
   const [zTagiemScript, setZTagiemScript] = useState(true);
   const [skopiowanoJson, setSkopiowanoJson] = useState(false);
   const poleRef = useRef(null);
+  const kodRef = useRef(null);
   const wynikRef = useRef(null);
 
   useParametrUrl(['url', 'wynik'], ({ url, wynik }) => {
@@ -300,20 +303,27 @@ export function GrafEncjiClientDe() {
 
   async function uruchomWalidacje(e) {
     e.preventDefault();
+    const czyKod = trybWejscia === 'kod';
     const wejscie = adres.trim();
-    if (!wejscie) {
+    const surowyKod = kodJson.trim();
+    if (czyKod) {
+      if (!surowyKod) {
+        kodRef.current?.focus();
+        return;
+      }
+    } else if (!wejscie) {
       poleRef.current?.focus();
       return;
     }
 
     setAktywnyWezel(0);
     setStan({ status: 'loading', blad: null, wynik: null, id: null, trybDemo: false });
-    zapiszParametry({ url: wejscie, wynik: null });
-    track('narzedzie_start', { narzedzie: 'graf_encji', lang: 'de' });
+    if (!czyKod) zapiszParametry({ url: wejscie, wynik: null });
+    track('narzedzie_start', { narzedzie: 'graf_encji', lang: 'de', tryb: czyKod ? 'jsonld' : 'url' });
 
     if (DEMO) {
       await new Promise((r) => setTimeout(r, 900));
-      const d = demoGrafEncjiDe(wejscie);
+      const d = demoGrafEncjiDe(czyKod ? 'ai-seo-company.pl' : wejscie);
       track('narzedzie_wynik', { narzedzie: 'graf_encji', wynik: d.ocena, lang: 'de' });
       setStan({ status: 'done', blad: null, wynik: d, id: null, trybDemo: true });
       return;
@@ -325,7 +335,7 @@ export function GrafEncjiClientDe() {
       const res = await fetch(`${PANEL_API}/graf-encji`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ url: wejscie, lang: 'de' }),
+        body: JSON.stringify(czyKod ? { jsonLdRaw: surowyKod, lang: 'de' } : { url: wejscie, lang: 'de' }),
         signal: ctrl.signal,
       });
       const data = await res.json().catch(() => ({}));
@@ -374,6 +384,7 @@ export function GrafEncjiClientDe() {
   const sameAs = Array.isArray(w?.sameAs) ? w.sameAs : [];
   const rej = w?.identyfikatoryRejestrowe || {};
   const luki = Array.isArray(w?.luki) ? w.luki : [];
+  const bledySkladni = Array.isArray(w?.bledySkladni) ? w.bledySkladni : [];
   const wybranyWezel = wezly[aktywnyWezel] || wezly[0] || null;
 
   const surowyJson = useMemo(() => {
@@ -398,44 +409,102 @@ export function GrafEncjiClientDe() {
       <PasekDemo />
 
       <form className="narz-formularz" onSubmit={uruchomWalidacje}>
-        <div>
-          <label htmlFor="ent-url-de" className="narz-etykieta">
-            Domain oder Startseiten-URL zur Prüfung eingeben
-          </label>
-          <input
-            ref={poleRef}
-            id="ent-url-de"
-            name="url"
-            required
-            {...WALID_DE}
-            maxLength={300}
-            value={adres}
-            onChange={(e) => setAdres(e.target.value)}
-            placeholder="z. B. ihre-firma.de"
-            className="narz-pole"
-            inputMode="url"
-            autoComplete="url"
-            aria-invalid={stan.status === 'error' ? 'true' : undefined}
-            aria-describedby={stan.status === 'error' ? 'ent-blad-de' : undefined}
-          />
+        <div className="narz-filtry" role="group" aria-label="Eingabemodus" style={{ marginBottom: '0.65rem' }}>
+          <button
+            type="button"
+            aria-pressed={trybWejscia === 'url'}
+            onClick={() => setTrybWejscia('url')}
+          >
+            Website-URL prüfen
+          </button>
+          <button
+            type="button"
+            aria-pressed={trybWejscia === 'kod'}
+            onClick={() => setTrybWejscia('kod')}
+          >
+            JSON-LD-Code einfügen
+          </button>
         </div>
+
+        {trybWejscia === 'url' ? (
+          <div>
+            <label htmlFor="ent-url-de" className="narz-etykieta">
+              Domain oder Startseiten-URL zur Prüfung eingeben
+            </label>
+            <input
+              ref={poleRef}
+              id="ent-url-de"
+              name="url"
+              required
+              {...WALID_DE}
+              maxLength={300}
+              value={adres}
+              onChange={(e) => setAdres(e.target.value)}
+              placeholder="z. B. ihre-firma.de"
+              className="narz-pole"
+              inputMode="url"
+              autoComplete="url"
+              aria-invalid={stan.status === 'error' ? 'true' : undefined}
+              aria-describedby={stan.status === 'error' ? 'ent-blad-de' : undefined}
+            />
+          </div>
+        ) : (
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <label htmlFor="ent-json-de" className="narz-etykieta">
+                JSON-LD-Objekt oder &lt;script type=&quot;application/ld+json&quot;&gt;-Snippet einfügen
+              </label>
+              <button
+                type="button"
+                className="narz-link"
+                onClick={() => {
+                  setKodJson(domyslnySzablonJsonLdDe('ihre-firma.de'));
+                  kodRef.current?.focus();
+                }}
+              >
+                + Beispiel-@graph einfügen
+              </button>
+            </div>
+            <textarea
+              ref={kodRef}
+              id="ent-json-de"
+              name="jsonLdRaw"
+              required
+              rows={7}
+              maxLength={150000}
+              value={kodJson}
+              onChange={(e) => setKodJson(e.target.value)}
+              placeholder={'{\n  "@context": "https://schema.org",\n  "@graph": [\n    { "@type": "Organization", "@id": "https://ihre-firma.de/#organization", "name": "Ihre Firma GmbH" }\n  ]\n}'}
+              className="narz-pole"
+              style={{ fontFamily: 'var(--w-mono, monospace)', fontSize: '0.84rem', lineHeight: 1.45, minHeight: '9rem', resize: 'vertical' }}
+              aria-invalid={stan.status === 'error' ? 'true' : undefined}
+              aria-describedby={stan.status === 'error' ? 'ent-blad-de' : undefined}
+            />
+          </div>
+        )}
 
         <div className="sp2-akcje-form">
           <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_graf_encji_de_start">
-            {stan.status === 'loading' ? 'Extrahiere @graph & sameAs...' : 'Entitäts-Graph prüfen & JSON-LD erstellen'}
+            {stan.status === 'loading'
+              ? 'Extrahiere @graph & sameAs...'
+              : trybWejscia === 'kod'
+              ? 'JSON-LD-Code validieren'
+              : 'Entitäts-Graph prüfen & JSON-LD erstellen'}
           </button>
           <button type="button" className="sp2-btn-demo" onClick={zaladujDemo} disabled={stan.status === 'loading'}>
             DEMO-Ergebnis laden
           </button>
         </div>
 
-        <PrzykladAdresu
-          adresy={['ai-seo-company.pl', 'staniax.pl']}
-          onWybierz={(a) => {
-            setAdres(a);
-            poleRef.current?.focus();
-          }}
-        />
+        {trybWejscia === 'url' && (
+          <PrzykladAdresu
+            adresy={['ai-seo-company.pl', 'staniax.pl']}
+            onWybierz={(a) => {
+              setAdres(a);
+              poleRef.current?.focus();
+            }}
+          />
+        )}
 
         <p className="narz-mikro" style={{ margin: 0 }}>
           Kostenlos &amp; ohne E-Mail: liest Startseite, Über-uns und Impressum/Kontakt aus, zeichnet ein interaktives SVG-Diagramm Ihrer schema.org-@graph-Knoten, prüft sameAs sowie Registerkennungen (USt-IdNr., HRB) und erzeugt eine verbundene JSON-LD-Vorlage.
@@ -495,6 +564,21 @@ export function GrafEncjiClientDe() {
                 </div>
               </div>
             </div>
+
+            {bledySkladni.length > 0 && (
+              <div className="sp2-sekcja-wyniku">
+                <h2 className="narz-h2">JSON-LD-Syntaxfehler ({bledySkladni.length})</h2>
+                <ul className="narz-problemy" style={{ marginTop: '0.65rem' }}>
+                  {bledySkladni.map((b, idx) => (
+                    <li key={idx} className="narz-problem narz-problem--blad">
+                      <p className="narz-problem-fix" style={{ margin: 0, fontFamily: 'var(--w-mono, monospace)', fontSize: '0.86rem' }}>
+                        {b.strona ? `${b.strona} (#${b.blok ?? idx + 1}): ` : ''}{b.blad || String(b)}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <div className="sp2-sekcja-wyniku">
               <h2 className="narz-h2">Interaktiver Marken-Entitätsgraph (@graph SVG)</h2>

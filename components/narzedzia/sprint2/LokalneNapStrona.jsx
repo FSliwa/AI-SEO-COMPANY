@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
@@ -14,10 +15,12 @@ import AppleFaq from '@/components/service/AppleFaq';
 import { Link } from '@/i18n/routing';
 import { BASE, RODZIC_OKRUSZKOW, stronaNarzedzia } from '@/lib/narzedzia';
 import { stronaNarzedziaL } from '@/lib/narzedzia.en';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { cena } from '@/lib/narzedziaLiczby';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import NawBok from '@/components/narzedzia/NawBok';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import Sekcja from '@/components/narzedzia/Sekcja';
 import Poradniki from '@/components/narzedzia/Poradniki';
 import PozostaleNarzedzia from '@/components/narzedzia/PozostaleNarzedzia';
@@ -108,18 +111,20 @@ export function LokalneNapStrona({ locale = 'pl' } = {}) {
     : 'Skaner spójności lokalnej NAP, kalkulator opinii i generator QR wizytówki');
   const okruszek = wpisRejestru?.okruszek || (en ? 'Local SEO NAP & QR Generator' : 'Lokalne SEO NAP i QR opinii');
   const zrodla = wpisRejestru?.sources?.length ? wpisRejestru.sources : (en ? ZRODLA_EN : ZRODLA_PL);
+  const ilustracja = obrazKarty(SLUG, locale);
 
   return (
     <main className={st.strona} style={s.main}>
       <Header />
       <Breadcrumbs pl={okruszek} en={okruszek} parent={RODZIC_OKRUSZKOW} />
       <WebAppSchema
-        name={en ? 'Local SEO NAP Consistency Scanner, Review Gap Calculator & Google Review QR Generator' : 'Skaner spójności lokalnej NAP, kalkulator opinii 5★ i wektorowy generator QR Wizytówki Google'}
+        name={en ? 'Local SEO NAP Scanner, Google Review Link & Google Review QR Code Generator' : 'Skaner spójności lokalnej NAP, kalkulator opinii Google i kod QR do opinii Google'}
         description={en
-          ? 'Free 3-in-1 Local SEO tool: compares visible HTML contact details against LocalBusiness JSON-LD, calculates exact 5-star reviews needed to overtake Google Maps competitors, and generates a permanent print-ready SVG/PNG Google Review QR code.'
-          : 'Darmowe narzędzie 3 w 1 do lokalnego SEO: porównuje dane NAP w tekście HTML ze schematem LocalBusiness JSON-LD, wylicza brakujące opinie 5★ do wyprzedzenia lidera Map Google i generuje bezterminowy kod QR opinii (SVG i PNG 1024px).'}
+          ? 'Free 3-in-1 Local SEO tool & Google review QR code generator: compares visible HTML contact details against LocalBusiness JSON-LD, calculates 5-star reviews needed to overtake Google Maps competitors, and turns your Google review link into a permanent print SVG/PNG QR code.'
+          : 'Darmowe narzędzie 3 w 1 do lokalnego SEO: skaner danych NAP (HTML vs LocalBusiness JSON-LD), żywy kalkulator opinii Google 5★ do wyprzedzenia lidera Map oraz bezterminowy kod QR do opinii Google (SVG i PNG 1024px).'}
         url={en ? URL_EN : URL_PL}
         category="BusinessApplication"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={en
           ? [
               'Character-by-character NAP comparison between visible HTML and LocalBusiness JSON-LD',
@@ -156,9 +161,10 @@ export function LokalneNapStrona({ locale = 'pl' } = {}) {
           <div style={s.poNarzedziu}>
             <AnswerBox {...(en ? { etykieta: 'Short answer' } : {})}>
               {en
-                ? 'Ranking in the Google Maps Top 3 (Local Pack) and local ChatGPT answers depends on three pillars: primary & secondary GBP categories aligned with your landing pages, 100% NAP consistency between your profile, visible HTML and LocalBusiness JSON-LD, and steady velocity of authentic 5-star customer reviews.'
-                : 'Wejście do TOP 3 Map Google ( tzw. trzypaku lokalnego) oraz lokalnych poleceń w ChatGPT opiera się na trzech filarach: precyzyjnym doborze kategorii w Profilu Firmy w Google, 100% spójności danych NAP między wizytówką, stopką HTML i kodem LocalBusiness JSON-LD oraz regularnym przyroście autentycznych opinii klientów.'}
+                ? 'Ranking in the Google Maps Top 3 (Local Pack) and local ChatGPT answers depends on three pillars: primary & secondary GBP categories aligned with your landing pages, 100% NAP consistency between your profile, visible HTML and LocalBusiness JSON-LD, and steady 5-star reviews. Below you get a live NAP scanner, review gap calculator and a permanent Google review link generator / Google review QR code generator.'
+                : 'Wejście do TOP 3 Map Google oraz lokalnych poleceń w ChatGPT opiera się na trzech filarach: precyzyjnym doborze kategorii w Profilu Firmy w Google, 100% spójności danych NAP między wizytówką, stopką HTML i kodem LocalBusiness JSON-LD oraz stałym dopływie ocen. Poniżej masz w jednym miejscu skaner NAP, kalkulator opinii Google oraz bezterminowy kod QR do opinii Google.'}
             </AnswerBox>
+            <Byline sciezka="/narzedzia/audyt-lokalnego-seo-wizytowki" takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
@@ -174,13 +180,15 @@ export function LokalneNapStrona({ locale = 'pl' } = {}) {
                     ]
                   : [
                       '6-punktowe zestawienie Nazwy, Telefonu, Adresu, NIP, Godzin i Geo między HTML a LocalBusiness JSON-LD',
-                      'Natychmiastowy kalkulator opinii 5★ wyliczający dystans do wybranej średniej oraz lidera Map',
-                      'Bezterminowy generator kodu QR (standard ISO/IEC 18004) z eksportem wektorowym SVG i PNG 1024px',
+                      'Natychmiastowy kalkulator opinii Google 5★ wyliczający dystans do wybranej średniej oraz lidera Map',
+                      'Bezterminowy kod QR do opinii Google (standard ISO/IEC 18004) z eksportem wektorowym SVG i PNG 1024px',
                     ]}
                 przypis={en
                   ? 'Zero tracking redirects in the QR code - your printed stands and stickers work forever.'
                   : 'Zero ukrytych przekierowań i zero abonamentów - wydrukowane stojaki i wizytówki z kodem QR działają na zawsze.'}
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               {en ? (
                 <>

@@ -120,10 +120,10 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
 
       <Sekcja id="audyt-seo-online-krok-po-kroku" tytul="Jak zrobić audyt SEO online krok po kroku">
         <ol style={s.lista}>
-          <li><strong>Wklej adres strony w formularzu u góry.</strong> Audyt SEO online działa dla każdej publicznej domeny i nie wymaga zakładania konta ani potwierdzania własności.</li>
-          <li><strong>Poczekaj 20-90 sekund na skan.</strong> Robot pobiera do {AUDYT.stron} podstron z różnych sekcji witryny oraz wynik mobilny z Google PageSpeed Insights.</li>
-          <li><strong>Sprawdź ocenę 1-100 i trzy najcięższe błędy.</strong> Od razu widzisz punkty w czterech kategoriach (technika, treść, wydajność, gotowość na AI) oraz instrukcję naprawy głównych blokad.</li>
-          <li><strong>Pobierz pełną listę na e-mail i porównaj z konkurencją.</strong> Po wdrożeniu poprawek uruchom darmowy audyt SEO online ponownie, żeby zobaczyć zmianę oceny.</li>
+          <li><strong>Wklej adres strony i wybierz urządzenie (Telefon lub Komputer).</strong> Audyt SEO online działa dla każdej publicznej domeny i nie wymaga zakładania konta ani potwierdzania własności.</li>
+          <li><strong>Poczekaj 20-90 sekund na skan.</strong> Robot pobiera do {AUDYT.stron} podstron z różnych sekcji witryny oraz wynik z Google PageSpeed Insights wraz z danymi polowymi Chrome CrUX (28 dni).</li>
+          <li><strong>Sprawdź ocenę 1-100 i trzy najcięższe błędy.</strong> Od razu widzisz punkty w czterech kategoriach (technika, treść, wydajność, gotowość na AI), szerokość <code>&lt;title&gt;</code> w pikselach oraz instrukcję naprawy głównych blokad.</li>
+          <li><strong>Odblokuj pełną listę, eksport CSV/Markdown i Copy-Paste Fix Pack.</strong> Po podaniu e-maila dostajesz wszystkie adresy z błędami oraz gotowe bloki kodu (<code>&lt;head&gt;</code>, <code>robots.txt</code>, przekierowania Next.js) do wklejenia przez programistę.</li>
         </ol>
       </Sekcja>
 
@@ -326,12 +326,12 @@ function AudytSeoEn() {
         </div>
       </CoDostajesz>
 
-      <Sekcja id="website-seo-analysis" tytul="Website SEO analysis: how to check the SEO of a website">
+      <Sekcja id="website-seo-analysis" tytul="Website SEO analysis & free SEO checker: how to check your site">
         <ol style={s.lista}>
-          <li><strong>Paste your domain into the form above.</strong> This website SEO analysis works on any public site without an account or ownership verification.</li>
-          <li><strong>Wait 20 to 90 seconds for the scan.</strong> Our crawler fetches up to {AUDYT.stron} pages across your site sections together with mobile Google PageSpeed Insights lab runs.</li>
-          <li><strong>Review your 1-100 score and top three issues.</strong> You immediately see points across four categories (technical, content, performance, AI readiness) and clear fix instructions.</li>
-          <li><strong>Unlock the full URL list by email and compare competitors.</strong> After deploying fixes, check the SEO of your website again to see how the score changed.</li>
+          <li><strong>Paste your domain and pick Mobile or Desktop.</strong> This free SEO checker and website SEO grader works on any public site without an account or ownership verification.</li>
+          <li><strong>Wait 20 to 90 seconds for the crawl.</strong> Our crawler fetches up to {AUDYT.stron} pages across your site sections together with Google PageSpeed Insights lab runs and 28-day Chrome CrUX field metrics.</li>
+          <li><strong>Review your 1-100 score and top three issues.</strong> You immediately see points across four categories (technical, content, performance, AI readiness), pixel title width and clear fix instructions.</li>
+          <li><strong>Unlock the full URL list, CSV/Markdown export and Copy-Paste Fix Pack.</strong> After unlocking by email, download the issue table or copy ready-made snippets (<code>&lt;head&gt;</code>, <code>robots.txt</code>, Next.js redirects) for your developer.</li>
         </ol>
       </Sekcja>
 

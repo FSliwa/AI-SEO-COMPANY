@@ -205,6 +205,72 @@ function Znak({ stan, i = 0 }) {
   return stan ? <span className="narz-znak narz-znak--tak r-stan" style={ruch} aria-label="genannt">✓</span> : <span className="narz-znak narz-znak--nie r-stan" style={ruch} aria-label="nicht genannt">✕</span>;
 }
 
+const KATALOGI_DE_RE = /(^|\.)(clutch\.co|sortlist\.[a-z.]+|goodfirms\.co|g2\.com|capterra\.[a-z.]+|trustpilot\.[a-z.]+|wlw\.de|gelbeseiten\.de|provenexpert\.com|kununu\.com|designrush\.com|yelp\.[a-z.]+|herold\.at|local\.ch|search\.ch|firmenabc\.at|11880\.com)$/i;
+const SPOLECZNOSCI_DE_RE = /(^|\.)(reddit\.com|quora\.com|linkedin\.com|youtube\.com|youtu\.be|facebook\.com|instagram\.com|x\.com|medium\.com|github\.com|gutefrage\.net|xing\.com)$/i;
+const MEDIA_DE_RE = /(^|\.)(handelsblatt\.com|wiwo\.de|faz\.net|spiegel\.de|zeit\.de|heise\.de|t3n\.de|omt\.de|sistrix\.de|forbes\.[a-z.]+|businessinsider\.[a-z.]+|derstandard\.at|nzz\.ch)$/i;
+
+function klasyfikujKategorieDe(domena, zastana) {
+  if (zastana) return zastana;
+  const d = String(domena || '').toLowerCase().replace(/^www\./, '');
+  if (KATALOGI_DE_RE.test(d)) return 'katalog_b2b';
+  if (SPOLECZNOSCI_DE_RE.test(d)) return 'spolecznosci';
+  if (MEDIA_DE_RE.test(d) || /(^|[.-])(news|presse|media|magazin|zeitung|portal|blog)([.-]|$)/i.test(d)) return 'media';
+  return 'inne';
+}
+
+function etykietaKategoriiDe(kat) {
+  if (kat === 'katalog_b2b') return 'B2B-Verzeichnis';
+  if (kat === 'media') return 'Fachmedien';
+  if (kat === 'spolecznosci') return 'Community';
+  if (kat === 'wlasna') return 'Eigene Website';
+  return 'Portal';
+}
+
+function etykietaSentymentuDe(sent) {
+  if (sent === 'pozytywny') return 'positiv';
+  if (sent === 'negatywny') return 'kritisch';
+  if (sent === 'neutralny') return 'neutral';
+  return null;
+}
+
+function PigulkiPozycjiISentymentuDe({ pozycja, sentyment, kompakt = false }) {
+  const maPoz = Number.isFinite(pozycja) && pozycja > 0;
+  const tekstSent = etykietaSentymentuDe(sentyment);
+  if (!maPoz && !tekstSent) return null;
+  const stylBazowy = {
+    display: 'inline-block',
+    padding: kompakt ? '0.08rem 0.38rem' : '0.12rem 0.48rem',
+    borderRadius: '999px',
+    fontSize: kompakt ? '0.68rem' : '0.74rem',
+    fontWeight: 700,
+    lineHeight: 1.35,
+    fontVariantNumeric: 'tabular-nums',
+    whiteSpace: 'nowrap',
+  };
+  const stylSent = sentyment === 'pozytywny'
+    ? { background: 'rgba(4, 120, 87, 0.12)', color: '#047857' }
+    : sentyment === 'negatywny'
+    ? { background: 'rgba(179, 38, 30, 0.12)', color: '#b3261e' }
+    : { background: 'rgba(15, 23, 42, 0.07)', color: 'var(--w-tusz-2)' };
+  return (
+    <span style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0.25rem', alignItems: 'center', marginLeft: kompakt ? '0.3rem' : '0.4rem', verticalAlign: 'middle' }}>
+      {maPoz && (
+        <span
+          style={{
+            ...stylBazowy,
+            background: pozycja <= 3 ? 'rgba(216, 90, 48, 0.14)' : 'rgba(15, 23, 42, 0.08)',
+            color: pozycja <= 3 ? '#b4471f' : 'var(--w-tusz)',
+          }}
+          title={`Empfehlungsplatz #${pozycja}`}
+        >
+          #{pozycja}
+        </span>
+      )}
+      {tekstSent && <span style={{ ...stylBazowy, ...stylSent }}>{tekstSent}</span>}
+    </span>
+  );
+}
+
 function kolorOceny(w) {
   if (w >= 80) return 'dobra';
   if (w >= 50) return 'srednia';
@@ -603,7 +669,18 @@ function PruefTool() {
                     {x.dostepny
                       ? p.pytania.map((q, qi) => {
                         const c = p.siatka.find((g) => g.silnik === x.id && g.pytanie === q);
-                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} i={qi} /> : '-'}</td>;
+                        return (
+                          <td key={q}>
+                            {c ? (
+                              <span style={{ display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.2rem' }}>
+                                <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} i={qi} />
+                                {c.wymieniona && !c.brakOdpowiedzi && (
+                                  <PigulkiPozycjiISentymentuDe pozycja={c.pozycja} sentyment={c.sentyment} kompakt />
+                                )}
+                              </span>
+                            ) : '-'}
+                          </td>
+                        );
                       })
                       : <td colSpan={p.pytania.length} className="narz-mikro">{x.powod}</td>}
                     <td>{x.dostepny ? `${x.wzmianki}/${x.odpowiedzi}` : '-'}</td>
@@ -639,11 +716,30 @@ function PruefTool() {
               {topZr.length > 0 && (
                 <div role="region" aria-labelledby="ai-top-zrodla">
                   <h2 id="ai-top-zrodla" className="narz-h2">Am häufigsten zitierte Seiten</h2>
-                  <ul className="narz-chipy">{topZr.map((z) => <li key={z.domena}>{z.domena} <span>×{z.ile}</span></li>)}</ul>
+                  <ul className="narz-chipy">
+                    {topZr.map((z) => {
+                      const kat = klasyfikujKategorieDe(z.domena, z.kategoria);
+                      return (
+                        <li key={z.domena} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
+                          <span>{z.domena}</span>
+                          <span style={{ fontSize: '0.72rem', padding: '0.08rem 0.42rem', borderRadius: '999px', background: 'rgba(15, 23, 42, 0.07)', color: 'var(--w-tusz-2)', fontWeight: 600 }}>
+                            {etykietaKategoriiDe(kat)}
+                          </span>
+                          <span style={{ fontVariantNumeric: 'tabular-nums' }}>×{z.ile}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
                   <p className="narz-mikro">
                     Eine Erwähnung Ihres Unternehmens auf diesen Seiten erhöht die Chance, dass ein Modell es empfiehlt.
                     {resztaZrodel > 0 && ` Dazu ${resztaZrodel} weitere ${resztaZrodel === 1 ? 'Seite' : 'Seiten'} nach Eingabe Ihrer E-Mail.`}
                   </p>
+                  {Array.isArray(p.lukaCytowan) && p.lukaCytowan.length > 0 && (
+                    <p className="narz-mikro" style={{ marginTop: '0.45rem', padding: '0.6rem 0.85rem', borderRadius: '12px', background: 'rgba(216, 90, 48, 0.07)', border: '1px solid rgba(216, 90, 48, 0.2)', color: 'var(--w-tusz)', fontVariantNumeric: 'tabular-nums' }}>
+                      <strong>{`Citation-Gap erkannt (${p.lukaCytowan.length} ${p.lukaCytowan.length === 1 ? 'Quelle' : 'Quellen'}):`}</strong>{' '}
+                      Schalten Sie unten das Citation-Gap-Playbook frei, um zu sehen, auf welchen Branchenseiten Wettbewerber ohne Ihr Unternehmen zitiert werden.
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -683,10 +779,63 @@ function PruefTool() {
               {stan.pelny.zrodla?.length > 0 && (
                 <div role="region" aria-labelledby="ai-zrodla">
                   <h2 id="ai-zrodla" className="narz-h2">Auf welche Seiten sie sich stützen</h2>
-                  <ul className="narz-chipy">{stan.pelny.zrodla.map((z) => <li key={z.domena}>{z.domena} <span>×{z.ile}</span></li>)}</ul>
+                  <ul className="narz-chipy">
+                    {stan.pelny.zrodla.map((z) => {
+                      const kat = klasyfikujKategorieDe(z.domena, z.kategoria);
+                      return (
+                        <li key={z.domena} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
+                          <span>{z.domena}</span>
+                          <span style={{ fontSize: '0.72rem', padding: '0.08rem 0.42rem', borderRadius: '999px', background: 'rgba(15, 23, 42, 0.07)', color: 'var(--w-tusz-2)', fontWeight: 600 }}>
+                            {etykietaKategoriiDe(kat)}
+                          </span>
+                          <span style={{ fontVariantNumeric: 'tabular-nums' }}>×{z.ile}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
                   <p className="narz-mikro">Eine Erwähnung Ihres Unternehmens auf diesen Seiten erhöht die Chance, dass ein Modell es empfiehlt.</p>
                 </div>
               )}
+              {(() => {
+                const lukaLista = Array.isArray(stan.pelny.lukaCytowan) && stan.pelny.lukaCytowan.length > 0
+                  ? stan.pelny.lukaCytowan
+                  : (Array.isArray(p.lukaCytowan) ? p.lukaCytowan : []);
+                if (!lukaLista.length) return null;
+                return (
+                  <div
+                    role="region"
+                    aria-labelledby="ai-luka-cytowan-de"
+                    style={{ padding: '1.1rem 1.2rem', borderRadius: '18px', background: 'var(--w-papier, #f6f4ef)', border: '1px solid rgba(216, 90, 48, 0.22)', display: 'grid', gap: '0.75rem', fontVariantNumeric: 'tabular-nums' }}
+                  >
+                    <div>
+                      <h2 id="ai-luka-cytowan-de" className="narz-h2" style={{ margin: 0 }}>
+                        Citation-Gap-Playbook: Wo Wettbewerber zitiert werden und Ihr Unternehmen fehlt
+                      </h2>
+                      <p className="narz-mikro" style={{ margin: '0.25rem 0 0' }}>
+                        Priorisierte externe Domains aus KI-Antworten, die Mitbewerber empfohlen haben, ohne Ihre Marke zu nennen.
+                      </p>
+                    </div>
+                    <ul className="narz-problemy" style={{ margin: 0 }}>
+                      {lukaLista.map((l) => {
+                        const kat = klasyfikujKategorieDe(l.domena, l.kategoria);
+                        const ile = Number(l.ileOdpowiedzi ?? l.ile ?? 1);
+                        return (
+                          <li key={l.domena} className="narz-problem" style={{ background: '#ffffff' }}>
+                            <p className="narz-problem-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', alignItems: 'center' }}>
+                              <strong style={{ color: 'var(--w-tusz)' }}>{l.domena}</strong>
+                              <span style={{ fontSize: '0.73rem', padding: '0.1rem 0.48rem', borderRadius: '999px', background: 'rgba(15, 23, 42, 0.07)', color: 'var(--w-tusz-2)', fontWeight: 600 }}>
+                                {etykietaKategoriiDe(kat)}
+                              </span>
+                              <span>{`zitiert in ${ile} ${ile === 1 ? 'Antwort' : 'Antworten'}`}</span>
+                            </p>
+                            {l.wskazowka && <p className="narz-problem-opis" style={{ marginTop: '0.25rem' }}>{l.wskazowka}</p>}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })()}
               <h2 className="narz-h2">Antworten</h2>
               <ul className="narz-problemy">
                 {stan.pelny.wiersze.filter((r) => !r.brakOdpowiedzi).map((r) => {
@@ -697,7 +846,12 @@ function PruefTool() {
                     : <>{podswietlMarke(pelnyTekst.slice(0, 600), wzorce)}{pelnyTekst.length > 600 ? '…' : ''}</>;
                   return (
                     <li key={`${r.silnik}-${r.pytanie}`} className={`narz-problem ${r.wymieniona ? 'narz-problem--ok' : 'narz-problem--blad'}`}>
-                      <p className="narz-problem-meta"><span className="narz-waga">{etykieta(r.silnik)}</span> · {r.wymieniona ? 'Unternehmen genannt' : 'Unternehmen nicht genannt'}</p>
+                      <p className="narz-problem-meta">
+                        <span className="narz-waga">{etykieta(r.silnik)}</span>
+                        {' · '}
+                        {r.wymieniona ? 'Unternehmen genannt' : 'Unternehmen nicht genannt'}
+                        {r.wymieniona && <PigulkiPozycjiISentymentuDe pozycja={r.pozycja} sentyment={r.sentyment} />}
+                      </p>
                       <h3 className="narz-problem-tytul">{r.pytanie}</h3>
                       <p className="narz-problem-opis">{skrot}</p>
                       {maWiecej && (

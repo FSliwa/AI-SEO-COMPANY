@@ -211,7 +211,7 @@ export function LokalneNapClient() {
   const en = useLocale() === 'en';
   const jezyk = en ? 'en-US' : 'pl-PL';
   const [adres, setAdres] = useState('');
-  const [linkWizytowki, setLinkWizytowki] = useState(DOMYSLNY_LINK_QR);
+  const [linkWizytowki, setLinkWizytowki] = useState('');
   const [twojaOcena, setTwojaOcena] = useState(4.3);
   const [twojeOpinie, setTwojeOpinie] = useState(24);
   const [celOcena, setCelOcena] = useState(4.8);
@@ -392,7 +392,7 @@ export function LokalneNapClient() {
               maxLength={190}
               value={linkWizytowki}
               onChange={(e) => setLinkWizytowki(e.target.value)}
-              placeholder="np. g.page/r/.../review"
+              placeholder={en ? 'e.g. g.page/r/.../review' : 'np. g.page/r/.../review'}
               className="narz-pole"
               inputMode="url"
             />
@@ -699,6 +699,11 @@ export function LokalneNapClient() {
             <div className="sp2-qr-uklad">
               <div style={{ display: 'grid', gap: '0.65rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
+                  {!linkWizytowki.trim() && (
+                    <span className="sp2-pigulka sp2-pigulka--uwaga">
+                      {en ? 'Sample DEMO QR - paste your own g.page link above' : 'Podgląd DEMO - wklej wyżej własny link g.page'}
+                    </span>
+                  )}
                   <span className="sp2-pigulka sp2-pigulka--ok">
                     ISO/IEC 18004 · QR v{kodQr.wersja} ({kodQr.rozmiar}x{kodQr.rozmiar})
                   </span>

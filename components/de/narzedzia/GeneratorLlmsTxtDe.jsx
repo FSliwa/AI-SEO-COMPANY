@@ -146,19 +146,19 @@ export default function GeneratorLlmsTxtDe() {
         )}
       </CoDostajesz>
 
-      <Sekcja id="was-ist-llms-txt" tytul="Was ist llms.txt (und llms-full.txt)?">
+      <Sekcja id="was-ist-llms-txt" tytul="Was ist llms.txt? Aufbau und llms.txt Beispiel">
         <p style={s.akapit}>
           Die Datei llms.txt liegt unter der Adresse /llms.txt und beschreibt eine Website für Sprachmodelle und KI-Agenten, die Seiten im Auftrag von Nutzern lesen. Das Format hat Jeremy Howard im September 2024 vorgeschlagen, die aktuelle Fassung der Spezifikation (v2) ist auf llmstxt.org veröffentlicht.
         </p>
         <p style={s.akapit}>
-          Der Aufbau ist fest. Oben steht eine Überschrift mit dem Firmennamen, das einzige Pflichtelement. Darunter folgt ein Zitat mit einer kurzen Beschreibung, danach Abschnitte mit Linklisten: der Titel der Unterseite in eckigen Klammern, die Adresse in runden und nach einem Doppelpunkt ein Satz dazu, was dort steht. Ein Abschnitt mit dem Namen „Optional“ sammelt nachrangige Links, die ein Modell überspringen darf, wenn der Platz knapp ist. So könnte die Datei für eine deutschsprachige Website aussehen:
+          Der Aufbau ist fest. Oben steht eine Überschrift mit dem Firmennamen, das einzige Pflichtelement. Darunter folgt ein Zitat mit einer kurzen Beschreibung, danach Abschnitte mit Linklisten: der Titel der Unterseite in eckigen Klammern, die Adresse in runden und nach einem Doppelpunkt ein Satz dazu, was dort steht. Ein Abschnitt mit dem Namen „Optional“ sammelt nachrangige Links, die ein Modell überspringen darf, wenn der Platz knapp ist. Dieses llms.txt Beispiel zeigt die Struktur für eine deutschsprachige Website:
         </p>
         <pre style={{ ...s.karta, ...s.kod, padding: '1.25rem', margin: '0 0 0.5rem', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', color: 'var(--w-tusz)' }}>
           <code>{PRZYKLAD}</code>
         </pre>
         <p style={s.przypis}>Beispiel für den Aufbau, kein Auszug aus einer veröffentlichten Datei. Unsere eigene Datei unter ai-seo-company.pl/llms.txt ist auf Polnisch.</p>
         <p style={{ ...s.akapit, marginTop: '1rem' }}>
-          Manche Websites veröffentlichen daneben eine zweite, deutlich längere Datei namens llms-full.txt. Unser Generator erstellt das Verzeichnis, also die llms.txt: Das braucht eine typische Unternehmenswebsite.
+          Manche Websites veröffentlichen daneben eine zweite, ausführlichere Datei namens llms-full.txt mit Seitenauszügen. Im Ergebnis oben schalten Sie per Reiter zwischen dem kompakten Verzeichnis /llms.txt (für die meisten Unternehmenswebsites ideal) und der erweiterten Datei /llms-full.txt um.
         </p>
       </Sekcja>
 
@@ -175,7 +175,7 @@ export default function GeneratorLlmsTxtDe() {
         </p>
       </Sekcja>
 
-      <Sekcja id="was-prueft-der-generator" tytul="Was der Generator prüft">
+      <Sekcja id="was-prueft-der-generator" tytul="llms.txt Checker & Validator: Was der Generator prüft">
         <p style={s.akapit}>
           {`Der Generator ruft Ihre Sitemap ab, wählt bis zu ${GENERATOR.adresow} Adressen aus (bei einer größeren Sitemap einige aus jedem Abschnitt), prüft sie und setzt daraus die Datei zusammen. Parallel testet er den Zugriff von ${GENERATOR.botowAi} KI-Bots und Bingbot auf die Startseite. Der gesamte Ablauf dauert höchstens ${GENERATOR.sekund} Sekunden. Antwortet Ihre Website langsam, erhalten Sie ein Teilergebnis und eine Liste der Adressen, die wir nicht mehr prüfen konnten. Wir speichern weder die Adresse noch das Ergebnis.`}
         </p>

@@ -556,6 +556,11 @@ export function CwvVergleichClientDe() {
                 <p className="narz-mikro">
                   Offizielle Google-Grenzwerte im 75. Perzentil (mobil): LCP &lt;= 2,50 s, INP &lt;= 200 ms, CLS &lt;= 0,10, TTFB &lt;= 800 ms.
                 </p>
+                {(stronaA?.zrodloKod === 'html-ttfb' || stronaB?.zrodloKod === 'html-ttfb') && (
+                  <p className="narz-psi" role="note" style={{ margin: '0.35rem 0 0' }}>
+                    Hinweis: Für mindestens eine Domain lagen keine 28-Tage-CrUX-Felddaten vor; fehlende Werte stammen aus einer Live-HTML- und TTFB-Schätzung.
+                  </p>
+                )}
               </div>
               {!stronaB && (
                 <button
@@ -641,6 +646,11 @@ export function CwvVergleichClientDe() {
                         <span className={`cwv-metr cwv-metr--${klasaInp(k.dane.metryki?.inpMs)}`}>
                           {Number.isFinite(k.dane.metryki?.inpMs) ? `${fmtDe(k.dane.metryki.inpMs, 'de')} ms` : 'keine Daten'}
                         </span>
+                        {k.dane.metryki?.inpEstymowany && (
+                          <span className="narz-mikro" style={{ display: 'block', margin: '0.12rem 0 0', fontSize: '0.72rem' }}>
+                            Labor-Schätzung (TBT)
+                          </span>
+                        )}
                         <PasekRozkladuCruxDe trojka={wyciagnijTrojkeCrux(k.dane, 'inp')} zwiezly />
                       </td>
                     ))}

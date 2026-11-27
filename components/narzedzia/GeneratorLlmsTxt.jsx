@@ -162,13 +162,13 @@ const ZRZUTY = {
 };
 
 // Z-05: te same fakty co na stronie.
-const FUNKCJE = ['Plik llms.txt z mapy strony, do 50 adresów z każdej sekcji', 'Sekcje według katalogów i wersji językowych, sekcja Optional', 'Edycja pliku przed pobraniem', 'Test robots.txt i kodu HTTP dla 7 botów AI i Bingbot', 'Ocena istniejącego pliku /llms.txt z liczbą linków'];
-const FUNKCJE_EN = ['An llms.txt file from your sitemap, up to 50 URLs across all sections', 'Sections by folder and language version, an Optional section', 'Editing the file before downloading', 'robots.txt and HTTP code test for 7 AI bots and Bingbot', 'A check of the existing /llms.txt file, including its link count'];
+const FUNKCJE = [`Plik llms.txt i rozszerzony llms-full.txt z mapy strony, do ${GENERATOR.adresow} adresów`, 'Sekcje według katalogów i wersji językowych, sekcja Optional', 'Edycja pliku przed pobraniem', `Test robots.txt i kodu HTTP dla ${GENERATOR.botowAi} botów AI i Bingbot`, 'Walidator istniejącego pliku /llms.txt z liczbą linków'];
+const FUNKCJE_EN = [`Both llms.txt and extended llms-full.txt from your sitemap, up to ${GENERATOR.adresow} URLs`, 'Sections by folder and language version, an Optional section', 'Editing the file before downloading', `robots.txt and HTTP code test for ${GENERATOR.botowAi} AI bots and Bingbot`, 'llms.txt validator checking your existing /llms.txt file and link count'];
 
 // Partia 2 (p2-llms, 18.11.2026): sekcja „llms.txt example” tylko w wersji EN. Wersja PL ma już fragment pliku
 // w sekcji „Co to jest llms.txt”, a polskie frazy z przykładem mają wolumen 10/mies., więc PL bez zmian.
-// Boty z app/api/llms-txt/generator.js (BOTY), kolumna „ua: null” = Google-Extended (tylko robots.txt).
-const BOTY_NAZWY = 'GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Claude-SearchBot, Google-Extended and Bingbot';
+// Boty z app/api/llms-txt/generator.js (BOTY), kolumna „ua: null” = Google-Extended i Applebot-Extended (tylko robots.txt).
+const BOTY_NAZWY = 'GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Claude-SearchBot, Google-Extended, Applebot-Extended, Bytespider and Bingbot';
 
 export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
   const en = locale === 'en';
@@ -242,8 +242,8 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
               <ZrzutWyniku
                 {...ZRZUT}
                 sizes="(max-width: 700px) 100vw, 640px"
-                alt={en ? 'llms.txt generator: the result for ai-seo-company.pl with the sitemap summary, the existing file check and the access test for 7 AI bots and Bingbot' : 'Generator llms.txt: wynik dla ai-seo-company.pl z mapą strony, oceną obecnego pliku i testem dostępu 8 botów AI'}
-                podpis={en ? 'The generator’s result for our own website from 12 November 2026: sitemap, existing file and the 7-AI-bot and Bingbot test. The ready file and the editor are below the table.' : 'Wynik generatora dla naszej strony z 12 listopada 2026: mapa strony, obecny plik i test 8 botów. Pod tabelą jest gotowy plik i edytor.'}
+                alt={en ? `llms.txt generator: the result for ai-seo-company.pl with the sitemap summary, the existing file check and the access test for ${GENERATOR.botowAi} AI bots and Bingbot` : `Generator llms.txt: wynik dla ai-seo-company.pl z mapą strony, oceną obecnego pliku i testem dostępu ${GENERATOR.botowAi} botów AI i Bingbot`}
+                podpis={en ? 'The generator’s result for our own website from 12 November 2026: sitemap, existing file and AI bot access test (snapshot taken before adding Applebot-Extended and Bytespider). The ready file and the editor are below the table.' : 'Wynik generatora dla naszej strony z 12 listopada 2026: mapa strony, obecny plik i test dostępu botów (zrzut sprzed dodania Applebot-Extended i Bytespider). Pod tabelą jest gotowy plik i edytor.'}
               />
             </div>
           </CoDostajesz>
@@ -276,7 +276,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
             </pre>}
             {!(en && przyklad) && <p style={s.przypis}>{en ? PRZYKLAD_EN_NOTE : 'Fragment pliku https://www.ai-seo-company.pl/llms.txt, stan na 5 listopada 2026.'}</p>}
             <p style={{ ...s.akapit, marginTop: '1rem' }}>
-              {en ? 'Some sites also publish a second, much longer file called llms-full.txt. Our generator creates the index, that is llms.txt: it is what a typical company website needs.' : 'Niektóre serwisy publikują obok drugi, dużo dłuższy plik llms-full.txt. Nasz generator tworzy spis, czyli llms.txt: tego potrzebuje typowa strona firmowa.'}
+              {en ? 'Some sites also publish a second, longer file called llms-full.txt with page summaries and excerpts. In the result tabs above you can switch between the compact /llms.txt index (what most company sites need) and an extended /llms-full.txt file.' : 'Niektóre serwisy publikują obok drugi, szerszy plik llms-full.txt z wyciągami treści podstron. W zakładkach wyniku powyżej przełączysz się jednym kliknięciem między zwięzłym spisem /llms.txt (wystarczającym dla większości stron firmowych) a rozszerzonym plikiem /llms-full.txt.'}
             </p>
           </section>
 
@@ -315,7 +315,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
                 Our file also has a &quot;Fakty o firmie&quot; section (company facts) made of plain lines with no links. The proposal expects links in H2 sections, so treat that section as our own addition rather than part of the format. The file lives at the site root, and the proposal asks for it to stay small enough to fit in a model&apos;s context window.
               </p>
 
-              <h3 id="llms-txt-checker" style={s.h3}>llms.txt checker: what the tool tests</h3>
+              <h3 id="llms-txt-checker" style={s.h3}>llms.txt validator &amp; checker: what the tool tests</h3>
               <p style={s.akapit}>
                 When you run the generator, it also checks the llms.txt file your site already serves. It reads the first 64 KB and reports:
               </p>
@@ -345,7 +345,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
                   Signals from Google are mixed. The Chrome team added an llms.txt check to its experimental Lighthouse audits, while Google&apos;s John Mueller explained that the file was not created with search in mind. Gemini&apos;s access to content is governed separately, by the Google-Extended entry in robots.txt.
                 </p>
                 <p style={s.akapit}>
-                  Our conclusion: llms.txt is a cheap add-on, not a strategy. Preparing the file costs little and breaks nothing, but whether ChatGPT, Perplexity or Claude cite your site is decided by their bots&apos; access and by content that can be quoted. That is why the generator also tests robots.txt and server responses for 7 AI bots and Bingbot. If you care about recommendations in model answers, start with{' '}
+                  Our conclusion: llms.txt is a cheap add-on, not a strategy. Preparing the file costs little and breaks nothing, but whether ChatGPT, Perplexity or Claude cite your site is decided by their bots&apos; access and by content that can be quoted. That is why the generator also tests robots.txt and server responses for {GENERATOR.botowAi} AI bots and Bingbot. If you care about recommendations in model answers, start with{' '}
                   {hubGeo ? <Link href={hubGeo} style={s.podkreslenie}>AI search optimization</Link> : 'AI search optimization'}
                   {a2 ? (
                     <>
@@ -365,7 +365,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
               Sygnały z Google są sprzeczne. Zespół Chrome dodał sprawdzanie llms.txt do eksperymentalnych audytów Lighthouse, a John Mueller z Google tłumaczył, że plik nie powstał z myślą o wyszukiwaniu. Dostęp Gemini do treści reguluje się osobno, wpisem Google-Extended w robots.txt.
             </p>
             <p style={s.akapit}>
-              Nasz wniosek: llms.txt to tani dodatek, a nie strategia. Przygotowanie pliku kosztuje niewiele i niczego nie psuje, ale o tym, czy ChatGPT, Perplexity albo Claude zacytują stronę, decyduje dostęp ich botów i treść, którą da się zacytować. Dlatego generator testuje też robots.txt i odpowiedzi serwera dla 7 botów AI i Bingbot. Jeśli zależy Ci na poleceniach w odpowiedziach modeli, zacznij od{' '}
+              Nasz wniosek: llms.txt to tani dodatek, a nie strategia. Przygotowanie pliku kosztuje niewiele i niczego nie psuje, ale o tym, czy ChatGPT, Perplexity albo Claude zacytują stronę, decyduje dostęp ich botów i treść, którą da się zacytować. Dlatego generator testuje też robots.txt i odpowiedzi serwera dla {GENERATOR.botowAi} botów AI i Bingbot. Jeśli zależy Ci na poleceniach w odpowiedziach modeli, zacznij od{' '}
               {hubGeo ? <Link href={hubGeo} style={s.podkreslenie}>pozycjonowania w AI</Link> : 'pozycjonowania w AI'}
               {a2 ? (
                 <>
@@ -405,9 +405,9 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
           </section>
 
           {!en && (
-            <Sekcja id="jak-sprawdzic-robots-txt-boty-ai" tytul="Jak sprawdzić robots.txt pod kątem botów AI">
+            <Sekcja id="jak-sprawdzic-robots-txt-boty-ai" tytul="Walidator llms.txt i jak sprawdzić robots.txt pod kątem botów AI">
               <p style={s.akapit}>
-                Wklej adres domeny w formularzu u góry: generator pobiera <code>robots.txt</code> i jednocześnie sprawdza kod odpowiedzi HTTP strony głównej dla {GENERATOR.botowAi} botów AI (<code>GPTBot</code>, <code>OAI-SearchBot</code>, <code>ChatGPT-User</code>, <code>PerplexityBot</code>, <code>ClaudeBot</code>, <code>Claude-SearchBot</code>, <code>Google-Extended</code>) oraz <code>Bingbot</code>. Dzięki temu od razu widzisz zarówno reguły <code>Allow</code> i <code>Disallow</code> w pliku <code>robots.txt</code>, jak i ukryte blokady zapory WAF lub CDN (kod <code>403</code> albo <code>429</code> dla bota przy <code>200</code> dla zwykłej przeglądarki).
+                Wklej adres domeny w formularzu u góry: narzędzie działa jednocześnie jako walidator llms.txt (sprawdza kod HTTP 200, nagłówek <code># Nazwa</code> i liczbę linków w obecnym pliku <code>/llms.txt</code>) oraz tester dostępu {GENERATOR.botowAi} botów AI (<code>GPTBot</code>, <code>OAI-SearchBot</code>, <code>ChatGPT-User</code>, <code>PerplexityBot</code>, <code>ClaudeBot</code>, <code>Claude-SearchBot</code>, <code>Google-Extended</code>, <code>Applebot-Extended</code>, <code>Bytespider</code>) i <code>Bingbot</code>. Dzięki temu od razu widzisz zarówno reguły <code>Allow</code> i <code>Disallow</code> w pliku <code>robots.txt</code>, jak i ukryte blokady zapory WAF lub CDN (kod <code>403</code> albo <code>429</code> dla bota przy <code>200</code> dla zwykłej przeglądarki).
               </p>
               <p style={s.akapit}>
                 Rozdzielaj boty treningowe od wyszukiwarkowych. Możesz zablokować <code>GPTBot</code> albo <code>ClaudeBot</code>, jeśli nie chcesz udostępniać treści do trenowania modeli, ale zablokowanie <code>OAI-SearchBot</code> w <code>robots.txt</code> wyklucza stronę z wyników wyszukiwania w ChatGPT (a blokada <code>PerplexityBot</code> z odpowiedzi Perplexity), nawet gdy wgrasz poprawny plik <code>/llms.txt</code>.

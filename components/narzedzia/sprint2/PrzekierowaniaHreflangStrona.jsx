@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
@@ -14,10 +15,12 @@ import AppleFaq from '@/components/service/AppleFaq';
 import { Link } from '@/i18n/routing';
 import { BASE, RODZIC_OKRUSZKOW, stronaNarzedzia } from '@/lib/narzedzia';
 import { stronaNarzedziaL } from '@/lib/narzedzia.en';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { cena } from '@/lib/narzedziaLiczby';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import NawBok from '@/components/narzedzia/NawBok';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import Sekcja from '@/components/narzedzia/Sekcja';
 import Poradniki from '@/components/narzedzia/Poradniki';
 import PozostaleNarzedzia from '@/components/narzedzia/PozostaleNarzedzia';
@@ -108,18 +111,20 @@ export function PrzekierowaniaHreflangStrona({ locale = 'pl' } = {}) {
     : 'Inspektor przekierowań 301, tagów canonical i zwrotności hreflang');
   const okruszek = wpisRejestru?.okruszek || (en ? 'Redirect & hreflang Checker' : 'Przekierowania i hreflang');
   const zrodla = wpisRejestru?.sources?.length ? wpisRejestru.sources : (en ? ZRODLA_EN : ZRODLA_PL);
+  const ilustracja = obrazKarty(SLUG, locale);
 
   return (
     <main className={st.strona} style={s.main}>
       <Header />
       <Breadcrumbs pl={okruszek} en={okruszek} parent={RODZIC_OKRUSZKOW} />
       <WebAppSchema
-        name={en ? '301 Redirect, Canonical & hreflang Matrix Checker' : 'Inspektor przekierowań 301/308, canonical i macierzy hreflang'}
+        name={en ? '301 Redirect Checker, Canonical & hreflang Validator' : 'Sprawdź przekierowania 301, canonical i walidator hreflang'}
         description={en
-          ? 'Free technical SEO inspector: tests all 4 HTTP/HTTPS and www/non-www host variants for redirect chains, checks HTML & HTTP canonical consistency, validates bidirectional A<->B hreflang tags, and generates 1-click redirect rules for Next.js, Nginx, Apache and Cloudflare.'
-          : 'Darmowy inspektor technicznego SEO: testuje 4 warianty domeny (http, https, www) pod kątem łańcuchów przekierowań, sprawdza spójność canonicala, weryfikuje zwrotność A<->B tagów hreflang i generuje gotowe reguły dla Next.js, Nginx, .htaccess i Cloudflare.'}
+          ? 'Free technical SEO redirect checker and hreflang validator: tests all 4 HTTP/HTTPS and www/non-www host variants for redirect chains, checks HTML & HTTP canonical consistency, validates bidirectional A<->B hreflang tags, and generates 1-click redirect rules.'
+          : 'Darmowy walidator hreflang i inspektor przekierowań 301/308: sprawdź przekierowania 301 dla 4 wariantów domeny (http, https, www), zweryfikuj spójność canonicala, zwrotność A<->B tagów hreflang i wygeneruj reguły serwerowe.'}
         url={en ? URL_EN : URL_PL}
         category="DeveloperApplication"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={en
           ? [
               '4-variant host consolidation check (http, https, http://www, https://www) with hop count',
@@ -158,9 +163,10 @@ export function PrzekierowaniaHreflangStrona({ locale = 'pl' } = {}) {
           <div style={s.poNarzedziu}>
             <AnswerBox {...(en ? { etykieta: 'Short answer' } : {})}>
               {en
-                ? 'Proper URL consolidation requires all three non-canonical domain variants (http://, https:// and http://www. - or vice versa) to redirect in a single permanent 301/308 hop to one target URL that declares a matching self-referencing canonical. On multilingual sites, every hreflang link from page A to page B must also be confirmed by a return hreflang link from B back to A.'
-                : 'Prawidłowa konsolidacja adresów wymaga, aby trzy niekanoniczne warianty domeny (http://, https:// oraz http://www. - lub odwrotnie) kierowały w jednym stałym skoku 301/308 na docelowy adres z identycznym tagiem self-canonical. W serwisach wielojęzycznych każdy tag hreflang ze strony A do strony B musi być potwierdzony linkiem zwrotnym ze strony B do A.'}
+                ? 'Proper URL consolidation requires all three non-canonical domain variants (http://, https:// and http://www. - or vice versa) to redirect in a single permanent 301/308 hop to one target URL that declares a matching self-referencing canonical. Our free redirect checker and hreflang validator also verifies that every hreflang link from page A to page B is confirmed by a return link from B back to A.'
+                : 'Prawidłowa konsolidacja adresów wymaga, aby trzy niekanoniczne warianty domeny (http://, https:// oraz http://www. - lub odwrotnie) kierowały w jednym stałym skoku 301/308 na docelowy adres z identycznym tagiem self-canonical. Sprawdź przekierowania 301 oraz zwrotność wersji językowych w jednym miejscu: nasz walidator hreflang weryfikuje także linki zwrotne ze strony B do A.'}
             </AnswerBox>
+            <Byline sciezka="/narzedzia/sprawdz-przekierowania-hreflang" takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
@@ -184,7 +190,9 @@ export function PrzekierowaniaHreflangStrona({ locale = 'pl' } = {}) {
                 przypis={en
                   ? 'Free diagnostic permalink (?url=...) ready to send straight to your developer or DevOps team.'
                   : 'Darmowy link diagnostyczny (?url=...) gotowy do wysłania bezpośrednio programiście lub administratorowi.'}
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               {en ? (
                 <>

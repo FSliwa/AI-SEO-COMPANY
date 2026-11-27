@@ -199,7 +199,7 @@ function demoLokalneNapDe(surowyUrl, parametryOpinii) {
 
 export function LokalneNapClientDe() {
   const [adres, setAdres] = useState('');
-  const [linkWizytowki, setLinkWizytowki] = useState(DOMYSLNY_LINK_QR);
+  const [linkWizytowki, setLinkWizytowki] = useState('');
   const [twojaOcena, setTwojaOcena] = useState(4.3);
   const [twojeOpinie, setTwojeOpinie] = useState(24);
   const [celOcena, setCelOcena] = useState(4.8);
@@ -629,6 +629,11 @@ export function LokalneNapClientDe() {
             <div className="sp2-qr-uklad">
               <div style={{ display: 'grid', gap: '0.65rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
+                  {!linkWizytowki.trim() && (
+                    <span className="sp2-pigulka sp2-pigulka--uwaga">
+                      Beispiel-QR (DEMO) - oben eigenen g.page-Link einfügen
+                    </span>
+                  )}
                   <span className="sp2-pigulka sp2-pigulka--ok">
                     ISO/IEC 18004 · QR v{kodQr.wersja} ({kodQr.rozmiar}x{kodQr.rozmiar})
                   </span>

@@ -468,8 +468,10 @@ export function PrzekierowaniaHreflangClient() {
                       const etykietaWariantu = ({
                         http_bez_www: en ? 'http:// (non-www)' : 'http:// (bez www)',
                         http_z_www: en ? 'http://www.' : 'http:// (z www)',
+                        http_www: en ? 'http://www.' : 'http:// (z www)',
                         https_bez_www: en ? 'https:// (non-www)' : 'https:// (bez www)',
                         https_z_www: en ? 'https://www.' : 'https:// (z www)',
+                        https_www: en ? 'https://www.' : 'https:// (z www)',
                       })[v.wariant] || v.wariant || v.startUrl;
                       return (
                         <tr key={v.startUrl || idx}>
@@ -577,29 +579,39 @@ export function PrzekierowaniaHreflangClient() {
                       </tr>
                     </thead>
                     <tbody>
-                      {hreflang.map((h, idx) => (
-                        <tr key={`${h.kod || h.lang}-${idx}`}>
-                          <th scope="row" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)' }}>
-                            {h.kod || h.lang}
-                          </th>
-                          <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
-                            {h.url || h.href}
-                          </td>
-                          <td style={{ fontVariantNumeric: 'tabular-nums', fontWeight: 700 }}>
-                            <span className={`sp2-pigulka ${Number(h.status) === 200 ? 'sp2-pigulka--ok' : 'sp2-pigulka--blad'}`}>
-                              {h.status || '-'}
-                            </span>
-                          </td>
-                          <td className="narz-mikro">{h.zrodlo || 'HTML <head>'}</td>
-                          <td>
-                            <span className={`sp2-pigulka ${h.zwrotny ? 'sp2-pigulka--ok' : 'sp2-pigulka--blad'}`}>
-                              {h.zwrotny
-                                ? (en ? 'Reciprocal (OK)' : 'Zwrotny (OK)')
-                                : (en ? 'Missing return link!' : 'Brak linku zwrotnego!')}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
+                      {hreflang.map((h, idx) => {
+                        const niesprawdzone = Boolean(h.niesprawdzone || h.zwrotny === null);
+                        const zrodloTekst = ({
+                          html: 'HTML <head>',
+                          http: 'HTTP Link',
+                          sitemap: 'XML Sitemap',
+                        })[h.zrodlo] || h.zrodlo || 'HTML <head>';
+                        return (
+                          <tr key={`${h.kod || h.lang}-${idx}`}>
+                            <th scope="row" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)' }}>
+                              {h.kod || h.lang}
+                            </th>
+                            <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
+                              {h.url || h.href}
+                            </td>
+                            <td style={{ fontVariantNumeric: 'tabular-nums', fontWeight: 700 }}>
+                              <span className={`sp2-pigulka ${niesprawdzone && h.status == null ? 'sp2-pigulka--neutral' : Number(h.status) === 200 ? 'sp2-pigulka--ok' : 'sp2-pigulka--blad'}`}>
+                                {h.status || '-'}
+                              </span>
+                            </td>
+                            <td className="narz-mikro">{zrodloTekst}</td>
+                            <td>
+                              <span className={`sp2-pigulka ${niesprawdzone ? 'sp2-pigulka--neutral' : h.zwrotny ? 'sp2-pigulka--ok' : 'sp2-pigulka--blad'}`}>
+                                {niesprawdzone
+                                  ? (en ? 'Unverified (>12)' : 'Niezweryfikowano (>12)')
+                                  : h.zwrotny
+                                  ? (en ? 'Reciprocal (OK)' : 'Zwrotny (OK)')
+                                  : (en ? 'Missing return link!' : 'Brak linku zwrotnego!')}
+                              </span>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
@@ -708,8 +720,11 @@ export function PrzekierowaniaHreflangClient() {
                 <ul className="narz-problemy" style={{ marginTop: '0.75rem' }}>
                   {problemy.map((p, idx) => {
                     const tekst = typeof p === 'string' ? p : (p?.opis || p?.tytul || '');
+                    const klasaProblemu = (p?.waga === 'ostrzezenie' || p?.waga === 'uwaga')
+                      ? 'narz-problem--ostrzezenie'
+                      : 'narz-problem--blad';
                     return (
-                      <li key={idx} className="narz-problem narz-problem--blad">
+                      <li key={idx} className={`narz-problem ${klasaProblemu}`}>
                         <p className="narz-problem-fix" style={{ margin: 0 }}>{tekst}</p>
                       </li>
                     );

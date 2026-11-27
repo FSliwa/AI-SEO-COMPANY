@@ -6,15 +6,18 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import { Link } from '@/i18n/routing';
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
 import { STRONY_NARZEDZI_DE } from '@/lib/narzedzia.de';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY } from '@/lib/narzedziaLiczby';
 import { eur } from '@/lib/formatDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
@@ -69,9 +72,12 @@ export function PrzekierowaniaHreflangStronaDe() {
   const h1 = wpis?.h1 || '301-Weiterleitungen, Canonical & hreflang online prüfen';
   const okruszek = nazwy?.okruszek || 'Weiterleitungen & hreflang';
   const url = urlDe(KLUCZ) || ZAPAS_URL;
-  const zrodla = nazwy?.zrodla
+  const zrodla = nazwy?.sources?.length
+    ? nazwy.sources
+    : nazwy?.zrodla
     ? ZRODLA_DE.map((z, i) => ({ ...z, nazwa: nazwy.zrodla[i] ?? z.nazwa }))
     : ZRODLA_DE;
+  const ilustracja = obrazKarty(SLUG, 'de');
 
   const auditTool = jesli('/narzedzia/audyt-seo');
   const nextVergleich = jesli('/porownania/nextjs-vs-wordpress-seo');
@@ -93,6 +99,7 @@ export function PrzekierowaniaHreflangStronaDe() {
         url={url}
         category="DeveloperApplication"
         language="de"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={[
           'Prüfung aller 4 Domain-Varianten (http, https, http://www, https://www) inklusive Sprunganzahl',
           'Abgleich von HTML-Canonical und HTTP-Link-Header mit der endgültigen Zieladresse',
@@ -119,15 +126,16 @@ export function PrzekierowaniaHreflangStronaDe() {
 
           <div style={s.poNarzedziu}>
             <AnswerBox etykieta="Kurzantwort">
-              Für eine saubere Indexierung müssen alle drei nicht-kanonischen Host-Varianten (http://, https:// und http://www. - oder umgekehrt) in einem einzigen dauerhaften 301/308-Sprung auf Ihre Zieladresse leiten, die ein identisches Self-Canonical trägt. Auf mehrsprachigen Websites (etwa für Deutschland, Österreich, die Schweiz und internationale Märkte) muss zudem jeder hreflang-Verweis von Seite A auf Seite B durch einen Rücklink von B auf A bestätigt werden.
+              Wenn Sie Ihre 301 Weiterleitung prüfen, müssen alle drei nicht-kanonischen Host-Varianten (http://, https:// und http://www. - oder umgekehrt) in einem einzigen dauerhaften 301/308-Sprung auf Ihre Zieladresse leiten, die ein identisches Self-Canonical trägt. Auf mehrsprachigen Websites prüft unser Hreflang Validator zudem, ob jeder Verweis von Seite A auf Seite B durch einen Rücklink von B auf A bestätigt wird.
             </AnswerBox>
+            <Byline sciezka={KLUCZ} takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
             <div className={st.trescGlowna}>
               <CoDostajesz
                 id="was-sie-erhalten"
-                tytul="Das prüft der Weiterleitungs- & hreflang-Inspektor kostenlos"
+                tytul="301 Weiterleitung prüfen & Hreflang Validator: Das erhalten Sie kostenlos"
                 tytulOdRazu="Sofort im Browser, ohne E-Mail"
                 odRazu={[
                   'Übersichtliche Hop-by-Hop-Tabelle für http://, https://, http://www. und https://www.',
@@ -136,7 +144,9 @@ export function PrzekierowaniaHreflangStronaDe() {
                   '4 fertige Konfigurationsvorlagen für Next.js, Nginx, Apache (.htaccess) und Cloudflare',
                 ]}
                 przypis="Teilbarer Diagnose-Link (?url=...) für die direkte Abstimmung mit IT, Hosting oder Agentur."
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               <Sekcja id="typische-weiterleitungs-und-canonical-fehler" tytul="4 häufige Weiterleitungs- & hreflang-Fehler im DACH-Mittelstand">
                 <CompareTable

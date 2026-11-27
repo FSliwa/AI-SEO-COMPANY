@@ -4,7 +4,7 @@
 // woła POST ${PANEL_API}/content-plan-ai z { url, branza, lang }, renderuje tabelę 12 tematów
 // na Miesiąc 1-3 oraz pozwala pobrać arkusz .csv z BOM UTF-8 (\uFEFF) do Excela i Google Sheets.
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DEMO, PANEL_API } from '@/lib/narzedziaApi';
 import { WALID_DE } from '@/lib/walidacjaDe';
 import { track } from '@/lib/track';
@@ -23,8 +23,11 @@ const CSS_CPG = `
 .cpg-tabela tr:last-child td { border-bottom: 0; }
 .cpg-intencja { display: inline-block; padding: 0.18rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
 .cpg-intencja--bofu { background: rgba(216, 90, 48, 0.14); color: #b4471f; }
+.cpg-intencja--mofu { background: rgba(180, 83, 9, 0.13); color: #92400e; }
 .cpg-intencja--vs { background: rgba(30, 64, 175, 0.12); color: #1e40af; }
 .cpg-intencja--geo { background: rgba(4, 120, 87, 0.13); color: #047857; }
+.cpg-meta-pod { display: flex; flex-wrap: wrap; gap: 0.35rem 0.6rem; margin-top: 0.25rem; font-size: 0.76rem; color: var(--w-tusz-2); align-items: center; }
+.cpg-slug { font-family: var(--w-mono, monospace); background: rgba(15, 23, 42, 0.05); padding: 0.08rem 0.4rem; border-radius: 6px; color: var(--color-text-dark); }
 `;
 
 const TEKSTY = {
@@ -40,7 +43,10 @@ const TEKSTY = {
     trwa: 'Układam 12 tematów na 3 mies.…',
     pobierz: 'Pobierz arkusz planu (.csv do Excel / Google Sheets)',
     podsumowanie: (domena) => `Plan 90 dni (12 publikacji, Miesiąc 1-3) dla ${domena}`,
-    kolumny: ['Tydzień', 'Tytuł', 'Fraza główna', 'Intencja BOFU/VS/GEO', 'Cel w AI'],
+    wykrytoBranze: 'Wykryty profil',
+    csvMiesiac: 'Miesiąc',
+    csvDodatkowe: ['Docelowy URL (slug)', 'Format'],
+    kolumny: ['Tydzień', 'Tytuł i docelowy URL', 'Fraza główna', 'Intencja', 'Cel w AI'],
     miesiac: (m) => `Mies. ${m}`,
     tydz: (w) => `Tydz. ${w}`,
     bladSieci: 'Nie udało się wygenerować planu treści dla tej domeny. Sprawdź adres i spróbuj ponownie.',
@@ -57,7 +63,10 @@ const TEKSTY = {
     trwa: 'Building 12-week plan…',
     pobierz: 'Download plan (.csv for Excel / Google Sheets)',
     podsumowanie: (domena) => `90-day content plan (12 topics, Months 1-3) for ${domena}`,
-    kolumny: ['Week', 'Title', 'Primary keyword', 'BOFU/VS/GEO intent', 'AI visibility goal'],
+    wykrytoBranze: 'Detected profile',
+    csvMiesiac: 'Month',
+    csvDodatkowe: ['Target URL (slug)', 'Format'],
+    kolumny: ['Week', 'Title & target URL', 'Primary keyword', 'Intent', 'AI visibility goal'],
     miesiac: (m) => `Mo. ${m}`,
     tydz: (w) => `Wk ${w}`,
     bladSieci: 'Could not generate a content plan for this domain right now. Check the URL and try again.',
@@ -74,7 +83,10 @@ const TEKSTY = {
     trwa: 'Erstelle 12-Wochen-Plan…',
     pobierz: 'Redaktionsplan herunterladen (.csv für Excel / Google Sheets)',
     podsumowanie: (domena) => `90-Tage-Redaktionsplan (12 Themen, Monat 1-3) für ${domena}`,
-    kolumny: ['Woche', 'Titel', 'Haupt-Keyword', 'Intention BOFU/VS/GEO', 'Ziel in KI-Systemen'],
+    wykrytoBranze: 'Erkanntes Profil',
+    csvMiesiac: 'Monat',
+    csvDodatkowe: ['Ziel-URL (Slug)', 'Format'],
+    kolumny: ['Woche', 'Titel & Ziel-URL', 'Haupt-Keyword', 'Intention', 'Ziel in KI-Systemen'],
     miesiac: (m) => `Mon. ${m}`,
     tydz: (w) => `KW +${w}`,
     bladSieci: 'Der Redaktionsplan konnte momentan nicht erstellt werden. Bitte prüfen Sie die Domain und versuchen Sie es erneut.',
@@ -95,8 +107,21 @@ function wyczyscDomene(surowy) {
 function klasaIntencji(tekst) {
   const s = String(tekst || '').toUpperCase();
   if (s.includes('VS') || s.includes('VERGLEICH') || s.includes('PORÓWN')) return 'vs';
+  if (s.includes('MOFU')) return 'mofu';
   if (s.includes('GEO') || s.includes('AI') || s.includes('KI')) return 'geo';
   return 'bofu';
+}
+
+function slugZTekstu(tekst) {
+  return '/' + String(tekst || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/ł/g, 'l')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 48);
 }
 
 function zbudujDemoPlan(domena, surowaBranza, jezyk) {
@@ -116,7 +141,17 @@ function zbudujDemoPlan(domena, surowaBranza, jezyk) {
       [10, 3, `Anbieter für ${b} wechseln ohne Betriebsrisiko`, `${bMale} wechseln`, 'BOFU', 'Migrationsschritte für unzufriedene Bestandskunden der Konkurrenz'],
       [11, 3, `Vertragsmuster & SLA-Kriterien bei ${b}: Worauf achten?`, `${bMale} vertrag kriterien`, 'VS', 'Transparenter Kriterienkatalog für B2B-Einkäufer'],
       [12, 3, `15 häufige Kundenfragen zu ${b} knapp beantwortet`, `${bMale} faq`, 'GEO', 'Abdeckung von Long-Tail-Prompts in ChatGPT und Gemini'],
-    ].map(([tydzien, miesiac, tytul, fraza, intencja, celAi]) => ({ tydzien, miesiac, tytul, fraza, intencja, celAi, domena }));
+    ].map(([tydzien, miesiac, tytul, fraza, intencja, celAi]) => ({
+      tydzien,
+      miesiac,
+      tytul,
+      fraza,
+      intencja,
+      celAi,
+      slug: intencja === 'BOFU' ? slugZTekstu(fraza) : `/ratgeber${slugZTekstu(fraza)}`,
+      format: intencja === 'BOFU' ? 'Leistungsseite' : intencja === 'VS' ? 'Vergleichsseite' : 'GEO-Ratgeber',
+      domena,
+    }));
   }
   if (jezyk === 'en') {
     return [
@@ -125,14 +160,24 @@ function zbudujDemoPlan(domena, surowaBranza, jezyk) {
       [3, 1, `In-House vs Agency for ${b}: 12-Month Cost Breakdown`, `${bMale} agency vs in-house`, 'VS', 'Comparison matrix for Perplexity buyer prompts'],
       [4, 1, `Buyer Checklist: 10 Questions Before Hiring for ${b}`, `how to choose ${bMale}`, 'GEO', 'Structured evaluation criteria for LLM recommendations'],
       [5, 2, `Case Study: Measurable Results from ${b} in 90 Days`, `${bMale} case study`, 'BOFU', 'First-hand proof and E-E-A-T signals for brand mentions'],
-      [6, 2, `7 Costly Mistakes Companies Make with ${b}`, `${bMale} mistakes`, 'GEO', 'Problem-solution snippets for conversational queries'],
+      [6, 2, `7 Costly Mistakes Companies Make with ${b}`, `${bMale} mistakes`, 'MOFU', 'Problem-solution snippets for conversational queries'],
       [7, 2, `Custom vs Off-the-Shelf Approach in ${b}: Pros & Cons`, `custom vs standard ${bMale}`, 'VS', 'Balanced trade-off table cited in comparison answers'],
       [8, 2, `How Long Does ${b} Take? Realistic Timeline by Stage`, `how long does ${bMale} take`, 'GEO', 'Answer-first timeline summary for AI snippets'],
       [9, 3, `ROI Model: When Does ${b} Pay Back?`, `${bMale} roi`, 'BOFU', 'Unit-economics breakdown for CFO/founder prompts'],
       [10, 3, `Switching ${b} Providers Without Disruption: Step-by-Step`, `switch ${bMale} provider`, 'BOFU', 'Captures high-intent buyers leaving competitors'],
       [11, 3, `SLA & Contract Terms in ${b}: What to Verify`, `${bMale} contract checklist`, 'VS', 'Transparent buyer guide building trust signals'],
       [12, 3, `15 Real Customer Questions About ${b} Answered Directly`, `${bMale} faq`, 'GEO', 'Covers long-tail conversational prompts across LLMs'],
-    ].map(([tydzien, miesiac, tytul, fraza, intencja, celAi]) => ({ tydzien, miesiac, tytul, fraza, intencja, celAi, domena }));
+    ].map(([tydzien, miesiac, tytul, fraza, intencja, celAi]) => ({
+      tydzien,
+      miesiac,
+      tytul,
+      fraza,
+      intencja,
+      celAi,
+      slug: intencja === 'BOFU' ? slugZTekstu(fraza) : `/blog${slugZTekstu(fraza)}`,
+      format: intencja === 'BOFU' ? 'Service / Pricing' : intencja === 'VS' ? 'VS Comparison' : 'GEO Guide',
+      domena,
+    }));
   }
   return [
     [1, 1, `${b}: zakres współpracy, przebieg i mierzalne efekty`, `${bMale} dla firm`, 'BOFU', 'Jasna definicja usługi i encji firmy pod ChatGPT Search'],
@@ -140,14 +185,24 @@ function zbudujDemoPlan(domena, surowaBranza, jezyk) {
     [3, 1, `${b}: zewnętrzny wykonawca czy dział wewnętrzny? Porównanie kosztów`, `${bMale} firma czy etat`, 'VS', 'Tabela porównawcza pod zapytania decyzyjne w Perplexity'],
     [4, 1, `Jak wybrać wykonawcę w branży (${bMale}) - 10 pytań przed umową`, `jak wybrać ${bMale}`, 'GEO', 'Lista kryteriów wyboru gotowa do cytowania przez modele AI'],
     [5, 2, `Studium przypadku: wyniki wdrożenia (${bMale}) po 90 dniach`, `${bMale} opinie efekty`, 'BOFU', 'Twarde dane własne (E-E-A-T) wzmacniające polecenia marki'],
-    [6, 2, `7 najdroższych błędów przy zamawianiu usługi: ${bMale}`, `${bMale} błędy`, 'GEO', 'Zwięzłe odpowiedzi na pytania problemowe klientów w czatach AI'],
+    [6, 2, `7 najdroższych błędów przy zamawianiu usługi: ${bMale}`, `${bMale} błędy`, 'MOFU', 'Zwięzłe odpowiedzi na pytania problemowe klientów w czatach AI'],
     [7, 2, `Rozwiązanie dedykowane kontra gotowy pakiet (${bMale})`, `${bMale} porównanie`, 'VS', 'Uczciwe zestawienie zalet i ograniczeń obu wariantów'],
     [8, 2, `Ile trwa ${bMale}? Realny harmonogram prac tydzień po tygodniu`, `ile trwa ${bMale}`, 'GEO', 'Odpowiedź w pierwszym akapicie (Answer-First) pod snippety AI'],
     [9, 3, `Kiedy zwraca się inwestycja w ${bMale}? Kalkulacja ROI`, `${bMale} opłacalność roi`, 'BOFU', 'Wyliczenie na liczbach dla decydentów i zarządu'],
     [10, 3, `Zmiana dostawcy (${bMale}) bez przestojów - instrukcja krok po kroku`, `zmiana firmy ${bMale}`, 'BOFU', 'Przechwycenie klientów niezadowolonych z obecnej obsługi'],
     [11, 3, `Co musi zawierać umowa i SLA na ${bMale}? Wzór zapisów`, `umowa ${bMale}`, 'VS', 'Przejrzyste warunki budujące zaufanie przed kontaktem'],
     [12, 3, `15 pytań klientów o ${bMale} - konkretne odpowiedzi bez żargonu`, `${bMale} pytania`, 'GEO', 'Pokrycie długiego ogona zapytań konwersacyjnych w Gemini i ChatGPT'],
-  ].map(([tydzien, miesiac, tytul, fraza, intencja, celAi]) => ({ tydzien, miesiac, tytul, fraza, intencja, celAi, domena }));
+  ].map(([tydzien, miesiac, tytul, fraza, intencja, celAi]) => ({
+    tydzien,
+    miesiac,
+    tytul,
+    fraza,
+    intencja,
+    celAi,
+    slug: intencja === 'BOFU' ? slugZTekstu(fraza) : `/blog${slugZTekstu(fraza)}`,
+    format: intencja === 'BOFU' ? 'Strona usługi / cennik' : intencja === 'VS' ? 'Porównanie VS' : 'Poradnik GEO',
+    domena,
+  }));
 }
 
 function normalizujWiersze(surowe, domena) {
@@ -155,13 +210,16 @@ function normalizujWiersze(surowe, domena) {
   return surowe.slice(0, 12).map((w, idx) => {
     const tydzien = Number(w.tydzien ?? w.week ?? w.nr ?? idx + 1) || idx + 1;
     const miesiac = Number(w.miesiac ?? w.month ?? Math.ceil(tydzien / 4)) || Math.ceil(tydzien / 4);
+    const fraza = String(w.fraza ?? w.frazaGlowna ?? w.keyword ?? '');
     return {
       tydzien,
       miesiac,
       tytul: String(w.tytul ?? w.title ?? w.temat ?? ''),
-      fraza: String(w.fraza ?? w.frazaGlowna ?? w.keyword ?? ''),
+      fraza,
       intencja: String(w.intencja ?? w.typ ?? w.intent ?? 'BOFU'),
       celAi: String(w.celAi ?? w.celWAi ?? w.cel_ai ?? w.aiGoal ?? w.cel ?? ''),
+      slug: String(w.slug ?? '') || slugZTekstu(fraza || w.tytul),
+      format: String(w.format ?? ''),
       domena,
     };
   });
@@ -179,8 +237,36 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
 
   const [url, setUrl] = useState('');
   const [branza, setBranza] = useState('');
-  const [stan, setStan] = useState({ status: 'idle', blad: null, domena: '', wiersze: [] });
+  const [stan, setStan] = useState({ status: 'idle', blad: null, domena: '', wykrytaBranza: '', wiersze: [] });
   const poleUrlRef = useRef(null);
+  const kluczSesji = `aisc_cpg_${jezyk}`;
+
+  useEffect(() => {
+    const id = window.requestAnimationFrame(() => {
+      try {
+        const zapis = window.sessionStorage.getItem(kluczSesji);
+        if (zapis) {
+          const d = JSON.parse(zapis);
+          if (d && Array.isArray(d.wiersze) && d.wiersze.length > 0) {
+            setStan({ status: 'done', blad: null, domena: d.domena || '', wykrytaBranza: d.wykrytaBranza || '', wiersze: d.wiersze });
+            if (d.url) setUrl(d.url);
+            if (d.branza) setBranza(d.branza);
+          }
+        }
+      } catch {
+        // brak dostepu do sessionStorage
+      }
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [kluczSesji]);
+
+  function zapiszWSesji(nowyStan, wpisanyUrl, wpisanaBranza) {
+    try {
+      window.sessionStorage.setItem(kluczSesji, JSON.stringify({ ...nowyStan, url: wpisanyUrl, branza: wpisanaBranza }));
+    } catch {
+      // brak dostepu
+    }
+  }
 
   async function generujPlan(e) {
     e.preventDefault();
@@ -190,13 +276,15 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
       return;
     }
     const domena = wyczyscDomene(czystyUrl);
-    setStan({ status: 'loading', blad: null, domena, wiersze: [] });
+    setStan({ status: 'loading', blad: null, domena, wykrytaBranza: '', wiersze: [] });
     track('narzedzie_content_plan_ai_start', { lang: jezyk, zBranza: Boolean(branza.trim()) });
 
     if (DEMO) {
       await new Promise((r) => setTimeout(r, 750));
       const wiersze = zbudujDemoPlan(domena, branza, jezyk);
-      setStan({ status: 'done', blad: null, domena, wiersze });
+      const wynikDemo = { status: 'done', blad: null, domena, wykrytaBranza: branza.trim(), wiersze };
+      setStan(wynikDemo);
+      zapiszWSesji(wynikDemo, czystyUrl, branza);
       return;
     }
 
@@ -217,13 +305,15 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
       const p = data.podglad || data;
       const lista = normalizujWiersze(p.tematy ?? p.plan ?? p.wiersze ?? p.items, p.domena || domena);
       if (!res.ok || !data.ok || lista.length === 0) {
-        setStan({ status: 'error', blad: data.error || T.bladSieci, domena, wiersze: [] });
+        setStan({ status: 'error', blad: data.error || T.bladSieci, domena, wykrytaBranza: '', wiersze: [] });
         return;
       }
       track('narzedzie_content_plan_ai_wynik', { lang: jezyk, tematow: lista.length });
-      setStan({ status: 'done', blad: null, domena: p.domena || domena, wiersze: lista });
+      const nowy = { status: 'done', blad: null, domena: p.domena || domena, wykrytaBranza: String(p.wykrytaBranza || ''), wiersze: lista };
+      setStan(nowy);
+      zapiszWSesji(nowy, czystyUrl, branza);
     } catch {
-      setStan({ status: 'error', blad: T.bladSieci, domena, wiersze: [] });
+      setStan({ status: 'error', blad: T.bladSieci, domena, wykrytaBranza: '', wiersze: [] });
     } finally {
       clearTimeout(zegar);
     }
@@ -231,7 +321,7 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
 
   function pobierzCsv() {
     if (!stan.wiersze.length) return;
-    const naglowki = ['Miesiac / Month', ...T.kolumny];
+    const naglowki = [T.csvMiesiac, ...T.kolumny, ...T.csvDodatkowe];
     const linie = [
       naglowki.map(csvKomorka).join(','),
       ...stan.wiersze.map((w) => [
@@ -241,6 +331,8 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
         w.fraza,
         w.intencja,
         w.celAi,
+        w.slug || '',
+        w.format || '',
       ].map(csvKomorka).join(',')),
     ];
     const zawartosc = `\uFEFF${linie.join('\r\n')}\r\n`;
@@ -263,7 +355,9 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
     if (!url.trim()) setUrl(domena);
     const wiersze = zbudujDemoPlan(domena, branza, jezyk);
     track('narzedzie_content_plan_ai_demo', { lang: jezyk });
-    setStan({ status: 'done', blad: null, domena, wiersze });
+    const nowy = { status: 'done', blad: null, domena, wykrytaBranza: branza.trim(), wiersze };
+    setStan(nowy);
+    zapiszWSesji(nowy, domena, branza);
   }
 
   return (
@@ -338,9 +432,16 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
       {stan.status === 'done' && stan.wiersze.length > 0 && (
         <div aria-live="polite" style={{ display: 'grid', gap: '0.85rem' }}>
           <div className="cpg-pasek-wyniku">
-            <strong style={{ color: 'var(--color-text-dark)', fontSize: '0.95rem' }}>
-              {T.podsumowanie(stan.domena)}
-            </strong>
+            <div>
+              <strong style={{ color: 'var(--color-text-dark)', fontSize: '0.95rem', display: 'block' }}>
+                {T.podsumowanie(stan.domena)}
+              </strong>
+              {stan.wykrytaBranza && (
+                <span style={{ fontSize: '0.82rem', color: 'var(--w-tusz-2)' }}>
+                  {T.wykrytoBranze}: {stan.wykrytaBranza}
+                </span>
+              )}
+            </div>
             <button
               type="button"
               className="btn btn-secondary"
@@ -372,7 +473,15 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
                         {T.miesiac(w.miesiac)}
                       </span>
                     </td>
-                    <td><strong>{w.tytul}</strong></td>
+                    <td>
+                      <strong>{w.tytul}</strong>
+                      {(w.slug || w.format) && (
+                        <div className="cpg-meta-pod">
+                          {w.slug && <code className="cpg-slug">{w.slug}</code>}
+                          {w.format && <span>· {w.format}</span>}
+                        </div>
+                      )}
+                    </td>
                     <td style={{ fontFamily: 'var(--w-mono, monospace)', fontSize: '0.82rem' }}>{w.fraza}</td>
                     <td>
                       <span className={`cpg-intencja cpg-intencja--${klasaIntencji(w.intencja)}`}>

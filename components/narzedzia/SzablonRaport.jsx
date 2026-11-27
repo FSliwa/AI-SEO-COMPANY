@@ -130,7 +130,7 @@ export default function SzablonRaport({ locale = 'pl' }) {
         url={SCIEZKA}
         title={strona.h1}
         description={wpis?.opis}
-        datePublished={strona.opublikowano ?? pierwszaPublikacja(`${BASE}${SCIEZKA_EN}`) ?? dataZmiany}
+        datePublished={strona.opublikowano ?? pierwszaPublikacja(`${BASE}${SCIEZKA}`) ?? dataZmiany}
         dateModified={dataZmiany}
         imageUrl="/images/panel/raporty.webp"
         extra={{
@@ -143,8 +143,7 @@ export default function SzablonRaport({ locale = 'pl' }) {
         }}
       />
 
-      <SzHero tag="Poradnik i wzór PDF
-            " h1={strona.h1} slug="raport-seo" locale="pl">
+      <SzHero tag="Poradnik i wzór PDF" h1={strona.h1} slug="raport-seo" locale="pl">
           <Byline sciezka={SCIEZKA} data={dataZmiany} />
           <AnswerBox>
             Miesięczny raport SEO powinien zaczynać się od wyniku biznesowego, czyli liczby zapytań od klientów i ich kosztu, a dopiero potem pokazywać kliknięcia, pozycje i wykonane prace. Dobry raport mieści syntezę na jednej stronie: wynik względem celu, 3-5 przyczyn z dowodami, plan na kolejny miesiąc i ryzyka. Szczegółowe dane trzymaj w panelu albo dashboardzie.
@@ -455,8 +454,7 @@ function RaportEn() {
         }}
       />
 
-      <SzHero tag="Guide and PDF template
-            " h1={meta.h1} slug="raport-seo" locale="en">
+      <SzHero tag="Guide and PDF template" h1={meta.h1} slug="raport-seo" locale="en">
           <Byline sciezka={SCIEZKA} takzeEn data={dataZmiany} />
           <AnswerBox etykieta="Short answer">
             A monthly SEO report should open with the business result: the number of customer inquiries and the cost per inquiry. Clicks, rankings and work done come after that. A good SEO report example fits its executive summary on one page: the result against the goal, 3-5 causes with evidence, next month&apos;s plan and the risks. Detailed data belongs in a portal or dashboard.
@@ -593,7 +591,7 @@ function RaportEn() {
           </section>
 
           <section aria-labelledby="przyklad-z-panelu" className="sz-sekcja">
-            <h2 id="przyklad-z-panelu" className="sz-h2">Example: what a report looks like in the client portal</h2>
+            <h2 id="przyklad-z-panelu" className="sz-h2">Monthly SEO report example: how it looks in the client portal</h2>
             <p className="sz-akapit">
               Two screens from the demo of our client portal, using sample data for a fictional company, &quot;Stolarnia Demo&quot;. On the monthly overview, the account manager&apos;s comment has three parts: what happened, why and what next, which are sections 1, 2 and 4 of the template. The tiles under the comment show the result against the goal: customer inquiries split into form, phone and email, clicks from Google, keywords in the top 3 and the average position. The first number is customer inquiries, not rankings or traffic: every report should start that way. The tiles compare the result with the previous month. In a monthly report, add the same month a year earlier as well, because only that filters out seasonality.
             </p>

@@ -454,7 +454,7 @@ export function TesterRobotowAiClient() {
   const tekstRobotsBazowy = polityki[aktywnaPolityka] || polityki.rekomendowana;
   const tekstRobots = dolaczRegulyCmsDoRobots(tekstRobotsBazowy, aktywnyCms, domena, en ? 'en' : 'pl');
 
-  const urlOdznakiSvg = domena ? `https://panel.ai-seo-company.pl/api/narzedzia/badge/ai-ready?domain=${encodeURIComponent(domena)}` : '';
+  const urlOdznakiSvg = domena ? `https://panel.ai-seo-company.pl/api/narzedzia/badge/ai-ready?domain=${encodeURIComponent(domena)}${en ? '&lang=en' : ''}` : '';
   const urlZwrotnyOdznaki = domena
     ? (en
       ? `https://www.ai-seo-company.pl/en/tools/ai-crawler-robots-txt-checker?url=${encodeURIComponent(domena)}`
@@ -528,8 +528,14 @@ export function TesterRobotowAiClient() {
           )}
         </td>
         <td style={{ fontVariantNumeric: 'tabular-nums' }}>
-          <strong>{b.httpKod || '-'}</strong>
-          {Number.isFinite(b.ttfbMs) ? <span className="narz-mikro" style={{ display: 'block', margin: 0 }}>{b.ttfbMs.toLocaleString(jezyk)} ms</span> : null}
+          {b.tylkoRobotsTxt ? (
+            <span className="narz-mikro" style={{ display: 'block', margin: 0 }}>{en ? 'robots.txt token' : 'Token robots.txt'}</span>
+          ) : (
+            <>
+              <strong>{b.httpKod || '-'}</strong>
+              {Number.isFinite(b.ttfbMs) ? <span className="narz-mikro" style={{ display: 'block', margin: 0 }}>{b.ttfbMs.toLocaleString(jezyk)} ms</span> : null}
+            </>
+          )}
           {b.xRobotsTag && (
             <code style={{ display: 'inline-block', marginTop: '0.25rem', padding: '0.1rem 0.35rem', borderRadius: '5px', background: 'rgba(15,23,42,0.06)', fontSize: '0.7rem', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>
               X-Robots-Tag: {b.xRobotsTag}

@@ -26,9 +26,22 @@ function wygenerujKluczHex() {
   return 'a7f3e9c14b82d0659e1234ab89cd01ef';
 }
 
-function zbudujArtefaktyIndexNow(domena, klucz, przyklady = []) {
-  const czysta = wyczyscDomene(domena, 'twojafirma.pl');
-  const host = `https://www.${czysta}`;
+function kanonicznyHostIndexNow(wejscie, domyslna = 'twojafirma.pl') {
+  const tekst = String(wejscie || '').trim();
+  const m = /^https?:\/\/([^/?#]+)/i.exec(tekst);
+  if (m && m[1]) return m[1].toLowerCase();
+  const bezSciezki = tekst.replace(/^\/+/, '').split(/[/?#]/)[0].toLowerCase();
+  if (bezSciezki === 'ai-seo-company.pl') return 'www.ai-seo-company.pl';
+  if (bezSciezki && bezSciezki.includes('.')) return bezSciezki;
+  return wyczyscDomene(tekst, domyslna);
+}
+
+function zbudujArtefaktyIndexNow(domenaLubUrl, klucz, przyklady = []) {
+  const zrodloPierwszego = przyklady.length
+    ? (typeof przyklady[0] === 'string' ? przyklady[0] : przyklady[0]?.url)
+    : '';
+  const nazwaHosta = kanonicznyHostIndexNow(zrodloPierwszego || domenaLubUrl, 'twojafirma.pl');
+  const host = `https://${nazwaHosta}`;
   const nazwaPliku = `${klucz}.txt`;
   const listaUrl = przyklady.length
     ? przyklady.slice(0, 3).map((p) => (typeof p === 'string' ? p : p.url)).filter(Boolean)
@@ -38,7 +51,7 @@ function zbudujArtefaktyIndexNow(domena, klucz, przyklady = []) {
   -H "Content-Type: application/json; charset=utf-8" \\
   -d '${JSON.stringify(
     {
-      host: `www.${czysta}`,
+      host: nazwaHosta,
       key: klucz,
       keyLocation: `${host}/${nazwaPliku}`,
       urlList: listaUrl,
@@ -62,13 +75,13 @@ jobs:
           curl -sS -X POST "https://api.indexnow.org/indexnow" \\
             -H "Content-Type: application/json; charset=utf-8" \\
             -d '{
-              "host": "www.${czysta}",
+              "host": "${nazwaHosta}",
               "key": "${klucz}",
               "keyLocation": "${host}/${nazwaPliku}",
               "urlList": ["${host}/"]
             }'`;
 
-  return { wygenerowanyKlucz: klucz, nazwaPliku, zawartoscPliku: klucz, curlKomenda, githubActionYaml };
+  return { wygenerowanyKlucz: klucz, nazwaPliku, zawartoscPliku: klucz, curlKomenda, githubActionYaml, nazwaHosta };
 }
 
 function normalizujBota(b) {
@@ -317,9 +330,11 @@ export function IndexNowBingClient() {
   );
 
   const kluczBazowy = wlasnyKlucz || w?.indexNow?.wygenerowanyKlucz || w?.indexNow?.wykrytyKlucz || w?.indexNow?.klucz || '8f4c2e91b7a34d60c5129e80f3a17b4d';
+  const zrodloHosta = sm.url || (przykladyLista.length ? (typeof przykladyLista[0] === 'string' ? przykladyLista[0] : przykladyLista[0]?.url) : '') || w?.url || adres || domena;
+  const hostKanoniczny = domena ? kanonicznyHostIndexNow(zrodloHosta, en ? 'yourcompany.com' : 'twojafirma.pl') : '';
   const wygenerowaneLokalnie = domena
-    ? zbudujArtefaktyIndexNow(domena, kluczBazowy, przykladyLista)
-    : { nazwaPliku: `${kluczBazowy}.txt`, zawartoscPliku: kluczBazowy, curlKomenda: '', githubActionYaml: '' };
+    ? zbudujArtefaktyIndexNow(zrodloHosta || domena, kluczBazowy, przykladyLista)
+    : { nazwaPliku: `${kluczBazowy}.txt`, zawartoscPliku: kluczBazowy, curlKomenda: '', githubActionYaml: '', nazwaHosta: '' };
 
   const nazwaPlikuKlucza = wlasnyKlucz
     ? wygenerowaneLokalnie.nazwaPliku
@@ -599,8 +614,8 @@ export function IndexNowBingClient() {
               </h2>
               <p className="narz-mikro" style={{ overflowWrap: 'anywhere' }}>
                 {en
-                  ? `Step 1: Download ${nazwaPlikuKlucza} and place it in your public root folder (https://www.${domena}/${nazwaPlikuKlucza}). Step 2: Ping IndexNow after publishing new or updated URLs.`
-                  : `Krok 1: Pobierz plik ${nazwaPlikuKlucza} i umieść go w głównym katalogu publicznym (https://www.${domena}/${nazwaPlikuKlucza}). Krok 2: Wyślij powiadomienie IndexNow przez curl lub GitHub Actions.`}
+                  ? `Step 1: Download ${nazwaPlikuKlucza} and place it in your public root folder (https://${hostKanoniczny || domena}/${nazwaPlikuKlucza}). Step 2: Ping IndexNow after publishing new or updated URLs.`
+                  : `Krok 1: Pobierz plik ${nazwaPlikuKlucza} i umieść go w głównym katalogu publicznym (https://${hostKanoniczny || domena}/${nazwaPlikuKlucza}). Krok 2: Wyślij powiadomienie IndexNow przez curl lub GitHub Actions.`}
               </p>
 
               <div className="sp2-kafel" style={{ marginTop: '0.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>

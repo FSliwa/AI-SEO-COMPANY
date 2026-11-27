@@ -117,6 +117,12 @@ const CSS = `
   background: var(--w-pomarancz, #d85a30);
   transition: width 180ms ease;
 }
+.sz-chk-akcje {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
 .sz-chk-reset {
   padding: 0.25rem 0.65rem;
   border-radius: 8px;
@@ -135,6 +141,17 @@ const CSS = `
 .sz-chk-reset:disabled {
   opacity: 0.45;
   cursor: default;
+}
+.sz-chk-opcja {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-right: 0.65rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+.sz-chk-opcja .sz-chk-box {
+  margin: 0;
 }
 .sz-chk-box {
   width: 1.05rem;
@@ -257,14 +274,15 @@ export default function SzablonInterakcje({ slug = '', locale = 'pl' }) {
       });
     });
 
-    // 2. Interaktywne pola ☐ we wszystkich szablonach i checklistach z zapisem w localStorage + pasek postępu
+    // 2. Interaktywne pola ☐ we wszystkich szablonach i checklistach z zapisem w localStorage per jezyk + pasek postepu + eksport CSV
     const obszarPodgladu = root.querySelector('#podglad') || root;
     const maPolaDoOdznaczenia = Array.from(obszarPodgladu.querySelectorAll('.szablon-tresc li, .szablon-tresc tbody td')).some((el) => (el.textContent || '').includes('☐'));
     if (maPolaDoOdznaczenia) {
-      const kluczStorage = `aisc_chk_${slug}`;
+      const kluczStorage = `aisc_chk_${locale}_${slug}`;
+      const kluczStary = `aisc_chk_${slug}`;
       let stanZapisany = {};
       try {
-        const surowe = window.localStorage.getItem(kluczStorage);
+        const surowe = window.localStorage.getItem(kluczStorage) ?? (locale === 'pl' ? window.localStorage.getItem(kluczStary) : null);
         if (surowe) {
           const sparsowane = JSON.parse(surowe);
           if (sparsowane && typeof sparsowane === 'object') stanZapisany = sparsowane;
@@ -283,64 +301,169 @@ export default function SzablonInterakcje({ slug = '', locale = 'pl' }) {
       };
 
       const pozycje = [];
+      let licznikGrup = 0;
 
-      // Wariant A: punkty <li> zaczynające się od ☐
-      obszarPodgladu.querySelectorAll('.szablon-tresc li').forEach((li) => {
-        if (!/^\s*☐/.test(li.textContent || '')) return;
-        const pierwszy = li.firstChild;
-        const oryginalnyTekst = pierwszy && pierwszy.nodeType === Node.TEXT_NODE ? pierwszy.nodeValue : null;
-        if (oryginalnyTekst !== null) {
-          pierwszy.nodeValue = oryginalnyTekst.replace(/^\s*☐\s*/, '');
-        }
-        const box = document.createElement('input');
-        box.type = 'checkbox';
-        box.className = 'sz-chk-box';
-        const opisAria = (li.querySelector('strong')?.textContent || li.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 100);
-        if (opisAria) box.setAttribute('aria-label', opisAria);
-        li.insertBefore(box, li.firstChild);
-        pozycje.push({
-          el: li,
-          box,
-          przywroc: () => {
-            box.remove();
-            li.classList.remove('sz-chk-zrobione');
-            if (pierwszy && oryginalnyTekst !== null) pierwszy.nodeValue = oryginalnyTekst;
-          },
+      // Zamienia kazdy znak ☐ wewnatrz wezlow tekstowych elementu na interaktywne pole wyboru, zachowujac 100% otaczajacego tekstu
+      const zamienWewnatrzWezla = (kontener, bazowaAria, grupaId, elPodswietlenia) => {
+        const zbierzTekstowe = (wezel, lista = []) => {
+          wezel.childNodes.forEach((dz) => {
+            if (dz.nodeType === Node.TEXT_NODE && (dz.nodeValue || '').includes('☐')) lista.push(dz);
+            else if (dz.nodeType === Node.ELEMENT_NODE && dz.tagName !== 'SCRIPT' && dz.tagName !== 'STYLE') zbierzTekstowe(dz, lista);
+          });
+          return lista;
+        };
+        const wezlyTekstowe = zbierzTekstowe(kontener);
+        const utworzone = [];
+        wezlyTekstowe.forEach((wezel) => {
+          const czesci = (wezel.nodeValue || '').split('☐');
+          if (czesci.length < 2) return;
+          const frag = document.createDocumentFragment();
+          if (czesci[0]) frag.appendChild(document.createTextNode(czesci[0]));
+          for (let i = 1; i < czesci.length; i += 1) {
+            const surowyPo = czesci[i];
+            const dopasowanie = /^\s*([^☐,;|\n]{1,60})/.exec(surowyPo);
+            const tekstOpcji = dopasowanie ? dopasowanie[1].trim() : '';
+            const resztaPo = dopasowanie ? surowyPo.slice(dopasowanie[0].length) : surowyPo;
+
+            const etykieta = document.createElement('label');
+            etykieta.className = 'sz-chk-opcja';
+            const box = document.createElement('input');
+            box.type = 'checkbox';
+            box.className = 'sz-chk-box';
+            const aria = [bazowaAria, tekstOpcji].filter(Boolean).join(' - ').slice(0, 120);
+            if (aria) box.setAttribute('aria-label', aria);
+            etykieta.appendChild(box);
+            if (tekstOpcji) {
+              const span = document.createElement('span');
+              span.textContent = tekstOpcji;
+              etykieta.appendChild(span);
+            }
+            frag.appendChild(etykieta);
+            if (resztaPo) frag.appendChild(document.createTextNode(resztaPo));
+            utworzone.push({ box, opisEksportu: aria || bazowaAria });
+          }
+          wezel.parentNode?.replaceChild(frag, wezel);
         });
-      });
+        return utworzone.map((u) => ({
+          el: elPodswietlenia,
+          box: u.box,
+          grupaId,
+          opisEksportu: u.opisEksportu,
+        }));
+      };
 
-      // Wariant B: wiersze tabeli <tbody><tr> z komórkami zawierającymi ☐ (obsługa również wielu kolumn ☐ w jednym wierszu)
-      obszarPodgladu.querySelectorAll('.szablon-tresc tbody tr').forEach((tr) => {
-        const komorki = Array.from(tr.cells || []);
-        const komorkiStatusu = komorki.filter((td) => /^\s*☐\s*$/.test(td.textContent || '') || (td.textContent || '').includes('☐'));
-        komorkiStatusu.forEach((komorkaStatusu, idxKom) => {
-          const oryginalneHtml = komorkaStatusu.innerHTML;
-          const etykieta = document.createElement('label');
-          etykieta.className = 'sz-chk-etykieta';
+      // Wariant A: punkty <li> zawierajace ☐ (zarowno na poczatku punktu, jak i wieloopcyjne w srodku zdania)
+      obszarPodgladu.querySelectorAll('.szablon-tresc li').forEach((li) => {
+        const tekstLi = li.textContent || '';
+        if (!tekstLi.includes('☐')) return;
+        const ileSymboli = (tekstLi.match(/☐/g) || []).length;
+        const grupaId = `li_${(licznikGrup += 1)}`;
+        if (/^\s*☐/.test(tekstLi) && ileSymboli === 1) {
+          const pierwszy = li.firstChild;
+          const oryginalnyTekst = pierwszy && pierwszy.nodeType === Node.TEXT_NODE ? pierwszy.nodeValue : null;
+          if (oryginalnyTekst !== null) {
+            pierwszy.nodeValue = oryginalnyTekst.replace(/^\s*☐\s*/, '');
+          }
           const box = document.createElement('input');
           box.type = 'checkbox';
           box.className = 'sz-chk-box';
-          const opisWiersza = (komorki[0]?.textContent || komorki[1]?.textContent || tr.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 90);
-          if (opisWiersza) box.setAttribute('aria-label', komorkiStatusu.length > 1 ? `${opisWiersza} (${idxKom + 1})` : opisWiersza);
-          const podpis = document.createElement('span');
-          podpis.textContent = de ? 'Erledigt' : en ? 'Done' : 'Gotowe';
-          etykieta.appendChild(box);
-          etykieta.appendChild(podpis);
-          komorkaStatusu.textContent = '';
-          komorkaStatusu.appendChild(etykieta);
-          const elPodswietlenia = komorkiStatusu.length === 1 ? tr : komorkaStatusu;
+          const opisPelny = (li.textContent || '').replace(/\s+/g, ' ').trim();
+          const opisAria = (li.querySelector('strong')?.textContent || opisPelny).replace(/\s+/g, ' ').trim().slice(0, 100);
+          if (opisAria) box.setAttribute('aria-label', opisAria);
+          li.insertBefore(box, li.firstChild);
           pozycje.push({
-            el: elPodswietlenia,
+            el: li,
             box,
+            grupaId,
+            opisEksportu: opisPelny.slice(0, 180),
             przywroc: () => {
-              elPodswietlenia.classList.remove('sz-chk-zrobione');
-              komorkaStatusu.innerHTML = oryginalneHtml;
+              box.remove();
+              li.classList.remove('sz-chk-zrobione');
+              if (pierwszy && oryginalnyTekst !== null) pierwszy.nodeValue = oryginalnyTekst;
             },
           });
+        } else {
+          const oryginalneHtmlLi = li.innerHTML;
+          const opisBazowy = tekstLi.split('☐')[0].replace(/[:\s]+$/, '').trim().slice(0, 80);
+          const dodane = zamienWewnatrzWezla(li, opisBazowy, grupaId, null);
+          dodane.forEach((d, idx) => {
+            pozycje.push({
+              ...d,
+              przywroc: idx === 0 ? () => { li.innerHTML = oryginalneHtmlLi; } : () => {},
+            });
+          });
+        }
+      });
+
+      // Wariant B: wiersze tabeli <tbody><tr> z komorkami zawierajacymi ☐
+      obszarPodgladu.querySelectorAll('.szablon-tresc tbody tr').forEach((tr) => {
+        const komorki = Array.from(tr.cells || []);
+        const komorkiStatusu = komorki.filter((td) => (td.textContent || '').includes('☐'));
+        if (komorkiStatusu.length === 0) return;
+        const grupaWiersza = `tr_${(licznikGrup += 1)}`;
+        const naglowkiKolumn = Array.from(tr.closest('table')?.querySelectorAll('thead th') || []).map((th) => (th.textContent || '').trim());
+        const opisWiersza = (komorki[0]?.textContent || komorki[1]?.textContent || tr.textContent || '')
+          .replace(/☐/g, '')
+          .replace(/\s+/g, ' ')
+          .trim()
+          .slice(0, 110);
+
+        komorkiStatusu.forEach((komorkaStatusu, idxKom) => {
+          const oryginalneHtml = komorkaStatusu.innerHTML;
+          const czystyTekstKomorki = (komorkaStatusu.textContent || '').trim();
+          const indeksWTr = komorki.indexOf(komorkaStatusu);
+          const nazwaKolumny = indeksWTr >= 0 && naglowkiKolumn[indeksWTr] ? naglowkiKolumn[indeksWTr] : '';
+
+          // Tylko gdy komorka zawiera wylacznie sam symbol ☐, wstawiamy zwarta etykiete Gotowe / Done / Erledigt
+          if (/^\s*☐\s*$/.test(czystyTekstKomorki)) {
+            const etykieta = document.createElement('label');
+            etykieta.className = 'sz-chk-etykieta';
+            const box = document.createElement('input');
+            box.type = 'checkbox';
+            box.className = 'sz-chk-box';
+            const aria = komorkiStatusu.length > 1
+              ? [opisWiersza, nazwaKolumny || `#${idxKom + 1}`].filter(Boolean).join(' - ')
+              : opisWiersza;
+            if (aria) box.setAttribute('aria-label', aria);
+            const podpis = document.createElement('span');
+            podpis.textContent = de ? 'Erledigt' : en ? 'Done' : 'Gotowe';
+            etykieta.appendChild(box);
+            etykieta.appendChild(podpis);
+            komorkaStatusu.textContent = '';
+            komorkaStatusu.appendChild(etykieta);
+            const elPodswietlenia = komorkiStatusu.length === 1 ? tr : komorkaStatusu;
+            pozycje.push({
+              el: elPodswietlenia,
+              box,
+              grupaId: grupaWiersza,
+              opisEksportu: aria || opisWiersza,
+              przywroc: () => {
+                elPodswietlenia.classList.remove('sz-chk-zrobione');
+                komorkaStatusu.innerHTML = oryginalneHtml;
+              },
+            });
+          } else {
+            // Komorka ma etykiety przy polach ☐ (np. „☐ OK ☐ Offen ☐ n. z.” albo „☐ Search Console ☐ GA4”) - zachowujemy caly tekst!
+            const dodane = zamienWewnatrzWezla(komorkaStatusu, [opisWiersza, nazwaKolumny].filter(Boolean).join(' · '), grupaWiersza, null);
+            dodane.forEach((d, idx) => {
+              pozycje.push({
+                ...d,
+                przywroc: idx === 0 ? () => { komorkaStatusu.innerHTML = oryginalneHtml; } : () => {},
+              });
+            });
+          }
         });
       });
 
       if (pozycje.length > 0) {
+        const grupyMapa = new Map();
+        pozycje.forEach((p) => {
+          const lista = grupyMapa.get(p.grupaId) || [];
+          lista.push(p);
+          grupyMapa.set(p.grupaId, lista);
+        });
+        const lacznieJednostek = grupyMapa.size;
+
         const pasek = document.createElement('div');
         pasek.className = 'sz-chk-pasek';
 
@@ -362,31 +485,46 @@ export default function SzablonInterakcje({ slug = '', locale = 'pl' }) {
         lewa.appendChild(licznikTekst);
         lewa.appendChild(tor);
 
+        const akcje = document.createElement('div');
+        akcje.className = 'sz-chk-akcje';
+
+        const eksportBtn = document.createElement('button');
+        eksportBtn.type = 'button';
+        eksportBtn.className = 'sz-chk-reset';
+        eksportBtn.textContent = de ? 'Exportieren (.csv)' : en ? 'Export (.csv)' : 'Eksportuj (.csv)';
+
         const resetBtn = document.createElement('button');
         resetBtn.type = 'button';
         resetBtn.className = 'sz-chk-reset';
         resetBtn.textContent = de ? 'Zurücksetzen' : en ? 'Reset' : 'Wyczyść';
 
+        akcje.appendChild(eksportBtn);
+        akcje.appendChild(resetBtn);
+
         pasek.appendChild(lewa);
-        pasek.appendChild(resetBtn);
+        pasek.appendChild(akcje);
 
         const odswiezPasek = () => {
-          const zrobione = pozycje.reduce((suma, p) => suma + (p.box.checked ? 1 : 0), 0);
-          const proc = Math.round((zrobione / pozycje.length) * 100);
-          licznikTekst.textContent = tekstPostepu(zrobione, pozycje.length, locale);
+          let zrobioneJednostki = 0;
+          grupyMapa.forEach((lista) => {
+            if (lista.some((p) => p.box.checked)) zrobioneJednostki += 1;
+          });
+          const cokolwiekZaznaczone = pozycje.some((p) => p.box.checked);
+          const proc = lacznieJednostek > 0 ? Math.round((zrobioneJednostki / lacznieJednostek) * 100) : 0;
+          licznikTekst.textContent = tekstPostepu(zrobioneJednostki, lacznieJednostek, locale);
           wyp.style.width = `${proc}%`;
-          resetBtn.disabled = zrobione === 0;
+          resetBtn.disabled = !cokolwiekZaznaczone;
         };
 
         pozycje.forEach((p, idx) => {
           const klucz = String(idx);
           const zaznaczone = Boolean(stanZapisany[klucz]);
           p.box.checked = zaznaczone;
-          p.el.classList.toggle('sz-chk-zrobione', zaznaczone);
+          if (p.el) p.el.classList.toggle('sz-chk-zrobione', zaznaczone);
           const onZmiana = () => {
             if (p.box.checked) stanZapisany[klucz] = true;
             else delete stanZapisany[klucz];
-            p.el.classList.toggle('sz-chk-zrobione', p.box.checked);
+            if (p.el) p.el.classList.toggle('sz-chk-zrobione', p.box.checked);
             zapisz();
             odswiezPasek();
           };
@@ -394,27 +532,56 @@ export default function SzablonInterakcje({ slug = '', locale = 'pl' }) {
           sprzatanie.push(() => p.box.removeEventListener('change', onZmiana));
         });
 
+        const onEksport = () => {
+          const escCsv = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+          const naglowek = de
+            ? ['Nr.', 'Prüfpunkt / Option', 'Status']
+            : en
+              ? ['No.', 'Checklist item / option', 'Status']
+              : ['Lp.', 'Punkt kontrolny / opcja', 'Status'];
+          const wierszeCsv = [
+            naglowek.map(escCsv).join(','),
+            ...pozycje.map((p, idx) => [
+              idx + 1,
+              p.opisEksportu || `#${idx + 1}`,
+              p.box.checked ? (de ? 'Erledigt' : en ? 'Done' : 'Gotowe') : (de ? 'Offen' : en ? 'Open' : 'Do zrobienia'),
+            ].map(escCsv).join(',')),
+          ];
+          const blob = new Blob([`\uFEFF${wierszeCsv.join('\r\n')}\r\n`], { type: 'text/csv;charset=utf-8' });
+          const urlBlob = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = urlBlob;
+          a.download = `${slug || 'checklista'}-${locale}.csv`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(urlBlob), 1000);
+          track('szablon_checklista_csv', { szablon: slug, lang: locale });
+        };
+
         const onReset = () => {
           stanZapisany = {};
           zapisz();
           pozycje.forEach((p) => {
             p.box.checked = false;
-            p.el.classList.remove('sz-chk-zrobione');
+            if (p.el) p.el.classList.remove('sz-chk-zrobione');
           });
           odswiezPasek();
         };
+        eksportBtn.addEventListener('click', onEksport);
         resetBtn.addEventListener('click', onReset);
 
         const slotPaska = root.querySelector('[data-sz-chk-slot]');
         if (slotPaska) {
           slotPaska.replaceChildren(pasek);
         } else {
-          const celPaska = root.querySelector('#podglad .sz-panel') || pozycje[0].el.closest('.szablon-tresc');
+          const celPaska = root.querySelector('#podglad .sz-panel') || pozycje[0].box.closest('.szablon-tresc');
           if (celPaska) celPaska.insertBefore(pasek, celPaska.firstChild);
         }
         odswiezPasek();
 
         sprzatanie.push(() => {
+          eksportBtn.removeEventListener('click', onEksport);
           resetBtn.removeEventListener('click', onReset);
           pasek.remove();
           pozycje.forEach((p) => p.przywroc());

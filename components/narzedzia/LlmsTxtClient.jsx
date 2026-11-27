@@ -152,8 +152,8 @@ function kodWdrozenia(zakladka, domena, en) {
   }
   if (zakladka === 'shopify') {
     return en
-      ? `# Shopify does not allow raw files at root, so use Content -> Files + URL Redirect:\n# 1. Admin -> Content -> Files -> Upload llms.txt (copy its cdn.shopify.com URL)\n# 2. Online Store -> Navigation -> View URL Redirects -> Create URL redirect:\n#    Redirect from: /llms.txt\n#    Redirect to:   https://cdn.shopify.com/s/files/.../llms.txt\n# (Or proxy /llms.txt via Cloudflare Worker for a direct HTTP 200 without 301)`
-      : `# Shopify blokuje wgrywanie plików bezpośrednio do katalogu głównego - użyj Content -> Files:\n# 1. Panel Shopify -> Content -> Files -> wgraj pobrany plik llms.txt i skopiuj adres CDN\n# 2. Online Store -> Navigation -> URL Redirects -> utwórz przekierowanie:\n#    Z adresu: /llms.txt\n#    Na adres: https://cdn.shopify.com/s/files/.../llms.txt\n# (Alternatywnie: Cloudflare Worker na domenie zwracający kod 200 text/plain pod /llms.txt)`;
+      ? `# Since May 2026 Shopify supports a native theme template (HTTP 200, zero redirects):\n# 1. Shopify Admin -> Online Store -> Themes -> "..." -> Edit code\n# 2. Under "Templates", add a new template named: templates/llms.txt.liquid\n# 3. Paste the generated llms.txt content above (with {% layout none %} at the top) and Save\n# 4. Verify direct plain-text output at: https://${hostCzysty}/llms.txt`
+      : `# Od maja 2026 Shopify obsługuje natywny szablon motywu (kod HTTP 200 bez przekierowania 301):\n# 1. Panel Shopify -> Online Store -> Themes -> "..." -> Edit code\n# 2. W katalogu "Templates" utwórz plik: templates/llms.txt.liquid\n# 3. Wklej na górze {% layout none %}, a pod spodem wygenerowany wyżej plik llms.txt i zapisz\n# 4. Sprawdź bezpośredni odczyt pod adresem: https://${hostCzysty}/llms.txt`;
   }
   if (zakladka === 'webflow') {
     return en

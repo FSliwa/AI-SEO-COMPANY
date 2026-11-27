@@ -244,8 +244,8 @@ export function CytowalnoscGeoClientDe() {
   const maGeoDe = maWersjeDe('/pozycjonowanie-w-ai');
 
   const definicjeKryteriow = [
-    { klucz: 'answerFirst', nazwa: 'Answer-First-Einstieg (40-75 Wörter)', opis: 'Direkte Kernaussage unmittelbar unter H2 statt langer Einleitung' },
-    { klucz: 'dlugoscBlokow', nazwa: 'RAG-Abschnittslänge', opis: 'Eigenständige Blöcke mit 60-180 Wörtern für sauberes Chunking' },
+    { klucz: 'answerFirst', nazwa: 'Answer-First-Einstieg (8-55 Wörter)', opis: 'Direkter Faktensatz unmittelbar unter H2/H3 statt langer Einleitung' },
+    { klucz: 'dlugoscBlokow', nazwa: 'RAG-Abschnittslänge (40-180 Wörter)', opis: 'Eigenständige Blöcke mit 40-180 Wörtern für sauberes Chunking' },
     { klucz: 'gestoscFaktow', nazwa: 'Fakten-, Zahlen- & Einheitendichte', opis: 'Preise, Prozentwerte, Fristen, Normen und belegbare Kennzahlen' },
     { klucz: 'naglowkiPytania', nazwa: 'Frageorientierte H2/H3-Überschriften', opis: 'Überschriften passend zu realen Suchfragen in ChatGPT und Google' },
     { klucz: 'listyTabele', nazwa: 'Semantische Listen & HTML-Tabellen', opis: 'Klare Aufzählungen und <table>-Vergleiche statt Grafik-Texten' },
@@ -389,10 +389,10 @@ export function CytowalnoscGeoClientDe() {
                     </p>
                   )}
                   <blockquote className="sp2-ai-cytat">
-                    {sym.najlepszyBlok || 'Kein eigenständiger Faktenabsatz (40-120 Wörter) auf dieser Unterseite erkannt.'}
+                    {sym.najlepszyBlok || 'Kein eigenständiger Faktenabschnitt (40-180 Wörter) auf dieser Unterseite erkannt.'}
                   </blockquote>
                   <p className="narz-mikro" style={{ margin: 0 }}>
-                    RAG-Pipelines bevorzugen in sich geschlossene Absätze mit 40 bis 75 Wörtern, konkreten Zahlen, Einheiten und eindeutigen Begriffen.
+                    RAG-Pipelines bevorzugen in sich geschlossene Abschnitte mit 40 bis 180 Wörtern und einem direkten Einstiegssatz (8 bis 55 Wörter) mit konkreten Zahlen und Einheiten.
                   </p>
                 </div>
               </div>
@@ -439,7 +439,7 @@ export function CytowalnoscGeoClientDe() {
               <div className="sp2-sekcja-wyniku">
                 <h2 className="narz-h2">Übersicht aller H2/H3-Textblöcke</h2>
                 <p className="narz-mikro" style={{ marginBottom: '0.65rem' }}>
-                  Idealer Answer-First-Einstieg: 40-75 Wörter; vollständiger RAG-Abschnitt: 60-180 Wörter.
+                  Idealer Answer-First-Eröffnungssatz: 8-55 Wörter; vollständiger RAG-Abschnitt: 40-180 Wörter.
                 </p>
                 <div className="narz-tabela-wrap">
                   <table className="narz-tabela">

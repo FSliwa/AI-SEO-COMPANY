@@ -7,15 +7,18 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import { Link } from '@/i18n/routing';
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
 import { STRONY_NARZEDZI_DE } from '@/lib/narzedzia.de';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY } from '@/lib/narzedziaLiczby';
 import { eur } from '@/lib/formatDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
@@ -71,9 +74,12 @@ export function CwvVergleichStronaDe() {
   const h1 = wpis?.h1 || 'Core Web Vitals Test & Vergleich: Ihre Website vs. Konkurrent vs. Next.js';
   const okruszek = nazwy?.okruszek || 'Core Web Vitals Vergleich';
   const url = urlDe(KLUCZ) || ZAPAS_URL;
-  const zrodla = nazwy?.zrodla
+  const zrodla = nazwy?.sources?.length
+    ? nazwy.sources
+    : nazwy?.zrodla
     ? ZRODLA_DE.map((z, i) => ({ ...z, nazwa: nazwy.zrodla[i] ?? z.nazwa }))
     : ZRODLA_DE;
+  const ilustracja = obrazKarty(SLUG, 'de');
 
   const nextVergleich = jesli('/porownania/nextjs-vs-wordpress-seo');
   const baukastenVergleich = jesli('/porownania/strona-kodowana-czy-kreator-seo');
@@ -97,6 +103,7 @@ export function CwvVergleichStronaDe() {
         url={url}
         category="BusinessApplication"
         language="de"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={[
           '3-Spalten-Vergleich: Ihre Website vs. Wettbewerber vs. Next.js-SSR-Referenz',
           'Echte mobile 28-Tage-Felddaten aus dem Chrome User Experience Report (LCP, INP, CLS, TTFB)',
@@ -124,15 +131,16 @@ export function CwvVergleichStronaDe() {
 
           <div style={s.poNarzedziu}>
             <AnswerBox etykieta="Kurzantwort">
-              Die Core Web Vitals sind Googles drei offizielle Kennzahlen für die Nutzererfahrung im 75. Perzentil echter mobiler Chrome-Besuche: Largest Contentful Paint (LCP &lt;= 2,50 s), Interaction to Next Paint (INP &lt;= 200 ms) und Cumulative Layout Shift (CLS &lt;= 0,10). Unser Tool stellt Ihre realen CrUX-Felddaten und Ihren CMS-Skriptballast einem Wettbewerber sowie einer modernen Next.js-SSR-Architektur gegenüber und übersetzt Ladezeitverzögerungen direkt in monatlich entgangene mobile Anfragen.
+              Die Core Web Vitals sind Googles drei offizielle Kennzahlen für die Nutzererfahrung im 75. Perzentil echter mobiler Chrome-Besuche: Largest Contentful Paint (LCP &lt;= 2,50 s), Interaction to Next Paint (INP &lt;= 200 ms) und Cumulative Layout Shift (CLS &lt;= 0,10). Wenn Sie Ihre Website-Geschwindigkeit testen möchten, stellt unser Tool reale CrUX-Felddaten und CMS-Skriptballast einem Wettbewerber sowie einer modernen Next.js-SSR-Architektur gegenüber.
             </AnswerBox>
+            <Byline sciezka={KLUCZ} takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
             <div className={st.trescGlowna}>
               <CoDostajesz
                 id="was-sie-erhalten"
-                tytul="Das liefert der Core-Web-Vitals-Vergleich kostenlos"
+                tytul="Website-Geschwindigkeit testen: Das liefert der Vergleich kostenlos"
                 tytulOdRazu="Sofort im Browser, ohne E-Mail"
                 odRazu={[
                   'Übersichtliche 3-Spalten-Tabelle: Ihre Website, Ihr Konkurrent und die Next.js-Referenzarchitektur',
@@ -142,7 +150,9 @@ export function CwvVergleichStronaDe() {
                   'Teilbarer Vergleichs-Link (?a=...&b=...) für Geschäftsführung, Marketing oder Agentur',
                 ]}
                 przypis="Keine Registrierung und kein E-Mail-Gate: Alle Messdaten und Kostenvergleiche sind sofort sichtbar."
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               <Sekcja id="crux-felddaten-vs-lighthouse-labor" tytul="CrUX 28-Tage-Felddaten vs. synthetischer Lighthouse-Test">
                 <p style={s.akapit}>

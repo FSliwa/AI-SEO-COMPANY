@@ -6,15 +6,18 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import { Link } from '@/i18n/routing';
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
 import { STRONY_NARZEDZI_DE } from '@/lib/narzedzia.de';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY } from '@/lib/narzedziaLiczby';
 import { eur } from '@/lib/formatDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
@@ -69,9 +72,12 @@ export function CytowalnoscGeoStronaDe() {
   const h1 = wpis?.h1 || 'GEO-Zitierbarkeit prüfen: Wird Ihre Seite in AI Overviews & ChatGPT zitiert?';
   const okruszek = nazwy?.okruszek || 'GEO-Zitierbarkeit prüfen';
   const url = urlDe(KLUCZ) || ZAPAS_URL;
-  const zrodla = nazwy?.zrodla
+  const zrodla = nazwy?.sources?.length
+    ? nazwy.sources
+    : nazwy?.zrodla
     ? ZRODLA_DE.map((z, i) => ({ ...z, nazwa: nazwy.zrodla[i] ?? z.nazwa }))
     : ZRODLA_DE;
+  const ilustracja = obrazKarty(SLUG, 'de');
 
   const geoHub = jesli('/pozycjonowanie-w-ai');
   const seoVsGeo = jesli('/porownania/seo-vs-geo');
@@ -94,6 +100,7 @@ export function CytowalnoscGeoStronaDe() {
         url={url}
         category="BusinessApplication"
         language="de"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={[
           'Deterministischer GEO-Score von 0 bis 100 über 6 RAG-Kriterien',
           'Simulation des extrahierten Antwortblocks in Google AI Overviews und ChatGPT',
@@ -121,25 +128,28 @@ export function CytowalnoscGeoStronaDe() {
 
           <div style={s.poNarzedziu}>
             <AnswerBox etykieta="Kurzantwort">
-              KI-Antwortmaschinen (Google AI Overviews, ChatGPT Search, Perplexity und Claude) zitieren selten komplette Artikel, sondern extrahieren per RAG einzelne H2/H3-Passagen. Hohe Zitierchancen erreichen Seiten, die jeden Abschnitt mit einer präzisen Answer-First-Antwort (40-75 Wörter) eröffnen, überprüfbare Zahlen und Einheiten nennen, Vergleiche als HTML-Tabellen auszeichnen und Autor sowie Aktualisierungsdatum im JSON-LD hinterlegen.
+              KI-Antwortmaschinen (Google Übersichten mit KI, KI-Modus, ChatGPT Search, Perplexity und Claude) zitieren selten komplette Artikel, sondern extrahieren per RAG einzelne H2/H3-Passagen. Unser kostenloser GEO Check prüft, ob jeder Abschnitt mit einem klaren Answer-First-Satz (8-55 Wörter) innerhalb eines eigenständigen Blocks (40-180 Wörter) startet, Zahlen und HTML-Tabellen nutzt und Autorenschaft im JSON-LD hinterlegt.
             </AnswerBox>
+            <Byline sciezka={KLUCZ} takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
             <div className={st.trescGlowna}>
               <CoDostajesz
                 id="was-sie-erhalten"
-                tytul="Das liefert der GEO-Zitierbarkeits-Prüfer kostenlos"
+                tytul="GEO Check kostenlos: Das liefert der Zitierbarkeits-Prüfer"
                 tytulOdRazu="Sofort im Browser, ohne E-Mail"
                 odRazu={[
                   'Gesamtwert von 0 bis 100 sowie Einzelbewertung von 6 RAG-Zitierkriterien',
-                  'Simulierter Antwortauszug für Google AI Overviews und ChatGPT Search',
+                  'Simulierter Antwortauszug für Google Übersichten mit KI, KI-Modus und ChatGPT Search',
                   'Optionaler 1:1-Direktvergleich mit einer rankenden Wettbewerber-URL',
                   'Vollständige H2/H3-Blocktabelle inklusive Wortanzahl und Einzelbefund',
                   'Priorisierte Umbau-Empfehlungen für Redaktion, Marketing und B2B-Vertrieb',
                 ]}
                 przypis="Kein E-Mail-Gate und keine KI-Zufallsschätzung: reproduzierbare Analyse Ihres HTML-Quelltextes."
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               <Sekcja id="wie-rag-systeme-quellen-auswaehlen" tytul="Wie RAG-Systeme entscheiden, welche Website zitiert wird">
                 <p style={s.akapit}>
@@ -154,8 +164,8 @@ export function CytowalnoscGeoStronaDe() {
                     { key: 'stark', label: 'Zitierfähiger RAG-Antwortblock' },
                   ]}
                   rows={[
-                    { id: 'answer-first', signal: 'Answer-First-Einstieg', schwach: '180 Wörter Unternehmensgeschichte vor der eigentlichen Antwort', stark: 'Klare Antwort in 45-70 Wörtern direkt im ersten Absatz' },
-                    { id: 'laenge', signal: 'Abschnittslänge', schwach: 'Ungeteilte 900-Wörter-Textwand oder Ein-Satz-Floskel', stark: 'Eigenständiger Abschnitt mit 60-180 Wörtern je H2/H3' },
+                    { id: 'answer-first', signal: 'Answer-First-Einstieg', schwach: '180 Wörter Unternehmensgeschichte vor der eigentlichen Antwort', stark: 'Direkter Einstiegssatz in 8-55 Wörtern mit konkreten Zahlen' },
+                    { id: 'laenge', signal: 'Abschnittslänge', schwach: 'Ungeteilte 900-Wörter-Textwand oder Ein-Satz-Floskel', stark: 'Eigenständiger Abschnitt mit 40-180 Wörtern je H2/H3' },
                     { id: 'fakten', signal: 'Fakten & Einheiten', schwach: '„Individuell, schnell und kosteneffizient“', stark: '„Ab 450 € netto/Mon., Start in 14 Tagen, LCP <= 2,5 s“' },
                     { id: 'headings', signal: 'H2/H3-Formulierung', schwach: '„Leistungen“, „Über uns“, „Vorteile“', stark: '„Was kostet B2B-SEO?“, „Next.js vs. WordPress“' },
                     { id: 'tabellen', signal: 'Listen & Tabellen', schwach: 'Preise nur als Bilddatei eingebunden', stark: 'Saubere HTML-Tabelle <table> und Aufzählungen <ul>' },

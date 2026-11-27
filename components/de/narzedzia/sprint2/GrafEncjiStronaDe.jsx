@@ -6,15 +6,18 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
+import ZrzutWyniku from '@/components/narzedzia/ZrzutWyniku';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import { Link } from '@/i18n/routing';
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
 import { STRONY_NARZEDZI_DE } from '@/lib/narzedzia.de';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { CENY } from '@/lib/narzedziaLiczby';
 import { eur } from '@/lib/formatDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
@@ -69,9 +72,12 @@ export function GrafEncjiStronaDe() {
   const h1 = wpis?.h1 || 'JSON-LD Entitäts-Graph Validator & @graph Generator';
   const okruszek = nazwy?.okruszek || 'Entitäts-Graph JSON-LD';
   const url = urlDe(KLUCZ) || ZAPAS_URL;
-  const zrodla = nazwy?.zrodla
+  const zrodla = nazwy?.sources?.length
+    ? nazwy.sources
+    : nazwy?.zrodla
     ? ZRODLA_DE.map((z, i) => ({ ...z, nazwa: nazwy.zrodla[i] ?? z.nazwa }))
     : ZRODLA_DE;
+  const ilustracja = obrazKarty(SLUG, 'de');
 
   const schemaVorlagen = jesli('/narzedzia/dane-strukturalne-json-ld');
   const eeatCheck = jesli('/narzedzia/checklista-e-e-a-t');
@@ -93,6 +99,7 @@ export function GrafEncjiStronaDe() {
         url={url}
         category="DeveloperApplication"
         language="de"
+        screenshot={ilustracja ? { url: ilustracja.src, width: ilustracja.width, height: ilustracja.height } : undefined}
         featureList={[
           'Interaktives SVG-Diagramm für Organization, WebSite, Person, LocalBusiness und Service',
           'Prüfung seitenübergreifender @id-Anker und Entitätsbeziehungen',
@@ -119,24 +126,27 @@ export function GrafEncjiStronaDe() {
 
           <div style={s.poNarzedziu}>
             <AnswerBox etykieta="Kurzantwort">
-              Zeitgemäßes Entity SEO bündelt einzelne Schema-Bausteine zu einem verbundenen JSON-LD-@graph mit festen @id-Ankern (#organization, #website, #person), amtlichen Unternehmenskennungen (USt-IdNr., Handelsregister) und externen sameAs-Profilen (LinkedIn, Google Maps, Clutch, GitHub). So ordnen Google und Sprachmodelle Ihre Marke zweifelsfrei zu.
+              Zeitgemäßes Entity SEO bündelt einzelne Bausteine zu einem verbundenen JSON-LD-@graph mit festen @id-Ankern (#organization, #website, #person), amtlichen Unternehmenskennungen (USt-IdNr., Handelsregister) und externen sameAs-Profilen. Unser kostenloser Schema Markup Validator prüft sowohl Live-URLs als auch direkt eingefügten JSON-LD-Code, damit Google und Sprachmodelle Ihre Marke zweifelsfrei zuordnen.
             </AnswerBox>
+            <Byline sciezka={KLUCZ} takzeEn style={{ margin: '1.25rem 0 0' }} />
           </div>
 
           <div className={st.tresc} id="nw-tresc">
             <div className={st.trescGlowna}>
               <CoDostajesz
                 id="was-sie-erhalten"
-                tytul="Das liefert der Entitäts-Graph-Validator kostenlos"
+                tytul="Schema Markup Validator & @graph-Prüfer: Das erhalten Sie kostenlos"
                 tytulOdRazu="Sofort im Browser, ohne E-Mail"
                 odRazu={[
-                  'Bewertung von 0 bis 100 für Ihren JSON-LD-Graphen über Startseite, Über-uns und Impressum',
+                  'Bewertung von 0 bis 100 für Live-Domains (Startseite, Über-uns, Impressum) oder eingefügtes JSON-LD',
                   'Interaktives SVG-Knotendiagramm mit @id-Verbindungen zwischen Unternehmen, Personen und Leistungen',
                   'Übersicht zu Registerkennungen (USt-IdNr., HRB, LEI) und verknüpften sameAs-Profilen',
-                  'Kopierfertige @graph-JSON-LD-Vorlage passend zu Ihrer Domain',
+                  'Kopierfertige @graph-JSON-LD-Vorlage passend zu Ihrer Domain und Branche',
                 ]}
                 przypis="Ohne Anmeldung: Alle Prüfergebnisse und das generierte JSON-LD stehen sofort bereit."
-              />
+              >
+                {ilustracja ? <ZrzutWyniku {...ilustracja} sizes="(max-width: 900px) 100vw, 860px" /> : null}
+              </CoDostajesz>
 
               <Sekcja id="isolierte-plugins-vs-verbundener-graph" tytul="Isolierte Plugin-Snippets vs. verbundene @graph-Architektur">
                 <CompareTable

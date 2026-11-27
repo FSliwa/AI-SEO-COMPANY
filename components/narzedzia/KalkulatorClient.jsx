@@ -223,7 +223,7 @@ body:has(.kalk-akcja), main:has(.kalk-akcja) { overflow-x: clip !important; }
 @media (max-width: 600px) {
   .kalk-tryb-opcje { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; }
   .kalk-tryb-opcje span { padding: 0.55rem 0.5rem; border-radius: 12px; font-size: 0.9rem; }
-  .kalk-akcja { flex-direction: column; align-items: stretch; gap: 0.45rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
+  .kalk-akcja { position: static; margin: 0; padding: 0.6rem 0 0; background: transparent; border-top: 0; flex-direction: column; align-items: stretch; gap: 0.45rem; }
   .kalk-akcja .btn { width: 100%; justify-content: center; padding: 0.7rem 1rem; white-space: nowrap; font-size: 0.95rem; }
   .kalk-biezacy { flex: none; min-width: 0; text-align: center; font-size: 0.85rem; }
   .kalk-biezacy--pusty { display: none; }
@@ -869,14 +869,51 @@ export default function KalkulatorClient() {
             {en ? ' shows what holds your site back' : ' pokaże, co blokuje stronę'}
             {SPRAWDZARKA_DZIALA ? <>{en ? ', and the ' : ', a '}<Link href="/sprawdz-widocznosc-w-ai" className="narz-link">{en ? 'AI visibility check' : 'sprawdzarka widoczności w AI'}</Link>{en ? ' whether AI models mention your business.' : ', czy modele AI wymieniają Twoją firmę.'}</> : '.'}
           </p>
-          <LinkWyniku
-            narzedzie="kalkulator"
-            tryb="wynik"
-            parametry={parametryWyniku()}
-            podsumowanie={en
-              ? `Estimated loss without SEO and AI visibility: ${fmt(W.min.zysk)} to ${fmt(W.max.zysk)} per month`
-              : `Szacowana strata bez SEO i widoczności w AI: ${fmt(W.min.zysk)} do ${fmt(W.max.zysk)} miesięcznie`}
-          />
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem 1.2rem', alignItems: 'center' }}>
+            <LinkWyniku
+              narzedzie="kalkulator"
+              tryb="wynik"
+              parametry={parametryWyniku()}
+              podsumowanie={en
+                ? `Estimated loss without SEO and AI visibility: ${fmt(W.min.zysk)} to ${fmt(W.max.zysk)} per month`
+                : `Szacowana strata bez SEO i widoczności w AI: ${fmt(W.min.zysk)} do ${fmt(W.max.zysk)} miesięcznie`}
+            />
+            <button
+              type="button"
+              className="narz-link"
+              onClick={() => {
+                const sep = en ? ',' : ';';
+                const q = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+                const wiersze = [
+                  [en ? 'Metric' : 'Wskaznik', en ? 'Cautious' : 'Wariant ostrozny', en ? 'Optimistic' : 'Wariant optymistyczny'],
+                  [en ? 'Currency' : 'Waluta', waluta, waluta],
+                  [en ? 'Monthly lost profit' : 'Utracony zysk miesiecznie', Math.round(W.min.zysk), Math.round(W.max.zysk)],
+                  [en ? 'Annual lost profit' : 'Utracony zysk rocznie', Math.round(W.rocznieMin), Math.round(W.rocznieMax)],
+                  [en ? 'Google channel loss / mo' : 'Strata w Google / mies.', Math.round(W.min.zyskSeo), Math.round(W.max.zyskSeo)],
+                  [en ? 'AI channel loss / mo' : 'Strata w AI / mies.', Math.round(W.min.zyskAi), Math.round(W.max.zyskAi)],
+                  [sklep ? (en ? 'Lost orders / mo' : 'Utracone zamowienia / mies.') : (en ? 'Lost customers / mo' : 'Utraceni klienci / mies.'), sklep ? W.min.zamowienia.toFixed(1) : W.min.klienci.toFixed(1), sklep ? W.max.zamowienia.toFixed(1) : W.max.klienci.toFixed(1)],
+                  ...(zwrot ? [
+                    [en ? 'Monthly SEO budget' : 'Koszt miesieczny SEO', Math.round(zwrot.koszt), Math.round(zwrot.koszt)],
+                    [en ? '12-month net balance' : 'Bilans 12 miesiecy', Math.round(zwrot.min.bilansRok), Math.round(zwrot.max.bilansRok)],
+                    [en ? 'Payback month' : 'Miesiac zwrotu', zwrot.min.miesiacZwrotu ?? '-', zwrot.max.miesiacZwrotu ?? '-'],
+                  ] : []),
+                ];
+                const csv = `\uFEFF${wiersze.map((r) => r.map(q).join(sep)).join('\n')}`;
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = en ? 'seo-roi-summary.csv' : 'kalkulator-roi-seo.csv';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+                track('kalkulator_export_csv', { waluta, lang: en ? 'en' : 'pl' });
+              }}
+            >
+              {en ? 'Download CSV summary' : 'Pobierz podsumowanie CSV'}
+            </button>
+          </div>
 
           <BramkaEmail
             narzedzie="kalkulator"

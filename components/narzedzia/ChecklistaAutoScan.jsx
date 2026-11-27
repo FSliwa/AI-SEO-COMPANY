@@ -126,10 +126,12 @@ const TEKSTY = {
     ok: 'Spełnione',
     blad: 'Do poprawy',
     brakPomiaru: 'Brak pomiaru',
+    ndJednojezyczna: 'Brak hreflang (1 język)',
     wynikNaglowek: (ok, razem, braki) => `Wynik szybkiego skanu: ${ok}/${razem} spełnionych (${odmienWymagaPoprawyPl(braki)})`,
     ocenaSeo: 'Ocena SEO',
     eksport: 'Eksportuj raport kontrolny (.csv)',
-    csvNaglowek: ['Kod', 'Wymog techniczny', 'Status', 'Wskazowka', 'Domena', 'Ocena SEO'],
+    csvNaglowek: ['Kod', 'Wymóg techniczny', 'Status', 'Wskazówka', 'Domena', 'Ocena SEO'],
+    csvPrefiks: 'checklista-seo',
     bladSieci: 'Nie udało się przeskanować tej domeny. Sprawdź adres i spróbuj ponownie.',
   },
   en: {
@@ -142,10 +144,12 @@ const TEKSTY = {
     ok: 'Passed',
     blad: 'Needs work',
     brakPomiaru: 'Not measured',
+    ndJednojezyczna: 'N/A (1 language)',
     wynikNaglowek: (ok, razem, braki) => `Quick scan summary: ${ok}/${razem} passed (${braki} ${braki === 1 ? 'item needs' : 'items need'} attention)`,
     ocenaSeo: 'SEO score',
     eksport: 'Export checklist report (.csv)',
     csvNaglowek: ['Code', 'Technical check', 'Status', 'Action hint', 'Domain', 'SEO score'],
+    csvPrefiks: 'seo-checklist',
     bladSieci: 'Could not scan this domain right now. Check the URL and try again.',
   },
   de: {
@@ -158,10 +162,12 @@ const TEKSTY = {
     ok: 'Erfüllt',
     blad: 'Offen',
     brakPomiaru: 'Nicht gemessen',
+    ndJednojezyczna: 'Entfällt (1 Sprache)',
     wynikNaglowek: (ok, razem, braki) => `Schnelltest-Ergebnis: ${ok}/${razem} erfüllt (${braki} ${braki === 1 ? 'Punkt offen' : 'Punkte offen'})`,
     ocenaSeo: 'SEO-Punktzahl',
     eksport: 'Prüfbericht exportieren (.csv)',
-    csvNaglowek: ['Code', 'Pruefpunkt', 'Status', 'Hinweis', 'Domain', 'SEO-Punktzahl'],
+    csvNaglowek: ['Code', 'Prüfpunkt', 'Status', 'Hinweis', 'Domain', 'SEO-Punktzahl'],
+    csvPrefiks: 'seo-checkliste',
     bladSieci: 'Die Domain konnte nicht geprüft werden. Bitte kontrollieren Sie die Adresse und versuchen Sie es erneut.',
   },
 };
@@ -178,6 +184,7 @@ function demoSkan(wejscie) {
     domena: czysta,
     wynik: wzorcowa ? 95 : 74,
     wydajnoscZmierzona: true,
+    hreflangStan: wzorcowa ? 'zweryfikowany' : 'brak',
     wykryteId: wzorcowa ? [] : ['brak_opisu', 'obrazy_bez_alt', 'brak_llms', 'psi_srednia'],
   };
 }
@@ -232,6 +239,7 @@ export default function ChecklistaAutoScan({ locale = 'pl' }) {
         domena: p.domenaWyswietlana || p.domena || wejscie,
         wynik: p.wynik,
         wydajnoscZmierzona: p.wydajnoscZmierzona !== false,
+        hreflangStan: p.hreflangStan || 'brak',
         wykryteId,
       }, jezyk, T);
       track('narzedzie_checklista_autoscan_wynik', { lang: jezyk, spelnione: raport.spelnione });
@@ -263,7 +271,7 @@ export default function ChecklistaAutoScan({ locale = 'pl' }) {
     const a = document.createElement('a');
     const bezpiecznaDomena = String(r.domena || 'domena').replace(/[^a-z0-9.-]+/gi, '-');
     a.href = adresBlob;
-    a.download = `seo-checkliste-${bezpiecznaDomena}.csv`;
+    a.download = `${T.csvPrefiks}-${bezpiecznaDomena}.csv`;
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -344,7 +352,7 @@ export default function ChecklistaAutoScan({ locale = 'pl' }) {
                 <div className="cas-punkt-gora">
                   <span>{poz.kod} · {poz.nazwa}</span>
                   <span className={`cas-stan cas-stan--${poz.status}`}>
-                    {poz.status === 'ok' ? `✓ ${T.ok}` : poz.status === 'blad' ? `✕ ${T.blad}` : T.brakPomiaru}
+                    {poz.status === 'ok' ? `✓ ${T.ok}` : poz.status === 'blad' ? `✕ ${T.blad}` : poz.statusTekst || T.brakPomiaru}
                   </span>
                 </div>
                 {poz.status === 'blad' && (
@@ -367,6 +375,14 @@ function zbudujRaport(dane, jezyk, T) {
       return { kod: w.kod, nazwa: t.nazwa, wskazowka: t.wskazowka, status: 'brak', statusTekst: T.brakPomiaru };
     }
     const maProblem = w.reguly.some((id) => zbior.has(id));
+    if (w.kod === 'A6-lang') {
+      if (maProblem || dane.hreflangStan === 'blad') {
+        return { kod: w.kod, nazwa: t.nazwa, wskazowka: t.wskazowka, status: 'blad', statusTekst: T.blad };
+      }
+      if (dane.hreflangStan !== 'zweryfikowany') {
+        return { kod: w.kod, nazwa: t.nazwa, wskazowka: t.wskazowka, status: 'brak', statusTekst: T.ndJednojezyczna };
+      }
+    }
     return {
       kod: w.kod,
       nazwa: t.nazwa,

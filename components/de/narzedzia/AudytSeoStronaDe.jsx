@@ -88,14 +88,14 @@ export default function AudytSeoStronaDe() {
         odRazu={[
           'Eine Punktzahl von 1 bis 100.',
           'Die Punktzahl jeder der vier Kategorien mit der Zahl der Fehler, Warnungen und Hinweise.',
-          'Vier PageSpeed-Insights-Werte für das Smartphone: Performance, SEO, Barrierefreiheit und Best Practices.',
+          'Vier PageSpeed-Insights-Werte (wahlweise Smartphone oder Computer) sowie 28-Tage-CrUX-Felddaten.',
           'Die drei wichtigsten Probleme mit Beschreibung, Anleitung zur Behebung und Beispieladressen betroffener Unterseiten.',
           'Einen Link zum Ergebnis, der das Audit mit eingetragener Adresse öffnet (zum Beispiel für Ihre Entwickler).',
           'Die Veränderung von Punktzahl und Kategorien seit dem letzten Audit dieser Domain, etwa „+6 seit dem Audit vom 3.11.“, falls sie schon einmal geprüft wurde.',
         ]}
         poEmailu={[
           `Alle gefundenen Probleme mit den Adressen der Unterseiten (bis zu ${AUDYT.stron} je Problem).`,
-          'Einen Kategoriefilter: Technik, Inhalt, Performance, KI-Tauglichkeit.',
+          'Einen Kategoriefilter, CSV-/Markdown-Export sowie das Copy-Paste Fix Pack (<head>, robots.txt, Weiterleitungen).',
           'Einen Bericht per E-Mail, den Sie an Ihre Entwickler weitergeben können.',
           'Auf Wunsch: ein monatliches Audit dieser Domain per E-Mail, mit der Veränderung der Punktzahl sowie neuen und behobenen Problemen (gesonderte Einwilligung und Bestätigung per Link in einer E-Mail, mit einem Klick abschaltbar).',
         ]}
@@ -111,8 +111,8 @@ export default function AudytSeoStronaDe() {
         </div>
       </CoDostajesz>
 
-      <Sekcja id="was-prueft-der-audit" tytul="SEO Audit Tools: Was der kostenlose Audit prüft">
-        <p style={s.akapit}>Während viele SEO Audit Tools ein Nutzerkonto und eine Domain-Verifizierung voraussetzen, läuft unser kostenloser SEO Audit direkt im Browser: Er analysiert bis zu {AUDYT.stron} Unterseiten anhand von {regeln(AUDYT.regul)} in den {AUDYT.kategorii} Bereichen Technik, Inhalt, Performance und KI-Bereitschaft und liefert eine Bewertung von 1 bis 100.</p>
+      <Sekcja id="was-prueft-der-audit" tytul="Kostenloser SEO-Check & SEO-Analyse: Was das Tool prüft">
+        <p style={s.akapit}>Während viele SEO Audit Tools ein Nutzerkonto und eine Domain-Verifizierung voraussetzen, können Sie mit unserem kostenlosen SEO-Check Ihre SEO kostenlos testen - direkt im Browser: Die SEO-Analyse untersucht bis zu {AUDYT.stron} Unterseiten anhand von {regeln(AUDYT.regul)} in den {AUDYT.kategorii} Bereichen Technik, Inhalt, Performance und KI-Bereitschaft und liefert eine Bewertung von 1 bis 100.</p>
         <p style={s.akapit}>Jede Regel hat einen im Code festgelegten Schwellenwert, etwa einen Titel über 60 Zeichen, eine Serverantwort langsamer als 1,5 Sekunden oder eine Startseite schwerer als 3 MB. Zu jedem Problem erhalten Sie eine Beschreibung der Auswirkung, eine Anleitung zur Behebung und die Adressen der betroffenen Unterseiten.</p>
         <h3 style={s.h3}>Technik ({regeln(R.techniczne)}, {W.techniczne} % der Punktzahl)</h3>
         <p style={s.akapit}>HTTPS und Weiterleitungen, Versionen mit und ohne www, 4xx- und 5xx-Fehler, Weiterleitungsketten, Canonical-URLs, noindex (auch auf der Startseite und in ganzen Bereichen, etwa in einer Sprachversion unter /en/), das Attribut lang, das Meta-Tag viewport, über http:// geladene Ressourcen auf einer https://-Seite, defekte interne Links und tote externe Links (404 oder 410), Soft-404 (ob eine nicht vorhandene Adresse den Code 404 liefert), hreflang auf der Startseite und auf Unterseiten mehrsprachiger Websites (einschließlich Rückverweisen), robots.txt, Sitemap und Adressen in der Sitemap, die dort nicht stehen sollten (mit noindex, Weiterleitung, Fehler oder einem Canonical auf eine andere Seite).</p>

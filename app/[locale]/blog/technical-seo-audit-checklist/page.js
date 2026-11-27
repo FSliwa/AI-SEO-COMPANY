@@ -697,7 +697,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
 
               {/* 5.11.2026 (PLAN-v2 6.25 W6, decyzje-blog nr 4, MSA-17): checklista z tresci artykulu (30 punktow
                   z tabel i list powyzej) w PDF i XLSX; /pliki/* ma X-Robots-Tag: noindex (next.config.mjs). */}
-              <h2 id="checklista-pdf">Checklista SEO do pobrania (PDF)</h2>
+              <h2 id="checklista-pdf">Checklista audytu technicznego SEO do pobrania (PDF i XLSX)</h2>
               <p>Wszystkie progi z tego poradnika zebraliśmy w 30 punktach do odhaczenia: od robots.txt i sitemapy, przez czas odpowiedzi serwera i Core Web Vitals, po rytm audytów i definition of done.</p>
               <ul>
                 <li><a href="/pliki/checklista-audytu-technicznego-seo.pdf" download>Checklista audytu technicznego SEO (PDF, 30 punktów)</a>: do wydruku i odhaczania.</li>
