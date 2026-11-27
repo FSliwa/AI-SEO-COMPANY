@@ -465,7 +465,7 @@ export function CytowalnoscGeoClientDe() {
                               {fmtDe(b.slow ?? 0, 'de')}
                             </td>
                             <td>
-                              <span className={`sp2-pigulka ${klasa}`}>{pkt}/100</span>
+                              <span className={`sp2-pigulka ${klasa}`} style={{ whiteSpace: 'nowrap' }}>{pkt}/100</span>
                             </td>
                             <td className="narz-mikro" style={{ textAlign: 'left', color: 'var(--w-tusz)' }}>
                               {b.powod || '-'}

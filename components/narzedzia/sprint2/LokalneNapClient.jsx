@@ -477,7 +477,7 @@ export function LokalneNapClient() {
               <h2 className="narz-h2">
                 {en ? 'Visible HTML vs JSON-LD LocalBusiness Comparison' : 'Tabela porównawcza: tekst HTML kontra JSON-LD LocalBusiness'}
               </h2>
-              <div className="narz-tabela-wrap" style={{ marginTop: '0.65rem' }}>
+              <div className="narz-tabela-wrap sp2-tabela-wrap" style={{ marginTop: '0.65rem' }}>
                 <table className="narz-tabela">
                   <thead>
                     <tr>

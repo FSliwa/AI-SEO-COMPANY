@@ -58,8 +58,8 @@
    Dziecko bezpośrednie to jedyny element wewnątrz. data-otwarte = otwarte. Montaż z data-otwarte
    animuje wejście (@starting-style), chyba że dodano data-bez-wej. Wysokość przez grid-template-rows
    to świadomy wyjątek od "tylko kompozytor"; samo animowanie NIE zmniejsza CLS (zmniejsza skok). */
-.r-zwin { display: grid; grid-template-rows: 0fr; }
-.r-zwin > * { min-height: 0; contain: layout style; overflow: clip; overflow-clip-margin: 6px; } /* margines: nie ucina obrysu fokusu */
+.r-zwin { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 0fr; min-width: 0; max-width: 100%; }
+.r-zwin > * { min-height: 0; min-width: 0; max-width: 100%; contain: layout style; overflow: clip; overflow-clip-margin: 6px; } /* margines: nie ucina obrysu fokusu */
 @media (prefers-reduced-motion: no-preference) {
   .r-zwin { transition: grid-template-rows var(--r-d-wyj) var(--r-ease-in), opacity var(--r-d-wyj) var(--r-ease-in); opacity: 0; }
   .r-zwin[data-otwarte] { grid-template-rows: 1fr; opacity: 1; transition-duration: var(--r-d-wej), var(--r-d-std); transition-timing-function: var(--r-ease), var(--r-ease); }

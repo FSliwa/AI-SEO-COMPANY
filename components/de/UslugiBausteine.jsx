@@ -203,7 +203,7 @@ export function Preise({ titel = 'Transparente Pakete ohne versteckte Kosten', u
 export function Tabelle({ beschriftung, spalten, zeilen, fussnote }) {
   return (
     <div style={{ margin: '0 0 1.25rem', minWidth: 0, maxWidth: '100%' }}>
-      <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', maxWidth: '100%' }}>
+      <div className={spalten.length > 2 ? 'tabela-przewijana' : undefined} style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', maxWidth: '100%' }}>
         <table lang="de" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '1rem', lineHeight: 1.5, minWidth: spalten.length > 2 ? '520px' : 0 }}>
           <caption style={{ textAlign: 'left', fontWeight: 700, padding: '0 0 0.75rem', color: 'var(--color-text-dark)' }}>{beschriftung}</caption>
           <thead>
@@ -218,6 +218,7 @@ export function Tabelle({ beschriftung, spalten, zeilen, fussnote }) {
           </tbody>
         </table>
       </div>
+      {spalten.length > 2 && <p className="tabela-wskazowka" aria-hidden="true" />}
       {fussnote && <p lang="de" style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', margin: '0.75rem 0 0' }}>{fussnote}</p>}
     </div>
   );

@@ -447,7 +447,7 @@ export function LokalneNapClientDe() {
 
             <div className="sp2-sekcja-wyniku">
               <h2 className="narz-h2">Vergleich: Sichtbares HTML vs. JSON-LD LocalBusiness</h2>
-              <div className="narz-tabela-wrap" style={{ marginTop: '0.65rem' }}>
+              <div className="narz-tabela-wrap sp2-tabela-wrap" style={{ marginTop: '0.65rem' }}>
                 <table className="narz-tabela">
                   <thead>
                     <tr>

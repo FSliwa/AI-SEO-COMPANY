@@ -5176,7 +5176,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 .narz-makieta-atrapa div { height: 120px; border-radius: 16px; background: linear-gradient(135deg, var(--w-papier-2), rgba(216, 90, 48, 0.15)); }
 
 /* Widoczność w AI */
-.narz-tabela-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.narz-tabela-wrap { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .narz-tabela { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
 .narz-tabela th, .narz-tabela td { padding: 0.65rem 0.5rem; border-bottom: 1px solid rgba(30, 30, 30, 0.08); text-align: center; vertical-align: middle; }
 .narz-tabela thead th { font-size: 0.8rem; font-weight: 600; color: var(--w-tusz-2); }
@@ -5450,6 +5450,7 @@ section:has(#subpage-portfolio-carousel) {
   padding-bottom: clamp(40px, 5.5vw, 72px) !important;
 }
 
+.narz-app,
 .narz-wynik,
 .narz-wynik > *,
 .narz-bramka,
@@ -5505,8 +5506,15 @@ nav.breadcrumbs:has(+ main.prawo-main) {
   }
 
   .breadcrumbs > a,
-  .breadcrumbs > span {
+  .breadcrumbs > span:not([aria-current]) {
     white-space: nowrap;
+  }
+
+  .breadcrumbs > span[aria-current] {
+    white-space: normal;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
 
   main.subpage-main > section[style*="clamp(136px, 14vw, 166px)"] {

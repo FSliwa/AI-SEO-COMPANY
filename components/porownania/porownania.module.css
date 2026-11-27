@@ -182,10 +182,10 @@
 
 @media (max-width: 600px) {
   .karta {
-    padding: 1.1rem 1rem;
+    padding: 1rem 0.6rem;
     border-radius: 20px;
   }
   .karta :global(.tabela-przewijana) {
-    margin-inline: -0.25rem;
+    margin-inline: -0.35rem;
   }
 }

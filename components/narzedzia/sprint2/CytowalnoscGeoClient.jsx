@@ -575,7 +575,7 @@ export function CytowalnoscGeoClient() {
                               {Number(b.slow ?? 0).toLocaleString(jezyk)}
                             </td>
                             <td>
-                              <span className={`sp2-pigulka ${klasa}`}>{pkt}/100</span>
+                              <span className={`sp2-pigulka ${klasa}`} style={{ whiteSpace: 'nowrap' }}>{pkt}/100</span>
                             </td>
                             <td className="narz-mikro" style={{ textAlign: 'left', color: 'var(--w-tusz)' }}>
                               {b.powod || '-'}
